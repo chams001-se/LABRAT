@@ -1,26 +1,32 @@
 package com.labrat.rooms;
+import com.labrat.commands.CommandType;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static com.labrat.rooms.Direction.*;
+/*
+Applies the builder design pattern through the separation of Room parameters into individual
+methods to harvest data for actually creating a room. Should not be used for anything but Room attributes
+ */
 
 public class RoomBuilder {
-    Room firstRoom = new Room();
-    Room secondRoom = new Room();
-    List<Room> roomList = new ArrayList<>();
+    String name;
+    String description;
 
-    public RoomBuilder() {
-        firstRoom.setExit(NORTH, secondRoom);
-        firstRoom.setDescription("This is the first room.");
-        roomList.add(firstRoom);
+    // FIXME: Change this to discern command of the same type
+    // The underlying issue with this is that the move command currently is based on the actor
+    ArrayList<CommandType> commands = new ArrayList<>();
 
-        secondRoom.setExit(SOUTH, firstRoom);
-        secondRoom.setDescription("This is the second room.");
-        roomList.add(secondRoom);
+    public RoomBuilder withDescription(String desc){
+        this.description = desc;
+        return this;
     }
 
-    public List<Room> getRoomList() {
-        return roomList;
+    public RoomBuilder withCommand(CommandType c){
+        commands.add(c);
+        return this;
+    }
+
+    public Room build() {
+        return new Room(description, commands, name);
     }
 }

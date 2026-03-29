@@ -2,18 +2,19 @@ package com.labrat.commands;
 
 import com.labrat.actors.Actor;
 import com.labrat.rooms.Direction;
-import com.labrat.rooms.RoomHandler;
-import com.labrat.commands.CommandType;
+import com.labrat.rooms.*;
 
 public class MoveCommand implements Command {
     private Actor actor;
     private Direction direction;
-    private RoomHandler roomHandler;
+    private Room current;
+
+    private Room next;
     private CommandType commandType;
 
-    public MoveCommand(Actor actor, RoomHandler roomHandler) {
+    public MoveCommand(Actor actor, Direction direction) {
         this.actor = actor;
-        this.roomHandler = roomHandler;
+        this.direction = direction;
         this.commandType = CommandType.MOVE;
     }
 
@@ -21,11 +22,7 @@ public class MoveCommand implements Command {
         this.direction = direction;
     }
 
-    public void execute() {
-        // Perform move operation
-        actor.moveDirection(direction);
-
-        // Update player room
-        actor.setCurrentRoom(roomHandler.roomLookup(actor.getCoord()));
+    public void execute(){
+        actor.setCurrentRoom(actor.getCurrentRoom().getExit(direction));
     }
-}
+   }

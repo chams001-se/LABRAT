@@ -1,88 +1,82 @@
-import java.awt.Point;
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.labrat.actors.*;
 import com.labrat.commands.*;
-import com.labrat.rooms.RoomHandler;
+import com.labrat.rooms.*;
 import com.labrat.commandhandlers.*;
+import com.labrat.rooms.RoomsCreator;
 
 public class TextAdventure {
     // Declare global variables
     Scanner scanner;
     String userInput;
-    String result;
 
     // Create receiver
     Actor mainCharacter = new MainCharacter();
 
     // Create RoomHandler
-    RoomHandler roomHandler = new RoomHandler();
+    RoomsCreator rc = new RoomsCreator();
 
     // Create commands
-    Command moveCommand = new MoveCommand(mainCharacter, roomHandler);
+    Command moveCommand = new MoveCommand(mainCharacter, Direction.SOUTH);
 
-    // Create Arraylist of Command Handlers
-    List<CommandHandler> commandHandlers;
+    // Create HashMap of CommandTypes mapped to their appropriate Command Handlers
+    Map<CommandType, CommandHandler> commandHandlers = new HashMap<>();
 
     public TextAdventure() {
-        // Initialize variables
-        result = "";
 
         // Initialize scanner
         scanner = new Scanner(System.in);
         userInput = "";
 
-        // Set user to a room
-        // DEBUG: Change Point to desired x and y coords
-        Point startPoint = new Point(0, 0);
-        mainCharacter.setCoord(startPoint);
-        mainCharacter.setCurrentRoom(roomHandler.roomLookup(startPoint));
+        // Set user to the starting room.
+        mainCharacter.setCurrentRoom(rc.getStartRoom());
 
-        // Initialize text handlers
-        commandHandlers = List.of(
-                new MoveHandler(mainCharacter, (MoveCommand) moveCommand)
-        );
+        // Initialize text handlers by mapping the handler to the appropriate command type.
+        commandHandlers.put(CommandType.MOVE, new MoveHandler(mainCharacter));
     }
 
+
+    // CHANGE: Removed internal while loop and result variable
+    // TODO: Delegated Printer class, perhaps serving as the View in our MVC
     public void start() {
         // Main Gameplay Loop
-        while (!userInput.equals("quit")) {
+        while (true) {
+            // TODO find a way to run our system through an actual terminal, not IntelliJ, to use escape sequences
             for (int i = 0; i < 50; i++) {
                 System.out.println();
             }
-            // Get room description
+
+
+            // Print out room description
             System.out.println(mainCharacter.getCurrentRoom().getDescription());
-            // Print previous result
-            System.out.println(result);
 
-            // Clear input and get user input until valid command
-            result = "";
-            while (result.isEmpty()) {
-                // Get user input
-                System.out.print("> ");
-                try {
-                    userInput = scanner.nextLine();
-                    userInput = userInput.toLowerCase().trim();
-                    String[] words = userInput.split("\\s+");
+            System.out.print("> ");
+            try {
+                userInput = scanner.nextLine();
+                userInput = userInput.toLowerCase().trim();
 
-                    // Iterate through command handlers
-                    // Perform request and break if valid request found
-                    for (CommandHandler handler : commandHandlers) {
-                        if (handler.canHandleRequest(words)) {
-                            result = handler.performRequest(words);
-                            break;
-                        }
-                    }
-                }
-                catch (IllegalArgumentException e) {
-                    System.out.println(e.getMessage());
-                }
+                // Tokenizes input
+                String[] words = userInput.split("\\s+");
+
+                // Maybe a better way to go about this?
+                if (words[0].equals("quit")) break;
+
+                // Find command type, then execute it through a handler.
+                // If the command type is invalid it will throw IllegalArguementException, which will get caught, preventing a crash
+                CommandType ct = CommandType.fromString(words[0].toUpperCase());
+
+                System.out.println(commandHandlers.get(ct).performRequest(words));
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         TextAdventure labrat = new TextAdventure();
         labrat.start();
     }
