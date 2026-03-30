@@ -20,9 +20,6 @@ public class TextAdventure {
     // Create RoomHandler
     RoomsCreator rc = new RoomsCreator();
 
-    // Create commands
-    Command moveCommand = new MoveCommand(mainCharacter, Direction.SOUTH);
-
     // Create HashMap of CommandTypes mapped to their appropriate Command Handlers
     Map<CommandType, CommandHandler> commandHandlers = new HashMap<>();
 
