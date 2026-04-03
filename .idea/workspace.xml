@@ -5,26 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf6bace-4b43-4fa0-a162-9326ab22026a" name="Changes" comment="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TextAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/TextAdventure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/actors/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/actors/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/actors/MainCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/actors/MainCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/commandhandlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/commandhandlers/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/commandhandlers/MoveHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/commandhandlers/MoveHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/CommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/commands/MoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/MoveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/rooms/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/rooms/RoomBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/RoomBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/labrat/rooms/RoomsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/RoomsCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/TextAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TextAdventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/actors/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/actors/Actor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/actors/MainCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/actors/MainCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commandhandlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commandhandlers/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commandhandlers/MoveHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commandhandlers/MoveHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commands/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commands/CommandType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/MoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commands/MoveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/RoomBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/RoomBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/RoomsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/RoomsCreator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,38 +65,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.TextAdventure.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/kgbil/JavaProjects/LABRAT/src/com/labrat/commands",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/kgbil/JavaProjects/LABRAT/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.build",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.TextAdventure.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kgbil/JavaProjects/LABRAT/src/com/labrat/commands&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/kgbil/JavaProjects/LABRAT/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\kgbil\JavaProjects\LABRAT\src\com\labrat\commands" />
       <recent name="C:\Users\kgbil\JavaProjects\LABRAT" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\kgbil\JavaProjects\LABRAT\LABRAT" />
       <recent name="C:\Users\kgbil\JavaProjects\LABRAT" />
+      <recent name="C:\Users\kgbil\JavaProjects\LABRAT\LABRAT" />
       <recent name="C:\Users\kgbil\JavaProjects\LABRAT\src" />
     </key>
   </component>
@@ -133,7 +128,7 @@
       <workItem from="1774727238468" duration="13654000" />
       <workItem from="1774815112625" duration="12580000" />
       <workItem from="1774840742340" duration="650000" />
-      <workItem from="1775180649371" duration="3559000" />
+      <workItem from="1775180649371" duration="4631000" />
     </task>
     <task id="LOCAL-00001" summary="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
       <option name="closed" value="true" />
@@ -183,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775181892182</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
+      <option name="closed" value="true" />
+      <created>1775186178578</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1775186178578</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +200,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/LABRAT/src/main/java/org/example/Main.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
