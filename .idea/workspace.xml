@@ -5,21 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf6bace-4b43-4fa0-a162-9326ab22026a" name="Changes" comment="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/TextAdventure.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/actors/Actor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/actors/MainCharacter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commandhandlers/CommandHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commandhandlers/MoveHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commands/Command.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commands/CommandType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commands/MoveCommand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/rooms/Direction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/rooms/Room.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/rooms/RoomBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/rooms/RoomsCreator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/TextAdventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TextAdventure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/actors/Actor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/actors/Actor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/actors/MainCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/actors/MainCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commandhandlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commandhandlers/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commandhandlers/MoveHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commandhandlers/MoveHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commands/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commands/CommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/commands/MoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/commands/MoveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/RoomBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/RoomBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LABRAT/src/com/labrat/rooms/RoomsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/labrat/rooms/RoomsCreator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +127,7 @@
       <workItem from="1774727238468" duration="13654000" />
       <workItem from="1774815112625" duration="12580000" />
       <workItem from="1774840742340" duration="650000" />
-      <workItem from="1775180649371" duration="4631000" />
+      <workItem from="1775180649371" duration="5075000" />
     </task>
     <task id="LOCAL-00001" summary="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
       <option name="closed" value="true" />
@@ -186,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775186178578</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
+      <option name="closed" value="true" />
+      <created>1775187329560</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1775187329560</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
