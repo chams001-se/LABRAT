@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="abf6bace-4b43-4fa0-a162-9326ab22026a" name="Changes" comment="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="module" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kyleb-n&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://chams001-se@github.com/chams001-se/LABRAT.git&quot;,
+    &quot;accountId&quot;: &quot;3f0188ac-6400-4a0c-825c-7ef34624f5bd&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3BXjuegysrDyBcHgMtD0n4EQIcl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.TextAdventure.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/kgbil/JavaProjects/LABRAT",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/kgbil/JavaProjects/LABRAT/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kgbil\JavaProjects\LABRAT" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abf6bace-4b43-4fa0-a162-9326ab22026a" name="Changes" comment="" />
+      <created>1774642532356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774642532356</updated>
+      <workItem from="1774643535361" duration="4760000" />
+      <workItem from="1774727238468" duration="13654000" />
+      <workItem from="1774815112625" duration="12580000" />
+      <workItem from="1774840742340" duration="650000" />
+      <workItem from="1775180649371" duration="732000" />
+    </task>
+    <task id="LOCAL-00001" summary="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
+      <option name="closed" value="true" />
+      <created>1774824375660</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1774824375660</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
+      <option name="closed" value="true" />
+      <created>1774836435725</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774836435725</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle">
+      <option name="closed" value="true" />
+      <created>1775181153753</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775181153753</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some changes:&#10;- Adjusted room creation and rooms to better fit the builder design pattern.&#10;- Added a delegated RoomsCreator class to create rooms.&#10;- Removed the coordinate system for rooms currently inplace, now simply linking each room together.&#10;- Removed duplicate handlers&#10;- Many other changes, I added comments but let me know if there is anything else you are confused on!&#10;&#10;- Kyle" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
