@@ -29,7 +29,7 @@ public class MoveHandler implements CommandHandler {
             if (Direction.isValidDirection(arg)) {
                 direction = Direction.fromString(arg);
                 if (currentRoom.isValidExit(direction)) {
-                    // Creates a move command for the chosen direction and executes it
+                    // Creates a move command for the chosen direction and executes it\
                     new MoveCommand(actor, direction).execute();
 
                     // Print direction

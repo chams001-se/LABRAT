@@ -22,6 +22,7 @@ public class MoveCommand implements Command {
         this.direction = direction;
     }
 
+    // In this instance, the actor itself is the receiver.
     public void execute(){
         actor.setCurrentRoom(actor.getCurrentRoom().getExit(direction));
     }

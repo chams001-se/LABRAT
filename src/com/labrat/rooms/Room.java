@@ -5,6 +5,7 @@ import com.labrat.commands.CommandType;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import com.labrat.view.PrinterColor;
 
 public class Room {
     private Map<Direction, Room> exits;
@@ -42,5 +43,9 @@ public class Room {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public PrinterColor getDescriptionColor() {
+        return PrinterColor.GREEN;
     }
 }
