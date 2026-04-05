@@ -1,6 +1,7 @@
 package com.labrat.rooms;
 
 import com.labrat.commands.CommandType;
+import com.labrat.view.PrinterColor;
 
 import java.awt.*;
 
@@ -23,11 +24,13 @@ public class RoomsCreator {
 
         firstRoom = new RoomBuilder()
                 .withDescription("Hello World!")
+                .withDescriptionColor(PrinterColor.GREEN)
                 .withCommand(CommandType.MOVE)
                 .build();
 
         secondRoom = new RoomBuilder()
                 .withDescription("It's dark in here!")
+                .withDescriptionColor(PrinterColor.BLUE)
                 .withCommand(CommandType.MOVE)
                 .build();
 

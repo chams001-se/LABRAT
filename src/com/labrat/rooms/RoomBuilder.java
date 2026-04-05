@@ -1,5 +1,6 @@
 package com.labrat.rooms;
 import com.labrat.commands.CommandType;
+import com.labrat.view.PrinterColor;
 
 import java.util.ArrayList;
 
@@ -11,6 +12,9 @@ methods to harvest data for actually creating a room. Should not be used for any
 public class RoomBuilder {
     String name;
     String description;
+
+    // Default color
+    PrinterColor descriptionColor = PrinterColor.DEFAULT;
 
     // FIXME: Change this to discern command of the same type
     // The underlying issue with this is that the move command currently is based on the actor
@@ -26,7 +30,12 @@ public class RoomBuilder {
         return this;
     }
 
+    public RoomBuilder withDescriptionColor(PrinterColor c){
+        this.descriptionColor = c;
+        return this;
+    }
+
     public Room build() {
-        return new Room(description, commands, name);
+        return new Room(description, commands, name, descriptionColor);
     }
 }

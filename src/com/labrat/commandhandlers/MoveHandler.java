@@ -3,6 +3,8 @@ package com.labrat.commandhandlers;
 import com.labrat.actors.Actor;
 import com.labrat.commands.MoveCommand;
 import com.labrat.rooms.*;
+import com.labrat.view.ColoredText;
+import com.labrat.view.PrinterColor;
 
 // Purpose is to parse input for the parameters of the move command
 
@@ -13,14 +15,14 @@ public class MoveHandler implements CommandHandler {
         this.actor = actor;
     }
 
-    public String performRequest(String[] input) {
+    public ColoredText performRequest(String[] input) {
         String arg;
         Room currentRoom;
         Direction direction;
 
         // Check number of arguments
         if (input.length == 1){
-            return "Move where?";
+            return new ColoredText("Move where?", PrinterColor.YELLOW);
         } else if (input.length == 2) {
             arg = input[1];
             currentRoom = actor.getCurrentRoom();
@@ -33,10 +35,10 @@ public class MoveHandler implements CommandHandler {
                     new MoveCommand(actor, direction).execute();
 
                     // Print direction
-                    return "You move " + direction.toString() + ".";
+                    return new ColoredText("You moved " + direction.toString() + ".", PrinterColor.YELLOW);
                 }
             }
         }
-        return "You can't move there.";
+        return new ColoredText("You can't move there.", PrinterColor.YELLOW);
     }
 }

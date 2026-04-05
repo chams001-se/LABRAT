@@ -5,32 +5,29 @@ import com.labrat.commands.CommandType;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+
+import com.labrat.view.ColoredText;
 import com.labrat.view.PrinterColor;
 
 public class Room {
     private Map<Direction, Room> exits;
-    private String description;
+    private String rawDescription;
+    private PrinterColor descriptionColor;
     private String name;
     private ArrayList<CommandType> commands;
+    private ColoredText description;
 
-    public Room(String description, ArrayList<CommandType> commands, String name) {
+    public Room(String rawDescription, ArrayList<CommandType> commands, String name, PrinterColor descriptionColor) {
         exits = new HashMap<>();
-        this.description = description;
+        this.rawDescription = rawDescription;
+        this.descriptionColor = descriptionColor;
+        this.description = new ColoredText(getRawDescription(), getDescriptionColor());
         this.commands = commands;
         this.name = name;
     }
 
     public boolean isValidExit(Direction direction) {
         return exits.containsKey(direction);
-    }
-
-    public boolean isValidCmd(String str) {
-        for (CommandType type : commands) {
-            if (type.name().equals(str)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public void setExit(Direction d, Room r){
@@ -41,11 +38,15 @@ public class Room {
         return this.exits.get(direction);
     }
 
-    public String getDescription() {
-        return this.description;
+    public ColoredText getColoredText() {
+        return description;
     }
 
     public PrinterColor getDescriptionColor() {
-        return PrinterColor.GREEN;
+        return descriptionColor;
+    }
+
+    public String getRawDescription() {
+        return rawDescription;
     }
 }

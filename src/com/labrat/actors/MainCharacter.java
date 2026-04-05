@@ -8,7 +8,6 @@ public class MainCharacter implements Actor {
 
     public void setCurrentRoom(Room selectedRoom) {
         this.currentRoom = selectedRoom;
-        //System.out.println(selectedRoom.getDescription());
     }
 
     public Room getCurrentRoom() {
