@@ -16,7 +16,7 @@ public class RoomBuilder {
     // Default color
     PrinterColor descriptionColor = PrinterColor.DEFAULT;
 
-    // FIXME: Change this to discern command of the same type
+    // FIXME: Change this to discern command of the same type?
     // The underlying issue with this is that the move command currently is based on the actor
     ArrayList<CommandType> commands = new ArrayList<>();
 

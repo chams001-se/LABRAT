@@ -26,25 +26,21 @@ public class TextAdventure {
     // Create RoomHandler
     RoomsCreator rc = new RoomsCreator();
 
-    // Create HashMap of CommandTypes mapped to their appropriate Command Handlers
-    Map<CommandType, CommandHandler> commandHandlers = new HashMap<>();
-
     public TextAdventure() {
-
         // Initialize scanner
         scanner = new Scanner(System.in);
         userInput = "";
 
         // Set user to the starting room.
         mainCharacter.setCurrentRoom(rc.getStartRoom());
-
-        // Initialize text handlers by mapping the handler to the appropriate command type.
-        commandHandlers.put(CommandType.MOVE, new MoveHandler(mainCharacter));
     }
 
 
     public void start() {
         ColoredText previousResult = new ColoredText("", PrinterColor.DEFAULT);
+
+        DetermineCommandHandler dch = new DetermineCommandHandler(mainCharacter);
+
         // Main Gameplay Loop
         while (true) {
             System.out.print(CLEAR);
@@ -75,15 +71,15 @@ public class TextAdventure {
                 String[] words = userInput.split("\\s+");
 
                 // If the first word is quit, we simply exit the while loop.
-                if (words[0].equals("quit")) break;
+                // Must handle an exit in its own function call because it requires a boolean return type, not ColoredText
+                if (dch.isExit(words)) break;
 
-                // Find command type, then execute it through a handler.
+                // Finds the command type, then execute it through handlers.
                 // If the command type is invalid it will throw IllegalArgumentException, which will get caught, preventing a crash
-                CommandType ct = CommandType.fromString(words[0].toUpperCase());
+                previousResult = dch.performRequest(words);
 
-                previousResult = commandHandlers.get(ct).performRequest(words);
             } catch (IllegalArgumentException e) {
-                previousResult = new ColoredText(e.getMessage(), PrinterColor.RED);
+                previousResult = new ColoredText(e.getMessage(), PrinterColor.LIGHT_RED);
             }
 
         }

@@ -24,18 +24,19 @@ public class RoomsCreator {
 
         firstRoom = new RoomBuilder()
                 .withDescription("Hello World!")
-                .withDescriptionColor(PrinterColor.GREEN)
+                .withDescriptionColor(PrinterColor.LIGHT_MAGENTA)
                 .withCommand(CommandType.MOVE)
                 .build();
 
         secondRoom = new RoomBuilder()
                 .withDescription("It's dark in here!")
-                .withDescriptionColor(PrinterColor.BLUE)
+                .withDescriptionColor(PrinterColor.LIGHT_BLUE)
                 .withCommand(CommandType.MOVE)
                 .build();
 
         thirdRoom = new RoomBuilder()
                 .withDescription("Wow! This is a hallway... Amazing!")
+                .withDescriptionColor(PrinterColor.LIGHT_CYAN)
                 .withCommand(CommandType.MOVE)
                 .build();
 

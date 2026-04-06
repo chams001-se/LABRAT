@@ -13,9 +13,38 @@ Secondly, we could instead of enumerating colors, enumerate emotions, such as FE
 This simple renaming would mean the model actually has no idea what these feelings repurpose to in the printer, and could be used somewhere else.
  */
 public enum PrinterColor {
+    // Standard colors
     RED,
     GREEN,
-    BLUE,
     YELLOW,
-    DEFAULT
+    BLUE,
+    MAGENTA,
+    CYAN,
+    WHITE,
+
+    // Brighter colors
+    LIGHT_RED,
+    LIGHT_GREEN,
+    LIGHT_YELLOW,
+    LIGHT_BLUE,
+    LIGHT_MAGENTA,
+    LIGHT_CYAN,
+    LIGHT_WHITE,
+
+    // Darker colors
+    DARK_RED,
+    DARK_GREEN,
+    DARK_YELLOW,
+    DARK_BLUE,
+    DARK_MAGENTA,
+    DARK_CYAN,
+
+    // Effects
+    BOLD,
+    DIM,
+    ITALIC,
+    UNDERLINE,
+    BLINK,
+
+    DEFAULT;
 }
