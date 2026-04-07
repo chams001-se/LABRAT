@@ -1,35 +1,25 @@
 package com.labrat.commandhandlers;
 
-import com.labrat.actors.Actor;
-import com.labrat.commands.CommandType;
+import com.labrat.commands.*;
 import com.labrat.view.ColoredText;
-import com.labrat.view.PrinterColor;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+public class DetermineCommandHandler {
+    // First Command Handler should be reachable for all methods
+    HelpHandler helpHandler;
 
-public class DetermineCommandHandler implements CommandHandler {
-    private Actor actor;
-    Map<CommandType, CommandHandler> handlers = new HashMap<>();
-    public DetermineCommandHandler(Actor act){
-        this.actor = act;
+    public DetermineCommandHandler() {
+        // Create the command handlers and their linked handlers for chain of responsibility
+        helpHandler = new HelpHandler();
+        MoveHandler moveHandler = new MoveHandler();
 
-        // Create the handlers here since they will likely be reused to perform multiple requests.
-        handlers.put(CommandType.MOVE, new MoveHandler(actor));
-        handlers.put(CommandType.HELP, new HelpHandler());
+        helpHandler.setNext(moveHandler);
     }
 
-    public Boolean isExit(String[] input){
-        return CommandType.fromString(input[0]) == CommandType.QUIT;
+    public Boolean isQuit(Command userCommand) {
+        return userCommand.getCommandType() == CommandType.QUIT;
     }
-    public ColoredText performRequest(String[] input){
-        CommandHandler delegate;
-        CommandType type = CommandType.fromString(input[0]);
-        delegate = handlers.get(type);
 
-        if (delegate == null) return new ColoredText(("Invalid Command: " + Arrays.toString(input)), PrinterColor.LIGHT_RED);
-
-        return delegate.performRequest(input);
+    public ColoredText performRequest(Command command) {
+        return helpHandler.performRequest(command);
     }
 }

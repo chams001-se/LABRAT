@@ -2,28 +2,40 @@ package com.labrat.commands;
 
 import com.labrat.actors.Actor;
 import com.labrat.rooms.Direction;
-import com.labrat.rooms.*;
+
+import java.util.List;
 
 public class MoveCommand implements Command {
-    private Actor actor;
+    private final Actor actor;
+    private final List<String> args;
     private Direction direction;
-    private Room current;
+    private final CommandType commandType;
 
-    private Room next;
-    private CommandType commandType;
-
-    public MoveCommand(Actor actor, Direction direction) {
+    public MoveCommand(Actor actor, List<String> args) {
         this.actor = actor;
-        this.direction = direction;
+        this.args = args;
         this.commandType = CommandType.MOVE;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    @Override
+    public List<String> getArgs() {
+        return args;
+    }
+
+    @Override
+    public boolean hasValidArgs() {
+        return actor.getCurrentRoom().isValidExit(Direction.fromString(args.getFirst()));
+    }
+
+    @Override
+    public CommandType getCommandType() {
+        return commandType;
     }
 
     // In this instance, the actor itself is the receiver.
-    public void execute(){
+    @Override
+    public void execute() {
+        direction = Direction.fromString(args.getFirst());
         actor.setCurrentRoom(actor.getCurrentRoom().getExit(direction));
     }
    }

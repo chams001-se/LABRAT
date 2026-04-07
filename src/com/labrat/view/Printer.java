@@ -4,13 +4,21 @@ package com.labrat.view;
 // Additionality utilizes the singleton pattern, as there should only be one printer responsible for output.
 public class Printer {
     private static Printer printer;
+    private int MAX_LINES;
+    private enum VersionType {
+        DEBUG,
+        RELEASE
+    }
+
     private Printer() {} // private constructor for singleton pattern
-    public static Printer getInstance(){
-        if (printer == null){
+
+    public static Printer getInstance() {
+        if (printer == null) {
             printer = new Printer();
         }
         return printer;
     }
+
     // The PrinterColor itself should not have internal implementation to convert enum to string
     // because if we are following MVC principles, that would mean the model is aware of the escape sequence
     // used to output in the view component of MVC
@@ -51,7 +59,26 @@ public class Printer {
             default ->            "\033[0m";
         };
     }
-    public void print(ColoredText ct){
+
+    public void printLines() {
+        VersionType version = VersionType.DEBUG;
+        MAX_LINES = 50;
+
+        switch (version) {
+            case DEBUG:
+                for (int i = 0; i < MAX_LINES; i++) {
+                    System.out.println();
+                }
+                break;
+            case RELEASE:
+                String CLEAR = "\033[H\033[2J";     // Escape sequence to clear terminal
+                System.out.print(CLEAR);
+                break;
+        }
+        System.out.flush();
+    }
+
+    public void print(ColoredText ct) {
         String colorString = getColor(ct.getColor());
         System.out.println(colorString + ct.getText() + "\033[0m");
     }

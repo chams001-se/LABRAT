@@ -1,44 +1,38 @@
 package com.labrat.commandhandlers;
 
-import com.labrat.actors.Actor;
-import com.labrat.commands.MoveCommand;
-import com.labrat.rooms.*;
+import com.labrat.commands.Command;
+import com.labrat.commands.CommandType;
 import com.labrat.view.ColoredText;
 import com.labrat.view.PrinterColor;
 
-// Purpose is to parse input for the parameters of the move command
+import java.util.List;
 
-public class MoveHandler implements CommandHandler {
-    Actor actor;
+// Purpose is to print results from the move command
 
-    public MoveHandler(Actor actor) {
-        this.actor = actor;
+public class MoveHandler extends BaseHandler {
+    private boolean canHandle(Command command) {
+        return command.getCommandType() == CommandType.MOVE;
     }
 
-    public ColoredText performRequest(String[] input) {
-        String arg;
-        Room currentRoom;
-        Direction direction;
+    @Override
+    public ColoredText performRequest(Command command) {
+        if (canHandle(command)) {
+            List<String> args = command.getArgs();
 
-        // Check number of arguments
-        if (input.length == 1){
-            return new ColoredText("Move where?", PrinterColor.YELLOW);
-        } else if (input.length == 2) {
-            arg = input[1];
-            currentRoom = actor.getCurrentRoom();
-
-            // Extracts the direction so the move command will enter the appropriate room.
-            if (Direction.isValidDirection(arg)) {
-                direction = Direction.fromString(arg);
-                if (currentRoom.isValidExit(direction)) {
-                    // Creates a move command for the chosen direction and executes it\
-                    new MoveCommand(actor, direction).execute();
-
-                    // Print direction
-                    return new ColoredText("You moved " + direction.toString() + ".", PrinterColor.YELLOW);
-                }
+            // Check number of arguments
+            if (args.isEmpty()) {
+                return new ColoredText("Move where?", PrinterColor.YELLOW);
+            }
+            else if (args.size() == 1 && command.hasValidArgs()) {
+                command.execute();
+                return new ColoredText("You moved " + args.getFirst() + ".", PrinterColor.YELLOW);
+            }
+            else {
+                return new ColoredText("You can't move there.", PrinterColor.YELLOW);
             }
         }
-        return new ColoredText("You can't move there.", PrinterColor.YELLOW);
+        else {
+            return super.performRequest(command);
+        }
     }
 }

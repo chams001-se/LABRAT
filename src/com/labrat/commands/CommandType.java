@@ -10,7 +10,8 @@ public enum CommandType {
     QUIT("quit", "Exits the game.");
     String commandNotation; // How the command is formed
     String commandDescription; // What the command does
-    CommandType(String commandNotation, String commandDescription){
+
+    CommandType(String commandNotation, String commandDescription) {
         this.commandNotation = commandNotation;
         this.commandDescription = commandDescription;
     }
