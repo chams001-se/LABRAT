@@ -1,10 +1,11 @@
 package com.labrat.items;
 
+import com.labrat.actors.Actor;
 import com.labrat.view.ColoredText;
 import com.labrat.view.PrinterColor;
 
 // TODO Not used anywhere yet
-public class Item {
+public class Item implements Examinable{
     String name;
     PrinterColor nameColor;
     String description;
@@ -17,12 +18,20 @@ public class Item {
         this.coloredName = new ColoredText(description, nameColor);
     }
 
-    String getDescription(){
+    public String getName() {
+        return name;
+    }
+    public String getDescription(){
         return description;
     }
 
-    PrinterColor getNameColor(){
+    public PrinterColor getNameColor(){
         return nameColor;
+    }
+
+    @Override
+    public String examine(Actor actor){
+        return description;
     }
 
 }

@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 
+import com.labrat.items.Examinable;
+import com.labrat.items.Item;
 import com.labrat.view.ColoredText;
 import com.labrat.view.PrinterColor;
 
@@ -22,6 +24,15 @@ public class Room {
         this.name = name;
     }
 
+    private final Map<String, Examinable> examinables = new HashMap<>();
+    public void addItem(Item item) {
+        examinables.put(item.getName().toLowerCase(), item);
+    }
+
+    public Examinable getExaminable(String name) {
+        return examinables.get(name.toLowerCase());
+    }
+
     public boolean isValidExit(Direction direction) {
         return exits.containsKey(direction);
     }
@@ -36,5 +47,13 @@ public class Room {
 
     public ColoredText getColoredText() {
         return description;
+    }
+
+    public Item removeItem(String name) {
+        Examinable obj = examinables.remove(name.toLowerCase());
+        if (obj instanceof Item item) {
+            return item;
+        }
+        return null;
     }
 }

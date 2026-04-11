@@ -1,5 +1,7 @@
 package com.labrat.rooms;
 
+import java.util.HashMap;
+
 public enum Direction {
     NORTH("north"),
     NORTHEAST("northeast"),
@@ -17,13 +19,15 @@ public enum Direction {
         this.dir = dir;
     }
 
-    public static boolean isValidDirection(String str) {
-        for (Direction type : Direction.values()) {
-            if (type.name().equalsIgnoreCase(str)) {
-                return true;
-            }
+    private static final HashMap<String, Direction> dirHash = new HashMap<String, Direction>();
+
+    static {
+        for (Direction d : Direction.values()){
+            dirHash.put(d.name().toLowerCase(), d);
         }
-        return false;
+    }
+    public static boolean isValidDirection(String str) {
+        return dirHash.containsKey(str.toLowerCase());
     }
 
     // Simply converts a string into a direction

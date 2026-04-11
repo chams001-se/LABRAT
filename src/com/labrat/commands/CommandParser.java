@@ -24,13 +24,13 @@ public class CommandParser {
             case MOVE:
                 return new MoveCommand(actor, args);
             case EXAMINE:
-                break;
+                return new ExamineCommand(actor, args);
             case TAKE:
-                break;
+                return new TakeCommand(actor, args);
             case READ:
-                break;
+                return new ReadCommand(actor, args);
             case HIDE:
-                break;
+                return new HideCommand(actor, args);
             case HELP:
                 return new HelpCommand();
             case QUIT:
