@@ -1,7 +1,7 @@
 package com.labrat.commandhandlers;
 
 import com.labrat.commands.*;
-import com.labrat.view.ColoredText;
+import com.labrat.view.ResultText;
 
 public class DetermineCommandHandler {
     // First Command Handler should be reachable for all methods
@@ -19,7 +19,7 @@ public class DetermineCommandHandler {
         return userCommand.getCommandType() == CommandType.QUIT;
     }
 
-    public ColoredText performRequest(Command command) {
+    public ResultText performRequest(Command command) {
         return helpHandler.performRequest(command);
     }
 }

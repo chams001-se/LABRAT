@@ -8,10 +8,9 @@ import java.util.Map;
 public class MainCharacter implements Actor {
     private Room currentRoom;
     private boolean hidden = false;
+    private final Map<String, Item> inventory = new HashMap<>();
 
     public MainCharacter() {}
-
-    private final Map<String, Item> inventory = new HashMap<>();
 
     public void setCurrentRoom(Room selectedRoom) {
         this.currentRoom = selectedRoom;

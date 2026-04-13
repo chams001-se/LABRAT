@@ -37,7 +37,7 @@ public class TakeCommand implements Command {
     @Override
     public void execute() {
         if (args.isEmpty()) {
-            System.out.println("Take what");
+            System.out.println("Take what?");
             return;
         }
 

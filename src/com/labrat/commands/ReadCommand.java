@@ -23,7 +23,7 @@ public class ReadCommand implements Command {
 
     @Override
     public boolean hasValidArgs() {
-        if (args.isEmpty()) return false;
+        if (args.isEmpty()) { return false; }
 
         String target = args.getFirst().toLowerCase();
         return actor.getInventoryItem(target) instanceof Readable;

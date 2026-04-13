@@ -8,23 +8,23 @@ import java.util.ArrayList;
 
 import com.labrat.items.Examinable;
 import com.labrat.items.Item;
-import com.labrat.view.ColoredText;
+import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
 
 public class Room {
     private Map<Direction, Room> exits;
     private String name;
     private ArrayList<CommandType> commands;
-    private ColoredText description;
+    private ResultText description;
+    private final Map<String, Examinable> examinables = new HashMap<>();
 
     public Room(String rawDescription, ArrayList<CommandType> commands, String name, PrinterColor descriptionColor) {
         exits = new HashMap<>();
-        this.description = new ColoredText(rawDescription, descriptionColor);
+        this.description = new ResultText(rawDescription, descriptionColor);
         this.commands = commands;
         this.name = name;
     }
 
-    private final Map<String, Examinable> examinables = new HashMap<>();
     public void addItem(Item item) {
         examinables.put(item.getName().toLowerCase(), item);
     }
@@ -45,7 +45,7 @@ public class Room {
         return this.exits.get(direction);
     }
 
-    public ColoredText getColoredText() {
+    public ResultText getColoredText() {
         return description;
     }
 

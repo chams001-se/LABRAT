@@ -1,13 +1,13 @@
 package com.labrat.commandhandlers;
 
 import com.labrat.commands.Command;
-import com.labrat.view.ColoredText;
+import com.labrat.view.ResultText;
 
 public class BaseHandler implements CommandHandler {
     CommandHandler nextCommandHandler;
 
     @Override
-    public ColoredText performRequest(Command command) {
+    public ResultText performRequest(Command command) {
         if (nextCommandHandler != null) {
             return nextCommandHandler.performRequest(command);
         }

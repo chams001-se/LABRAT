@@ -3,45 +3,33 @@ package com.labrat.rooms;
 import java.util.HashMap;
 
 public enum Direction {
-    NORTH("north"),
-    NORTHEAST("northeast"),
-    EAST("east"),
-    SOUTHEAST("southeast"),
-    SOUTH("south"),
-    SOUTHWEST("southwest"),
-    WEST("west"),
-    NORTHWEST("northwest")
-    ;
+    NORTH,
+    NORTHEAST,
+    EAST,
+    SOUTHEAST,
+    SOUTH,
+    SOUTHWEST,
+    WEST,
+    NORTHWEST;
 
-    public final String dir;
-
-    private Direction(String dir) {
-        this.dir = dir;
-    }
-
-    private static final HashMap<String, Direction> dirHash = new HashMap<String, Direction>();
-
+    // Static map index for Direction enum
+    private static final HashMap<String, Direction> dirMap = new HashMap<>();
     static {
-        for (Direction d : Direction.values()){
-            dirHash.put(d.name().toLowerCase(), d);
+        for (Direction d : Direction.values()) {
+            dirMap.put(d.name().toLowerCase(), d);
         }
     }
-    public static boolean isValidDirection(String str) {
-        return dirHash.containsKey(str.toLowerCase());
-    }
 
-    // Simply converts a string into a direction
-    public static Direction fromString(String str){
-        for (Direction type : Direction.values()) {
-            if (type.name().equalsIgnoreCase(str)) {
-                return type;
-            }
+    // Empty Constructor
+    Direction() {}
+
+    // Converts a String into a Direction
+    public static Direction fromString(String str) {
+        if (dirMap.containsKey(str)) {
+            return dirMap.get(str);
         }
-        throw new IllegalArgumentException("Invalid direction : " + str);
-    }
-
-    @Override
-    public String toString() {
-        return dir;
+        else {
+            throw new IllegalArgumentException("Invalid direction: " + str);
+        }
     }
 }

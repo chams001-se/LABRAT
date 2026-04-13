@@ -36,6 +36,7 @@ public class CommandParser {
             case QUIT:
                 return new QuitCommand();
         };
+
         throw new IllegalArgumentException("Invalid Command: "  + Arrays.toString(input));
     }
 }

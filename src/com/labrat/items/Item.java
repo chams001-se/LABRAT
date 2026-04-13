@@ -1,36 +1,37 @@
 package com.labrat.items;
 
 import com.labrat.actors.Actor;
-import com.labrat.view.ColoredText;
+import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
 
 // TODO Not used anywhere yet
-public class Item implements Examinable{
+public class Item implements Examinable {
     String name;
     PrinterColor nameColor;
     String description;
-    ColoredText coloredName;
+    ResultText coloredName;
 
     public Item(String name, PrinterColor nameColor, String description){
         this.name = name;
         this.description = description;
         this.nameColor = nameColor;
-        this.coloredName = new ColoredText(description, nameColor);
+        this.coloredName = new ResultText(description, nameColor);
     }
 
     public String getName() {
         return name;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
 
-    public PrinterColor getNameColor(){
+    public PrinterColor getNameColor() {
         return nameColor;
     }
 
     @Override
-    public String examine(Actor actor){
+    public String examine(Actor actor) {
         return description;
     }
 

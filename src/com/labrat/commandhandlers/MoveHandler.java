@@ -2,7 +2,7 @@ package com.labrat.commandhandlers;
 
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
-import com.labrat.view.ColoredText;
+import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
 
 import java.util.List;
@@ -15,20 +15,20 @@ public class MoveHandler extends BaseHandler {
     }
 
     @Override
-    public ColoredText performRequest(Command command) {
+    public ResultText performRequest(Command command) {
         if (canHandle(command)) {
             List<String> args = command.getArgs();
 
             // Check number of arguments
             if (args.isEmpty()) {
-                return new ColoredText("Move where?", PrinterColor.YELLOW);
+                return new ResultText("Move where?", PrinterColor.YELLOW);
             }
             else if (args.size() == 1 && command.hasValidArgs()) {
                 command.execute();
-                return new ColoredText("You moved " + args.getFirst() + ".", PrinterColor.YELLOW);
+                return new ResultText("You moved " + args.getFirst() + ".", PrinterColor.YELLOW);
             }
             else {
-                return new ColoredText("You can't move there.", PrinterColor.YELLOW);
+                return new ResultText("You can't move there.", PrinterColor.YELLOW);
             }
         }
         else {

@@ -3,6 +3,7 @@ package com.labrat;
 import java.util.Scanner;
 
 import com.labrat.actors.*;
+import com.labrat.audio.AudioManager;
 import com.labrat.commands.*;
 import com.labrat.rooms.*;
 import com.labrat.commandhandlers.*;
@@ -14,7 +15,7 @@ public class TextAdventure {
     Scanner scanner;
     String userInput;
     Command userCommand;
-    ColoredText previousResult;
+    ResultText previousResult;
 
     // Declare character variables
     Actor mainCharacter;
@@ -33,11 +34,14 @@ public class TextAdventure {
         // Initialize scanner
         scanner = new Scanner(System.in);
         userInput = "";
-        previousResult = new ColoredText("", PrinterColor.DEFAULT);
+        previousResult = new ResultText("", PrinterColor.DEFAULT);
 
         // Initialize commands
         parser = new CommandParser(mainCharacter);
         dch = new DetermineCommandHandler();
+
+        // Initialize sounds
+        AudioManager.getInstance().init();
 
         // Initialize rooms
         rc = new RoomsCreator();
@@ -48,13 +52,13 @@ public class TextAdventure {
 
 
     public void start() {
-        // Main Gameplay Loop
+        /* Main Gameplay Loop */
         while (true) {
             // Clear console by printing empty lines
-            Printer.getInstance().printLines();
+            ResultFormatter.getInstance().printLines();
 
             // Print out current room description
-            Printer.getInstance().print(mainCharacter.getCurrentRoom().getColoredText());
+            ResultFormatter.getInstance().print(mainCharacter.getCurrentRoom().getColoredText());
 
             /*
             Intuitively it would seem the best way to print results is through the current iteration, however, if we did this
@@ -62,13 +66,18 @@ public class TextAdventure {
             so the user can read it DURING the time waiting for input.
              */
             if (previousResult != null && !previousResult.getText().isEmpty()) {
-                Printer.getInstance().print(previousResult);
-                // Set result to empty so if the next command outputs nothing, the previous command cannot be printed
-                previousResult = new ColoredText("");
+                ResultFormatter.getInstance().print(previousResult);
             }
 
             System.out.print("> ");
             try {
+                // Play previous result's audio
+                AudioManager.getInstance().play(previousResult.getSoundEffect());
+
+                // Set result to empty so if the next command outputs nothing, the previous command cannot be printed
+                previousResult = new ResultText("");
+
+                // Get user input
                 userInput = scanner.nextLine().toLowerCase().trim();
 
                 // Tokenize and parse input
@@ -76,22 +85,30 @@ public class TextAdventure {
                 userCommand = parser.parse(words);
 
                 // If the first word is quit, we simply exit the while loop.
-                // Must handle an exit in its own function call because it requires a boolean return type, not ColoredText
+                // Must handle an exit in its own function call because it requires a boolean return type, not ResultText
                 if (dch.isQuit(userCommand)) { break; }
 
                 // Finds the command type, then execute it through handlers.
                 // If the command type is invalid it will throw IllegalArgumentException, which will get caught, preventing a crash
                 previousResult = dch.performRequest(userCommand);
-
-            } catch (IllegalArgumentException e) {
-                previousResult = new ColoredText(e.getMessage(), PrinterColor.LIGHT_RED);
             }
-
+            catch (Exception e) {
+                // IllegalArgumentException, RuntimeException,
+                // UnsupportedAudioFileException, IOException, LineUnavailableException
+                previousResult = new ResultText(e.getMessage(), PrinterColor.LIGHT_RED);
+            }
         }
+    }
+
+    public void end() {
+        /* Cleanup */
+        // Close all audio clips
+        AudioManager.getInstance().close();
     }
 
     public static void main(String[] args) {
         TextAdventure labrat = new TextAdventure();
         labrat.start();
+        labrat.end();
     }
 }
