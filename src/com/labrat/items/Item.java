@@ -1,21 +1,19 @@
 package com.labrat.items;
 
-import com.labrat.actors.Actor;
 import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
 
-// TODO Not used anywhere yet
-public class Item implements Examinable {
-    String name;
-    PrinterColor nameColor;
-    String description;
-    ResultText coloredName;
+public abstract class Item implements Examinable {
+    private final PrinterColor descColor;
+    private final String description;
+    private final String name;
+    private final ResultText resultText;
 
-    public Item(String name, PrinterColor nameColor, String description){
-        this.name = name;
+    public Item(String description, PrinterColor descColor, String name) {
         this.description = description;
-        this.nameColor = nameColor;
-        this.coloredName = new ResultText(description, nameColor);
+        this.descColor = descColor;
+        this.name = name;
+        this.resultText = new ResultText(description, descColor);
     }
 
     public String getName() {
@@ -26,13 +24,15 @@ public class Item implements Examinable {
         return description;
     }
 
-    public PrinterColor getNameColor() {
-        return nameColor;
+    public PrinterColor getDescColor() { return descColor; }
+
+    public ResultText getResultText() {
+        return resultText;
     }
 
     @Override
-    public String examine(Actor actor) {
-        return description;
+    public ResultText examine() {
+        return resultText;
     }
 
 }

@@ -7,7 +7,10 @@ import java.util.Map;
 
 public class MainCharacter implements Actor {
     private Room currentRoom;
-    private boolean hidden = false;
+
+    // TODO: Replace isSneaking with State Pattern
+    private boolean isSneaking = false;
+
     private final Map<String, Item> inventory = new HashMap<>();
 
     public MainCharacter() {}
@@ -32,11 +35,11 @@ public class MainCharacter implements Actor {
         return inventory.containsKey(name.toLowerCase());
     }
 
-    public void setHidden(boolean hidden) {
-        this.hidden = hidden;
+    public void setSneaking(boolean isSneaking) {
+        this.isSneaking = isSneaking;
     }
 
-    public boolean isHidden() {
-        return hidden;
+    public boolean isSneaking() {
+        return isSneaking;
     }
 }

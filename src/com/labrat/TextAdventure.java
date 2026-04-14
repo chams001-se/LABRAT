@@ -21,6 +21,7 @@ public class TextAdventure {
     Actor mainCharacter;
 
     // Declare command variables
+    CommandLexer lexer;
     CommandParser parser;
     DetermineCommandHandler dch;
 
@@ -37,6 +38,7 @@ public class TextAdventure {
         previousResult = new ResultText("", PrinterColor.DEFAULT);
 
         // Initialize commands
+        lexer = new CommandLexer();
         parser = new CommandParser(mainCharacter);
         dch = new DetermineCommandHandler();
 
@@ -61,28 +63,25 @@ public class TextAdventure {
             ResultFormatter.getInstance().print(mainCharacter.getCurrentRoom().getColoredText());
 
             /*
-            Intuitively it would seem the best way to print results is through the current iteration, however, if we did this
-            the next iteration would immediately clear the output. Thus, we output the previous commands result on the next iteration,
-            so the user can read it DURING the time waiting for input.
+            // Intuitively it would seem the best way to print results is through the current iteration, however, if we did this
+            // the next iteration would immediately clear the output. Thus, we output the previous commands result on the next iteration,
+            // so the user can read it DURING the time waiting for input.
              */
-            if (previousResult != null && !previousResult.getText().isEmpty()) {
+            if (previousResult != null && !previousResult.text().isEmpty()) {
                 ResultFormatter.getInstance().print(previousResult);
             }
 
             System.out.print("> ");
             try {
                 // Play previous result's audio
-                AudioManager.getInstance().play(previousResult.getSoundEffect());
+                AudioManager.getInstance().play(previousResult.soundEffect());
 
                 // Set result to empty so if the next command outputs nothing, the previous command cannot be printed
                 previousResult = new ResultText("");
 
-                // Get user input
-                userInput = scanner.nextLine().toLowerCase().trim();
-
-                // Tokenize and parse input
-                String[] words = userInput.split("\\s+");
-                userCommand = parser.parse(words);
+                // Tokenize and parse user input
+                userInput = scanner.nextLine();
+                userCommand = parser.parse(lexer.lex(userInput));
 
                 // If the first word is quit, we simply exit the while loop.
                 // Must handle an exit in its own function call because it requires a boolean return type, not ResultText
@@ -93,8 +92,10 @@ public class TextAdventure {
                 previousResult = dch.performRequest(userCommand);
             }
             catch (Exception e) {
+                /* Exceptions caught:
                 // IllegalArgumentException, RuntimeException,
                 // UnsupportedAudioFileException, IOException, LineUnavailableException
+                 */
                 previousResult = new ResultText(e.getMessage(), PrinterColor.LIGHT_RED);
             }
         }

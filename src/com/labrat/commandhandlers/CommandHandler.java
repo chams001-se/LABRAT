@@ -1,8 +1,9 @@
 package com.labrat.commandhandlers;
 
-// A command handlers purpose is to translate parsed user input into a command and execute it
 import com.labrat.commands.Command;
 import com.labrat.view.ResultText;
+
+// A command handler's purpose is to translate parsed user input into a command and execute it
 
 public interface CommandHandler {
     // Ultimately ends up executing a command, making the command handlers the invoker in the command pattern

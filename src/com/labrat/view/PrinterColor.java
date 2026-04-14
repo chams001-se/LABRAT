@@ -1,5 +1,7 @@
 package com.labrat.view;
 
+import java.util.HashMap;
+
 /*
 This is kind of breaking the MVC principle's separation of concerns. This is because receivers in the command
 design pattern that involve returning information to the user, such as Room, must have some knowledge of color,
@@ -47,4 +49,22 @@ public enum PrinterColor {
     BLINK,
 
     DEFAULT;
+
+    // Static map index for PrinterColor enum
+    private static final HashMap<String, PrinterColor> colMap = new HashMap<>();
+    static {
+        for (PrinterColor c : PrinterColor.values()) {
+            colMap.put(c.name().toLowerCase(), c);
+        }
+    }
+
+    // Converts a String into a Direction
+    public static PrinterColor fromString(String str) {
+        if (colMap.containsKey(str)) {
+            return colMap.get(str);
+        }
+        else {
+            throw new IllegalArgumentException("Invalid PrinterColor: " + str);
+        }
+    }
 }

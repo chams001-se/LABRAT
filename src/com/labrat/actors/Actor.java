@@ -11,8 +11,8 @@ public interface Actor {
     Item getInventoryItem(String name);
     boolean hasItem(String name);
 
-    void setHidden(boolean hidden);
-    boolean isHidden();
+    void setSneaking(boolean hidden);
+    boolean isSneaking();
 
     // Since the coordinate system to determine rooms has been removed all methods in the actor interface pertaining to coordinates have been removed
 }

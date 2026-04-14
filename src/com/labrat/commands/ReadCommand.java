@@ -1,32 +1,33 @@
 package com.labrat.commands;
 
 import com.labrat.actors.Actor;
+import com.labrat.items.Item;
 import com.labrat.items.Readable;
-
-import java.util.List;
+import com.labrat.view.ResultText;
 
 public class ReadCommand implements Command {
     private final Actor actor;
-    private final List<String> args;
+    private final String[] args;
     private final CommandType commandType;
+    private String target;
+    private Item item;
 
-    public ReadCommand(Actor actor, List<String> args) {
+    public ReadCommand(Actor actor, String[] args) {
         this.actor = actor;
         this.args = args;
         this.commandType = CommandType.READ;
     }
 
     @Override
-    public List<String> getArgs() {
+    public String[] getArgs() {
         return args;
     }
 
     @Override
     public boolean hasValidArgs() {
-        if (args.isEmpty()) { return false; }
-
-        String target = args.getFirst().toLowerCase();
-        return actor.getInventoryItem(target) instanceof Readable;
+        // Valid if there is an item in the current room that can be read
+        target = args[0].toLowerCase();
+        return actor.getCurrentRoom().getItem(target) instanceof Readable;
     }
 
     @Override
@@ -35,20 +36,12 @@ public class ReadCommand implements Command {
     }
 
     @Override
+    public ResultText getResult() {
+        return item.getResultText();
+    }
+
+    @Override
     public void execute() {
-        if (args.isEmpty()) {
-            System.out.println("Read what");
-            return;
-        }
-
-        String target = args.getFirst().toLowerCase();
-        var obj = actor.getInventoryItem(target);
-
-        if (!(obj instanceof Readable readable)) {
-            System.out.println("You can't read that.");
-            return;
-        }
-
-        System.out.println(readable.read(actor));
+        item = actor.getCurrentRoom().getItem(target);
     }
 }

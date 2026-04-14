@@ -5,13 +5,11 @@ import com.labrat.commands.CommandType;
 import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
 
-import java.util.List;
-
 // Purpose is to print results from the move command
 
-public class MoveHandler extends BaseHandler {
+public class ReadHandler extends BaseHandler {
     private boolean canHandle(Command command) {
-        return command.getCommandType() == CommandType.MOVE;
+        return command.getCommandType() == CommandType.READ;
     }
 
     @Override
@@ -22,14 +20,14 @@ public class MoveHandler extends BaseHandler {
 
             // Check number of arguments
             if (args.length == 0) {
-                return new ResultText("Move where?", PrinterColor.YELLOW);
+                return new ResultText("Read what?", PrinterColor.YELLOW);
             }
             else if (args.length == 1 && command.hasValidArgs()) {
                 command.execute();
-                return new ResultText("You moved " + args[0] + ".", PrinterColor.YELLOW);
+                return command.getResult();
             }
             else {
-                return new ResultText("You can't move " + args[0] + ".", PrinterColor.YELLOW);
+                return new ResultText("You can't read that.", PrinterColor.YELLOW);
             }
         }
         else {

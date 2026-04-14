@@ -1,59 +1,65 @@
 package com.labrat.rooms;
 
-import com.labrat.commands.CommandType;
-
+import java.util.AbstractMap;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.ArrayList;
 
-import com.labrat.items.Examinable;
-import com.labrat.items.Item;
+import com.labrat.items.*;
+import com.labrat.items.Readable;
 import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
 
 public class Room {
-    private Map<Direction, Room> exits;
-    private String name;
-    private ArrayList<CommandType> commands;
+    /* HashMap exits
+    // Direction:   The Direction that the player can travel
+    // Room:        The Room that the player will end up in if they move towards Direction
+    // Boolean:     TRUE: Player may move from currentRoom to Room
+    //              FALSE: Player may not move to Room due to a condition, such as a locked door
+     */
+    private Map<Direction, Map.Entry<Room, Boolean>> exits;
+    private final Map<String, Item> items;
     private ResultText description;
-    private final Map<String, Examinable> examinables = new HashMap<>();
 
-    public Room(String rawDescription, ArrayList<CommandType> commands, String name, PrinterColor descriptionColor) {
-        exits = new HashMap<>();
+    public Room(String rawDescription, PrinterColor descriptionColor) {
+        this.exits = new HashMap<>();
+        this.items = new HashMap<>();
         this.description = new ResultText(rawDescription, descriptionColor);
-        this.commands = commands;
-        this.name = name;
     }
 
-    public void addItem(Item item) {
-        examinables.put(item.getName().toLowerCase(), item);
+    public void setExit(Direction direction, Room room, Boolean bool) {
+        exits.put(direction, new AbstractMap.SimpleEntry<>(room, bool));
     }
 
-    public Examinable getExaminable(String name) {
-        return examinables.get(name.toLowerCase());
-    }
-
-    public boolean isValidExit(Direction direction) {
+    private boolean isValidDirection(Direction direction) {
         return exits.containsKey(direction);
     }
 
-    public void setExit(Direction d, Room r){
-        exits.put(d, r);
+    public boolean isOpenExit(Direction direction) {
+        if (isValidDirection(direction)) {
+            Map.Entry<Room, Boolean> mapEntry = exits.get(direction);
+            return mapEntry.getValue();
+        }
+        else { return false; }
     }
 
     public Room getExit(Direction direction) {
-        return this.exits.get(direction);
+        Map.Entry<Room, Boolean> mapEntry = exits.get(direction);
+        return mapEntry.getKey();
     }
 
     public ResultText getColoredText() {
         return description;
     }
 
+    public void addItem(Item item) {
+        items.put(item.getName().toLowerCase(), item);
+    }
+
+    public Item getItem(String name) {
+        return items.get(name.toLowerCase());
+    }
+
     public Item removeItem(String name) {
-        Examinable obj = examinables.remove(name.toLowerCase());
-        if (obj instanceof Item item) {
-            return item;
-        }
-        return null;
+        return items.remove(name.toLowerCase());
     }
 }

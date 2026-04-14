@@ -2,29 +2,31 @@ package com.labrat.commands;
 
 import com.labrat.actors.Actor;
 import com.labrat.rooms.Direction;
+import com.labrat.view.ResultText;
 
 import java.util.List;
 
 public class MoveCommand implements Command {
     private final Actor actor;
-    private final List<String> args;
-    private Direction direction;
+    private final String[] args;
     private final CommandType commandType;
+    private Direction direction;
 
-    public MoveCommand(Actor actor, List<String> args) {
+    public MoveCommand(Actor actor, String[] args) {
         this.actor = actor;
         this.args = args;
         this.commandType = CommandType.MOVE;
     }
 
     @Override
-    public List<String> getArgs() {
+    public String[] getArgs() {
         return args;
     }
 
     @Override
     public boolean hasValidArgs() {
-        return actor.getCurrentRoom().isValidExit(Direction.fromString(args.getFirst()));
+        direction = Direction.fromString(args[0]);
+        return actor.getCurrentRoom().isOpenExit(direction);
     }
 
     @Override
@@ -32,10 +34,14 @@ public class MoveCommand implements Command {
         return commandType;
     }
 
+    @Override
+    public ResultText getResult() {
+        return null;
+    }
+
     // In this instance, the actor itself is the receiver.
     @Override
     public void execute() {
-        direction = Direction.fromString(args.getFirst());
         actor.setCurrentRoom(actor.getCurrentRoom().getExit(direction));
     }
    }

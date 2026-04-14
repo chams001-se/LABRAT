@@ -1,15 +1,13 @@
 package com.labrat.commands;
 
-import com.labrat.rooms.Direction;
-
 import java.util.HashMap;
 
 public enum CommandType {
-    MOVE("move <direction>", "Attempts to move the player into a room depending on the direction chosen."),
-    EXAMINE("examine <object>", "Provides a deeper description of certain details of a room, typically mentioned by the room description upon entering."),
+    MOVE("{m/move} <direction>", "Attempts to move the player into a room towards the specified direction."),
+    EXAMINE("{e} examine <object>", "Provides a deeper description of a specific object in a room or in the inventory."),
     TAKE("take <object>", "Takes an object found in a room and places it in the players inventory."),
-    READ("read <document>", "Reads a document that you have acquired."),
-    HIDE("hide", "Places the player in a hiding state."),
+    READ("read <document>", "Read a document that you have acquired."),
+    HIDE("hide", "Hides if there is an area to hide in. "),
     HELP("help", "Provides summary of all available commands"),
     QUIT("quit", "Exits the game.");
 

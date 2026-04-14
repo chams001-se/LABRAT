@@ -1,5 +1,7 @@
 package com.labrat.commands;
 
+import com.labrat.view.ResultText;
+
 import java.util.List;
 
 public class HelpCommand implements Command {
@@ -10,7 +12,7 @@ public class HelpCommand implements Command {
     }
 
     @Override
-    public List<String> getArgs() {
+    public String[] getArgs() {
         return null;
     }
 
@@ -22,6 +24,11 @@ public class HelpCommand implements Command {
     @Override
     public CommandType getCommandType() {
         return commandType;
+    }
+
+    @Override
+    public ResultText getResult() {
+        return null;
     }
 
     @Override

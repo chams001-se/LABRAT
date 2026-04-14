@@ -17,15 +17,15 @@ public class ResultFormatter {
     private int MAX_LINES;
     private final String ANSI_RESET = "\u001B[0m";
     private final String ANSI_CLEAR = "\033[H\033[2J";
-    private StringBuilder sb = new StringBuilder();
+    private final StringBuilder sb = new StringBuilder();
     private enum VersionType {
         DEBUG,
         RELEASE
     }
 
     /* The PrinterColor itself should not have internal implementation to convert enum to string
-     because if we are following MVC principles, that would mean the model is aware of the escape sequence
-     used to output in the view component of MVC
+    // because if we are following MVC principles, that would mean the model is aware of the escape sequence
+    // used to output in the view component of MVC
      */
     private String getColor(PrinterColor c) {
         return switch (c) {
@@ -86,14 +86,15 @@ public class ResultFormatter {
     }
 
     public void print(ResultText ct) {
-        sb.append(getColor(ct.getColor()));
-        sb.append(ct.getText());
+        // Get StringBuilder text
+        sb.append(getColor(ct.color()));
+        sb.append(ct.text());
         sb.append(ANSI_RESET);
-        System.out.println(sb);
-        sb.delete(0, sb.length());
-    }
 
-    public void print(Object info) {
-        System.out.println(info);
+        // Print StringBuilder
+        System.out.println(sb);
+
+        // Reset StringBuilder
+        sb.delete(0, sb.length());
     }
 }

@@ -20,9 +20,6 @@ public enum Direction {
         }
     }
 
-    // Empty Constructor
-    Direction() {}
-
     // Converts a String into a Direction
     public static Direction fromString(String str) {
         if (dirMap.containsKey(str)) {

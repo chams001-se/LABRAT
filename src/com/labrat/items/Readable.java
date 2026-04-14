@@ -1,7 +1,7 @@
 package com.labrat.items;
 
-import com.labrat.actors.Actor;
+import com.labrat.view.ResultText;
 
 public interface Readable {
-    String read(Actor actor);
+    ResultText read();
 }

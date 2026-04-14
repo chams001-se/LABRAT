@@ -1,41 +1,35 @@
 package com.labrat.rooms;
-import com.labrat.commands.CommandType;
+
 import com.labrat.view.PrinterColor;
 
-import java.util.ArrayList;
-
 /*
-Applies the builder design pattern through the separation of Room parameters into individual
-methods to harvest data for actually creating a room. Should not be used for anything but Room attributes
+// Applies the builder design pattern through the separation of Room parameters into individual
+// methods to harvest data for actually creating a room. Should not be used for anything but Room attributes
  */
 
 public class RoomBuilder {
-    String name;
+    // Declare variables
     String description;
+    PrinterColor descriptionColor;
+    String id;
 
-    // Default color
-    PrinterColor descriptionColor = PrinterColor.DEFAULT;
+    RoomBuilder() {
+        // Default color for descriptions
+        descriptionColor = PrinterColor.DEFAULT;
+        id = "";
+    }
 
-    // FIXME: Change this to discern command of the same type?
-    // The underlying issue with this is that the move command currently is based on the actor
-    ArrayList<CommandType> commands = new ArrayList<>();
-
-    public RoomBuilder withDescription(String desc){
+    public RoomBuilder withDescription(String desc) {
         this.description = desc;
         return this;
     }
 
-    public RoomBuilder withCommand(CommandType c){
-        commands.add(c);
-        return this;
-    }
-
-    public RoomBuilder withDescriptionColor(PrinterColor c){
+    public RoomBuilder withDescriptionColor(PrinterColor c) {
         this.descriptionColor = c;
         return this;
     }
 
     public Room build() {
-        return new Room(description, commands, name, descriptionColor);
+        return new Room(description, descriptionColor);
     }
 }

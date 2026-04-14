@@ -1,28 +1,27 @@
 package com.labrat.commands;
 
 import com.labrat.actors.Actor;
-
-import java.util.List;
+import com.labrat.view.ResultText;
 
 public class HideCommand implements Command {
     private final Actor actor;
-    private final List<String> args;
     private final CommandType commandType;
 
-    public HideCommand(Actor actor, List<String> args) {
+    public HideCommand(Actor actor) {
         this.actor = actor;
-        this.args = args;
         this.commandType = CommandType.HIDE;
     }
 
     @Override
-    public List<String> getArgs() {
-        return args;
+    public String[] getArgs() {
+        // HideCommand takes no args
+        return null;
     }
 
     @Override
     public boolean hasValidArgs() {
-        return true; // hide takes no args
+        // TODO: Check if currentRoom has place to hide
+        return true;
     }
 
     @Override
@@ -31,8 +30,14 @@ public class HideCommand implements Command {
     }
 
     @Override
+    public ResultText getResult() {
+        return null;
+    }
+
+    @Override
     public void execute() {
-        actor.setHidden(true);
+        // TODO Toggle between true and false instead of set boolean
+        actor.setSneaking(true);
         System.out.println("You hide in the shadows.");
     }
 }

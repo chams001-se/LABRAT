@@ -1,5 +1,6 @@
 package com.labrat.commandhandlers;
 
+import com.labrat.audio.SoundEffect;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
 import com.labrat.view.ResultText;
@@ -20,7 +21,7 @@ public class HelpHandler extends BaseHandler {
                 cmdlist.append(c.getCommandNotation()).append(": ").append(c.getCommandDescription()).append("\n");
             }
 
-            return new ResultText(cmdlist.toString(), PrinterColor.DIM, "beep");
+            return new ResultText(cmdlist.toString(), PrinterColor.DIM, SoundEffect.BEEP);
         }
         else {
             return super.performRequest(command);

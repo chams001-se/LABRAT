@@ -1,9 +1,10 @@
 package com.labrat.commandhandlers;
 
+import com.labrat.audio.SoundEffect;
 import com.labrat.commands.Command;
 import com.labrat.view.ResultText;
 
-public class BaseHandler implements CommandHandler {
+public abstract class BaseHandler implements CommandHandler {
     CommandHandler nextCommandHandler;
 
     @Override
@@ -11,6 +12,7 @@ public class BaseHandler implements CommandHandler {
         if (nextCommandHandler != null) {
             return nextCommandHandler.performRequest(command);
         }
+
         throw new IllegalArgumentException("No Command Handlers Found to handle Command: "
             + command.getCommandType().toString());
     }
