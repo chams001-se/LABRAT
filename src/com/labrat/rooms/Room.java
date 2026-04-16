@@ -4,6 +4,7 @@ import java.util.AbstractMap;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.labrat.audio.SoundEffect;
 import com.labrat.items.*;
 import com.labrat.items.Readable;
 import com.labrat.view.ResultText;
@@ -18,12 +19,14 @@ public class Room {
      */
     private Map<Direction, Map.Entry<Room, Boolean>> exits;
     private final Map<String, Item> items;
-    private ResultText description;
+    private ResultText resultText;
+    private final String name;
 
-    public Room(String rawDescription, PrinterColor descriptionColor) {
+    public Room(String name, String description, PrinterColor descriptionColor, SoundEffect sfx) {
+        this.name = name;
         this.exits = new HashMap<>();
         this.items = new HashMap<>();
-        this.description = new ResultText(rawDescription, descriptionColor);
+        this.resultText = new ResultText(description, descriptionColor, sfx);
     }
 
     public void setExit(Direction direction, Room room, Boolean bool) {
@@ -42,17 +45,21 @@ public class Room {
         else { return false; }
     }
 
+    public void addItem(Item item) {
+        items.put(item.getName().toLowerCase(), item);
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public Room getExit(Direction direction) {
         Map.Entry<Room, Boolean> mapEntry = exits.get(direction);
         return mapEntry.getKey();
     }
 
-    public ResultText getColoredText() {
-        return description;
-    }
-
-    public void addItem(Item item) {
-        items.put(item.getName().toLowerCase(), item);
+    public ResultText getResultText() {
+        return resultText;
     }
 
     public Item getItem(String name) {

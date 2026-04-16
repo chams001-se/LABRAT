@@ -4,8 +4,6 @@ import com.labrat.actors.Actor;
 import com.labrat.rooms.Direction;
 import com.labrat.view.ResultText;
 
-import java.util.List;
-
 public class MoveCommand implements Command {
     private final Actor actor;
     private final String[] args;
@@ -36,6 +34,7 @@ public class MoveCommand implements Command {
 
     @Override
     public ResultText getResult() {
+        // Handled by MoveHandler
         return null;
     }
 

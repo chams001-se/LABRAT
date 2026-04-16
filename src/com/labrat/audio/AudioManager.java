@@ -28,8 +28,13 @@ public class AudioManager {
     // Audio files are listed in 16-bit 44100 Hz .wav format
     private String getFilename(SoundEffect s) {
         return switch (s) {
-            case MUTE ->        null;
-            case BEEP ->        "beep.wav";
+            case MUTE ->            null;
+            case BEEP ->            "beep.wav";
+            case COMMANDERROR ->    "commanderror.wav";
+            case HUMANFOOTSTEPS ->  "humanfootsteps.wav";
+            case KEYCARD ->         "keycard.wav";
+            case NOTEPAPER ->       "notepaper.wav";
+            case SCARYROOM ->       "scaryroom.wav";
         };
     }
 

@@ -1,5 +1,6 @@
 package com.labrat.commandhandlers;
 
+import com.labrat.audio.SoundEffect;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
 import com.labrat.view.ResultText;
@@ -26,10 +27,10 @@ public class MoveHandler extends BaseHandler {
             }
             else if (args.length == 1 && command.hasValidArgs()) {
                 command.execute();
-                return new ResultText("You moved " + args[0] + ".", PrinterColor.YELLOW);
+                return new ResultText("You moved " + args[0] + ".", PrinterColor.YELLOW, SoundEffect.HUMANFOOTSTEPS);
             }
             else {
-                return new ResultText("You can't move " + args[0] + ".", PrinterColor.YELLOW);
+                return new ResultText("You can't move " + args[0] + ".", PrinterColor.YELLOW, SoundEffect.COMMANDERROR);
             }
         }
         else {

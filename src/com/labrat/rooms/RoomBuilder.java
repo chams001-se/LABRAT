@@ -1,5 +1,6 @@
 package com.labrat.rooms;
 
+import com.labrat.audio.SoundEffect;
 import com.labrat.view.PrinterColor;
 
 /*
@@ -9,14 +10,22 @@ import com.labrat.view.PrinterColor;
 
 public class RoomBuilder {
     // Declare variables
+    String name;
     String description;
     PrinterColor descriptionColor;
-    String id;
+    SoundEffect sfx;
 
     RoomBuilder() {
-        // Default color for descriptions
+        // Default values
+        name = "";
+        description = "";
         descriptionColor = PrinterColor.DEFAULT;
-        id = "";
+        sfx = SoundEffect.MUTE;
+    }
+
+    public RoomBuilder withName(String name) {
+        this.name = name;
+        return this;
     }
 
     public RoomBuilder withDescription(String desc) {
@@ -29,7 +38,12 @@ public class RoomBuilder {
         return this;
     }
 
+    public RoomBuilder withSoundEffect(SoundEffect sfx) {
+        this.sfx = sfx;
+        return this;
+    }
+
     public Room build() {
-        return new Room(description, descriptionColor);
+        return new Room(name, description, descriptionColor, sfx);
     }
 }

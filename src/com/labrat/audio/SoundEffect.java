@@ -1,6 +1,18 @@
 package com.labrat.audio;
 
 public enum SoundEffect {
+    // Null Sound Object
     MUTE,
-    BEEP
+
+    // Command Feedback
+    BEEP,
+    COMMANDERROR,
+    HUMANFOOTSTEPS,
+
+    // Item Feedback
+    KEYCARD,
+    NOTEPAPER,
+
+    // Room Feedback
+    SCARYROOM
 }

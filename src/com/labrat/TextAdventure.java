@@ -15,6 +15,7 @@ public class TextAdventure {
     Scanner scanner;
     String userInput;
     Command userCommand;
+    ResultText currentRoomResult;
     ResultText previousResult;
 
     // Declare character variables
@@ -35,6 +36,7 @@ public class TextAdventure {
         // Initialize scanner
         scanner = new Scanner(System.in);
         userInput = "";
+        currentRoomResult = new ResultText("", PrinterColor.DEFAULT);
         previousResult = new ResultText("", PrinterColor.DEFAULT);
 
         // Initialize commands
@@ -60,7 +62,11 @@ public class TextAdventure {
             ResultFormatter.getInstance().printLines();
 
             // Print out current room description
-            ResultFormatter.getInstance().print(mainCharacter.getCurrentRoom().getColoredText());
+            currentRoomResult = mainCharacter.getCurrentRoom().getResultText();
+            ResultFormatter.getInstance().print(currentRoomResult);
+
+            // Print current room item descriptions
+            //TODO print currentRoomResult item descriptions
 
             /*
             // Intuitively it would seem the best way to print results is through the current iteration, however, if we did this
@@ -73,6 +79,9 @@ public class TextAdventure {
 
             System.out.print("> ");
             try {
+                // Play current room audio
+                AudioManager.getInstance().play(currentRoomResult.soundEffect());
+
                 // Play previous result's audio
                 AudioManager.getInstance().play(previousResult.soundEffect());
 
