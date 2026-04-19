@@ -15,6 +15,17 @@ public class TakeCommand implements Command {
         this.commandType = CommandType.TAKE;
     }
 
+    public String argsToString(){
+        StringBuilder itemName = new StringBuilder();
+        for (String s : args){
+            itemName.append(s).append(" ");
+        }
+        itemName.deleteCharAt(itemName.length() - 1);
+
+        return itemName.toString().toLowerCase();
+    }
+
+
     @Override
     public String[] getArgs() {
         return args;
@@ -23,8 +34,10 @@ public class TakeCommand implements Command {
     @Override
     public boolean hasValidArgs() {
         // Valid if there is an item in the current room that can be taken
-        String target = args[0].toLowerCase();
-        return actor.getCurrentRoom().getItem(target) != null;
+
+        String target = argsToString();
+        System.out.println(target);
+        return actor.getCurrentRoom().hasItem(target);
     }
 
     @Override
@@ -39,18 +52,14 @@ public class TakeCommand implements Command {
 
     @Override
     public void execute() {
-        String target = args[0].toLowerCase();
+        String itemName = argsToString().toLowerCase();
+        System.out.println(itemName);
+
         var room = actor.getCurrentRoom();
-        var obj = room.getItem(target);
+        var item = room.getItem(itemName);
 
-        if (!(obj instanceof Item item)) {
-            System.out.println("You can't take that.");
-            return;
-        }
-
-        room.removeItem(target);
+        room.removeItem(itemName);
         actor.addItem(item);
 
-        System.out.println("You take the " + item.getName() + ".");
     }
 }

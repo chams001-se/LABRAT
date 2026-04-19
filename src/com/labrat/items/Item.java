@@ -4,7 +4,7 @@ import com.labrat.audio.SoundEffect;
 import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
 
-public abstract class Item implements Examinable {
+public class Item implements Examinable {
     private final String name;
     private final ResultText resultText;
 

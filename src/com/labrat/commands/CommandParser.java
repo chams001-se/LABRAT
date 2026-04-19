@@ -34,14 +34,17 @@ public class CommandParser {
                 return new MoveCommand(actor, args);
             case EXAMINE:
                 //TODO Implement Actor and CommandParser states first
-                //return new ExamineCommand(actor, args);
+                new ExamineCommand(actor, args);
                 break;
             case TAKE:
                 //TODO Figure out how to do items
-                //return new TakeCommand(actor, args);
-                break;
+                return new TakeCommand(actor, args);
+            case USE:
+                return new UseCommand(actor, args);
             case READ:
                 return new ReadCommand(actor, args);
+            case INVENTORY:
+                return new InventoryCommand(actor, args);
             case HIDE:
                 //TODO Implement Actor and CommandParser states first
                 //return new HideCommand(actor);

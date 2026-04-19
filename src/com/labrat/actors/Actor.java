@@ -3,12 +3,15 @@ package com.labrat.actors;
 import com.labrat.items.Item;
 import com.labrat.rooms.*;
 
+import java.util.Map;
+
 public interface Actor {
     public void setCurrentRoom(Room selectedRoom);
     public Room getCurrentRoom();
 
     void addItem(Item item);
     Item getInventoryItem(String name);
+    Map<String, Item> getInventory();
     boolean hasItem(String name);
 
     void setSneaking(boolean hidden);

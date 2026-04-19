@@ -3,6 +3,7 @@ package com.labrat.audio;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -20,10 +21,6 @@ public class AudioManager {
 
     // Declare variables
     private static final HashMap<SoundEffect, Clip> soundEffectMap = new HashMap<>();
-
-    // Declare parent directory for audio files
-    // Uses Paths.get for operating system agnostic file search due to delimiters
-    Path dir = Paths.get("src", "com", "labrat", "audiofiles");
 
     // Audio files are listed in 16-bit 44100 Hz .wav format
     private String getFilename(SoundEffect s) {
@@ -44,18 +41,23 @@ public class AudioManager {
             try {
                 // Get audio filename
                 String audioFilename = getFilename(s);
+
                 if (audioFilename != null) {
-                    Path audioFilePath = dir.resolve(audioFilename);
-                    File filePath = new File(audioFilePath.toRealPath().toString());
-                    AudioInputStream audioStream = AudioSystem.getAudioInputStream(filePath);
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(audioStream);
+                    // Gets the systems full, not relative path, for the audio files to be properly traced if the program is run through the terminal
+                    InputStream audioFilePath = getClass().getResourceAsStream("/com/labrat/audiofiles/" + audioFilename);
 
-                    // Put sound in soundFXMap
-                    soundEffectMap.put(s, clip);
+                    if (audioFilePath != null){
+                        AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFilePath);
 
-                    // Close audioStream after loading into clip
-                    audioStream.close();
+                        Clip clip = AudioSystem.getClip();
+                        clip.open(audioStream);
+
+                        // Put sound in soundFXMap
+                        soundEffectMap.put(s, clip);
+
+                        // Close audioStream after loading into clip
+                        audioStream.close();
+                    }
                 }
                 else {
                     // filename is null due to MUTE case

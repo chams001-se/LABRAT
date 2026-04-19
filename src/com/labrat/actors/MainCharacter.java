@@ -31,6 +31,10 @@ public class MainCharacter implements Actor {
         return inventory.get(name.toLowerCase());
     }
 
+    public Map<String, Item> getInventory() {
+        return inventory;
+    }
+
     public boolean hasItem(String name) {
         return inventory.containsKey(name.toLowerCase());
     }

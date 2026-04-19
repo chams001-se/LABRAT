@@ -1,7 +1,11 @@
 package com.labrat.rooms;
 
 import com.labrat.audio.SoundEffect;
+import com.labrat.items.Item;
 import com.labrat.view.PrinterColor;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /*
 // Applies the builder design pattern through the separation of Room parameters into individual
@@ -14,6 +18,7 @@ public class RoomBuilder {
     String description;
     PrinterColor descriptionColor;
     SoundEffect sfx;
+    private final Map<String, Item> items;
 
     RoomBuilder() {
         // Default values
@@ -21,6 +26,7 @@ public class RoomBuilder {
         description = "";
         descriptionColor = PrinterColor.DEFAULT;
         sfx = SoundEffect.MUTE;
+        items = new HashMap<>();
     }
 
     public RoomBuilder withName(String name) {
@@ -43,7 +49,12 @@ public class RoomBuilder {
         return this;
     }
 
+    public RoomBuilder withItem(Item item) {
+        this.items.put(item.getName().toLowerCase(), item);
+        return this;
+    }
+
     public Room build() {
-        return new Room(name, description, descriptionColor, sfx);
+        return new Room(name, description, descriptionColor, sfx, items);
     }
 }

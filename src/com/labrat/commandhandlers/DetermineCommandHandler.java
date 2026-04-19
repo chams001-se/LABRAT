@@ -13,6 +13,9 @@ public class DetermineCommandHandler {
         commandHandlers  = new CommandHandler[] {
                 new MoveHandler(),
                 new ReadHandler(),
+                new TakeHandler(),
+                new InventoryHandler(),
+                new UseHandler(),
                 new HelpHandler()
         };
 

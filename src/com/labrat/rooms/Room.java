@@ -22,10 +22,10 @@ public class Room {
     private ResultText resultText;
     private final String name;
 
-    public Room(String name, String description, PrinterColor descriptionColor, SoundEffect sfx) {
+    public Room(String name, String description, PrinterColor descriptionColor, SoundEffect sfx, Map<String,Item> items) {
         this.name = name;
         this.exits = new HashMap<>();
-        this.items = new HashMap<>();
+        this.items = items;
         this.resultText = new ResultText(description, descriptionColor, sfx);
     }
 
@@ -43,10 +43,6 @@ public class Room {
             return mapEntry.getValue();
         }
         else { return false; }
-    }
-
-    public void addItem(Item item) {
-        items.put(item.getName().toLowerCase(), item);
     }
 
     public String getName() {
@@ -68,5 +64,13 @@ public class Room {
 
     public Item removeItem(String name) {
         return items.remove(name.toLowerCase());
+    }
+
+    public void addItem(Item item) {
+        items.put(item.getName().toLowerCase(), item);
+    }
+
+    public boolean hasItem(String itemName) {
+        return items.containsKey(itemName);
     }
 }

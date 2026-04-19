@@ -9,6 +9,7 @@ public class CommandLexer {
             case "t" ->         "take";
             case "r" ->         "read";
             case "h" ->         "hide";
+            case "exit" ->       "quit";
             default ->          cmdType;
         };
     }

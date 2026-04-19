@@ -38,6 +38,5 @@ public class HideCommand implements Command {
     public void execute() {
         // TODO Toggle between true and false instead of set boolean
         actor.setSneaking(true);
-        System.out.println("You hide in the shadows.");
     }
 }
