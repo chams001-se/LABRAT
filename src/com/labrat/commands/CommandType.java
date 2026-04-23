@@ -11,7 +11,10 @@ public enum CommandType {
     INVENTORY("inventory", "Provides a list of the items specified in the users inventory"),
     HIDE("hide", "Hides if there is an area to hide in. "),
     HELP("help", "Provides summary of all available commands"),
-    QUIT("quit", "Exits the game.");
+    QUIT("quit", "Exits the game."),
+    UNHIDE("unhide", "exits out of hiding state."),
+    CLOSEINVENTORY("close inventory", "exits out of inventory");
+
 
     private final String commandNotation;       // How the command is formed
     private final String commandDescription;    // What the command does

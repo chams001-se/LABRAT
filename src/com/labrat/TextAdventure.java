@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.labrat.actors.*;
 import com.labrat.audio.AudioManager;
 import com.labrat.commands.*;
+import com.labrat.actors.ActorState;
 import com.labrat.rooms.*;
 import com.labrat.commandhandlers.*;
 import com.labrat.view.*;

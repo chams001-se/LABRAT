@@ -3,6 +3,7 @@ package com.labrat.commands;
 import com.labrat.actors.Actor;
 import com.labrat.audio.SoundEffect;
 import com.labrat.items.Item;
+import com.labrat.permissions.CheckingInventoryPermissions;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
 
@@ -43,6 +44,8 @@ public class InventoryCommand implements Command{
 
     // Executing the command calls some form of receiver that contains the functionality that the command delivers.
     public void execute(){
+        actor.setPermissions(new CheckingInventoryPermissions());
+
         StringBuilder inventory = new StringBuilder("INVENTORY\n");
         Map<String, Item> inv = actor.getInventory();
 

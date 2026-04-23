@@ -11,8 +11,6 @@ public class CommandParser {
         actor = act;
     }
 
-    // TODO: Get actor's state, change parse behavior on types of
-    //       available commands based on state
     public Command parse(String[] input) {
         // Declare variables
         String[] args;
@@ -29,15 +27,17 @@ public class CommandParser {
             args = new String[0];
         }
 
+        // permissions check for current state
+        if(!actor.getPermissions().isAllowed(type)){
+            throw new IllegalArgumentException("You can not do that right now.");
+        }
+
         switch (type) {
             case MOVE:
                 return new MoveCommand(actor, args);
             case EXAMINE:
-                //TODO Implement Actor and CommandParser states first
-                new ExamineCommand(actor, args);
-                break;
+                return new ExamineCommand(actor, args);
             case TAKE:
-                //TODO Figure out how to do items
                 return new TakeCommand(actor, args);
             case USE:
                 return new UseCommand(actor, args);
@@ -45,10 +45,12 @@ public class CommandParser {
                 return new ReadCommand(actor, args);
             case INVENTORY:
                 return new InventoryCommand(actor, args);
+            case CLOSEINVENTORY:
+                return new CloseInventoryCommand(actor, args);
             case HIDE:
-                //TODO Implement Actor and CommandParser states first
-                //return new HideCommand(actor);
-                break;
+                return new HideCommand(actor, args);
+            case UNHIDE:
+                return new UnhideCommand(actor, args);
             case HELP:
                 return new HelpCommand();
             case QUIT:

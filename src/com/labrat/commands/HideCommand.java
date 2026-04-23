@@ -1,42 +1,53 @@
 package com.labrat.commands;
-
 import com.labrat.actors.Actor;
+import com.labrat.commands.Command;
+import com.labrat.commands.CommandType;
+import com.labrat.permissions.HidingPermissions;
+import com.labrat.permissions.HidingPermissions;
 import com.labrat.view.ResultText;
 
 public class HideCommand implements Command {
-    private final Actor actor;
-    private final CommandType commandType;
 
-    public HideCommand(Actor actor) {
+    private final Actor actor;
+    private final String[] args;
+    private boolean success = false;
+
+    public HideCommand(Actor actor, String[] args) {
         this.actor = actor;
-        this.commandType = CommandType.HIDE;
+        this.args = args;
     }
 
     @Override
     public String[] getArgs() {
-        // HideCommand takes no args
-        return null;
+        return args;
     }
 
     @Override
     public boolean hasValidArgs() {
-        // TODO: Check if currentRoom has place to hide
-        return true;
+        // hide never takes arguments
+        return args.length == 0;
     }
 
     @Override
     public CommandType getCommandType() {
-        return commandType;
-    }
-
-    @Override
-    public ResultText getResult() {
-        return null;
+        return CommandType.HIDE;
     }
 
     @Override
     public void execute() {
-        // TODO Toggle between true and false instead of set boolean
-        actor.setSneaking(true);
+        // TODO: check if currentroom has place to hide
+
+        // switch to hiding permission state
+        actor.setPermissions(new HidingPermissions());
+        success = true;
+    }
+
+    @Override
+    public ResultText getResult() {
+        if (!success) {
+            return new ResultText("There’s nowhere to hide here.");
+        }
+
+        return new ResultText("You are successfully hidden.");
     }
 }

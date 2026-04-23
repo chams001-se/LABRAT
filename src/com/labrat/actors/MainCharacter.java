@@ -1,5 +1,7 @@
 package com.labrat.actors;
 import com.labrat.items.Item;
+import com.labrat.permissions.CommandPermissions;
+import com.labrat.permissions.FreeRoamPermissions;
 import com.labrat.rooms.*;
 
 import java.util.HashMap;
@@ -13,7 +15,19 @@ public class MainCharacter implements Actor {
 
     private final Map<String, Item> inventory = new HashMap<>();
 
-    public MainCharacter() {}
+    private CommandPermissions permissions;
+
+    public MainCharacter() {
+        this.permissions = new FreeRoamPermissions();
+    }
+
+    public void setPermissions(CommandPermissions permissions) {
+        this.permissions = permissions;
+    }
+
+    public CommandPermissions getPermissions() {
+        return permissions;
+    }
 
     public void setCurrentRoom(Room selectedRoom) {
         this.currentRoom = selectedRoom;

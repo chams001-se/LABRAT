@@ -17,9 +17,9 @@ public class Room {
     // Boolean:     TRUE: Player may move from currentRoom to Room
     //              FALSE: Player may not move to Room due to a condition, such as a locked door
      */
-    private Map<Direction, Map.Entry<Room, Boolean>> exits;
+    private final Map<Direction, Map.Entry<Room, Boolean>> exits;
     private final Map<String, Item> items;
-    private ResultText resultText;
+    private final ResultText resultText;
     private final String name;
 
     public Room(String name, String description, PrinterColor descriptionColor, SoundEffect sfx, Map<String,Item> items) {
