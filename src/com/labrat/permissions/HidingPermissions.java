@@ -1,7 +1,7 @@
 package com.labrat.permissions;
 
 // DO NOT USE Permissions are depreciated for ActorState
-// Use as reference for commands allowed in HideState
+// TODO Use as reference for commands allowed in HideState
 
 /*
 public class HidingPermissions {
