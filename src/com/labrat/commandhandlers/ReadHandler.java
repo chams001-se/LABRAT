@@ -17,11 +17,11 @@ public class ReadHandler extends BaseHandler {
     @Override
     protected boolean hasValidArgs(Command command) {
         // True if there is an item in the current room that can be read
-        // TODO use decorator pattern to create new readable
         Actor actor = command.getActor();
         String[] args = command.getArgs();
         String target = argsToString(args);
 
+        // TODO create classes which implement Readable interface
         //return actor.getCurrentRoom().getItem(target) instanceof Readable;
         return actor.getCurrentRoom().hasItem(target);
     }
