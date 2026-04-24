@@ -15,11 +15,12 @@ public class UseHandler extends BaseHandler {
     @Override
     protected boolean hasValidArgs(Command command) {
         // True if there is an item in the current room that can be used
-        // TODO use decorator pattern to create new consumable
         Actor actor = command.getActor();
         String[] args = command.getArgs();
         String target = argsToString(args);
 
+        // TODO create classes which implement Usable interface
+        //return actor.getCurrentRoom().getItem(target) instanceof Usable;
         return actor.getCurrentRoom().hasItem(target);
     }
 
