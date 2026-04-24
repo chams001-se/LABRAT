@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class CommandParser {
     private final Actor actor;
 
-    public CommandParser(Actor act) {
-        actor = act;
+    public CommandParser(Actor actor) {
+        this.actor = actor;
     }
 
     public Command parse(String[] input) {
@@ -27,10 +27,13 @@ public class CommandParser {
             args = new String[0];
         }
 
-        // permissions check for current state
+        /*
+        // Permissions check for current state
         if(!actor.getPermissions().isAllowed(type)){
-            throw new IllegalArgumentException("You can not do that right now.");
+            throw new IllegalArgumentException("You can't do that right now.");
         }
+
+         */
 
         switch (type) {
             case MOVE:
@@ -46,16 +49,19 @@ public class CommandParser {
             case INVENTORY:
                 return new InventoryCommand(actor, args);
             case CLOSEINVENTORY:
-                return new CloseInventoryCommand(actor, args);
+                //TODO
+                //return new CloseInventoryCommand(actor, args);
             case HIDE:
                 return new HideCommand(actor, args);
             case UNHIDE:
-                return new UnhideCommand(actor, args);
+                //TODO
+                //return new UnhideCommand(actor, args);
             case HELP:
-                return new HelpCommand();
+                return new HelpCommand(actor, args);
             case QUIT:
-                return new QuitCommand();
+                return new QuitCommand(actor, args);
         }
+
         throw new IllegalArgumentException("Invalid Command: "  + Arrays.toString(input));
     }
 }

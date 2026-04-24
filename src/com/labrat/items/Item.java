@@ -1,29 +1,23 @@
 package com.labrat.items;
 
-import com.labrat.audio.SoundEffect;
 import com.labrat.view.ResultText;
-import com.labrat.view.PrinterColor;
 
-public class Item implements Examinable {
-    private final String name;
-    private final ResultText resultText;
+public class Item {
+    protected final String name;
+    protected final ResultText roomText;
+    protected final ResultText examineText;
 
-    public Item(String name, String description, PrinterColor descriptionColor, SoundEffect sfx) {
+    public Item(String name, ResultText roomText, ResultText examineText) {
         this.name = name;
-        this.resultText = new ResultText(description, descriptionColor, sfx);
+        this.roomText = roomText;
+        this.examineText = examineText;
     }
 
     public String getName() {
         return name;
     }
 
-    public ResultText getResultText() {
-        return resultText;
-    }
+    public ResultText getRoomText() { return roomText; }
 
-    @Override
-    public ResultText examine() {
-        return resultText;
-    }
-
+    public ResultText getResultText() { return examineText; }
 }

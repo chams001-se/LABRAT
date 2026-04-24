@@ -1,10 +1,10 @@
 package com.labrat.permissions;
 
-import com.labrat.commands.CommandType;
+// DO NOT USE Permissions are depreciated for ActorState
+// Use as reference for commands allowed in HideState
 
-public class HidingPermissions implements CommandPermissions {
-    @Override
-    public boolean isAllowed(CommandType type) {
+/*
+public class HidingPermissions {
         switch (type) {
             case EXAMINE:
                 return true;
@@ -17,5 +17,5 @@ public class HidingPermissions implements CommandPermissions {
             default:
                 return false;
         }
-    }
 }
+*/

@@ -52,7 +52,7 @@ public class AudioManager {
                         Clip clip = AudioSystem.getClip();
                         clip.open(audioStream);
 
-                        // Put sound in soundFXMap
+                        // Put sound in soundEffectMap
                         soundEffectMap.put(s, clip);
 
                         // Close audioStream after loading into clip

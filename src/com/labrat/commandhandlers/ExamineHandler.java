@@ -1,29 +1,29 @@
 package com.labrat.commandhandlers;
 
 import com.labrat.actors.Actor;
-import com.labrat.audio.SoundEffect;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
-import com.labrat.rooms.Direction;
-import com.labrat.view.ResultText;
 import com.labrat.view.PrinterColor;
+import com.labrat.view.ResultText;
 
-// Purpose is to print results from the move command
+// Purpose is to get advanced info of an item
 
-public class MoveHandler extends BaseHandler {
-
+public class ExamineHandler extends BaseHandler {
     @Override
     protected boolean canHandle(Command command) {
-        return command.getCommandType() == CommandType.MOVE;
+        return command.getCommandType() == CommandType.READ;
     }
 
     @Override
     protected boolean hasValidArgs(Command command) {
+        // True if there is an item in the current room that can be examined
+        // TODO use decorator pattern to create new examinable
         Actor actor = command.getActor();
         String[] args = command.getArgs();
-        Direction direction = Direction.fromString(args[0]);
+        String target = argsToString(args);
 
-        return actor.getCurrentRoom().isOpenExit(direction);
+        //return actor.getCurrentRoom().getItem(target) instanceof ...;
+        return actor.getCurrentRoom().hasItem(target);
     }
 
     @Override
@@ -35,14 +35,13 @@ public class MoveHandler extends BaseHandler {
 
             // Check number of arguments
             if (args.length == 0) {
-                actor.setResultText(new ResultText("Move where?", PrinterColor.YELLOW));
+                actor.setResultText(new ResultText("Examine what?", PrinterColor.YELLOW));
             }
-            else if (args.length == 1 && hasValidArgs(command)) {
+            else if (hasValidArgs(command)) {
                 command.execute();
-                actor.setResultText(new ResultText("You moved " + args[0] + ".", PrinterColor.YELLOW, SoundEffect.HUMANFOOTSTEPS));
             }
             else {
-                actor.setResultText(new ResultText("You can't move " + args[0] + ".", PrinterColor.YELLOW, SoundEffect.COMMANDERROR));
+                actor.setResultText(new ResultText("You can't examine that.", PrinterColor.YELLOW));
             }
         }
         else {

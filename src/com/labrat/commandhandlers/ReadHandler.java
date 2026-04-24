@@ -1,5 +1,6 @@
 package com.labrat.commandhandlers;
 
+import com.labrat.actors.Actor;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
 import com.labrat.view.ResultText;
@@ -8,30 +9,43 @@ import com.labrat.view.PrinterColor;
 // Purpose is to print results from the move command
 
 public class ReadHandler extends BaseHandler {
-    private boolean canHandle(Command command) {
+    @Override
+    protected boolean canHandle(Command command) {
         return command.getCommandType() == CommandType.READ;
     }
 
     @Override
-    public ResultText performRequest(Command command) {
+    protected boolean hasValidArgs(Command command) {
+        // True if there is an item in the current room that can be read
+        // TODO use decorator pattern to create new readable
+        Actor actor = command.getActor();
+        String[] args = command.getArgs();
+        String target = argsToString(args);
+
+        //return actor.getCurrentRoom().getItem(target) instanceof Readable;
+        return actor.getCurrentRoom().hasItem(target);
+    }
+
+    @Override
+    public void performRequest(Command command) {
         // Check if current handler can perform request
         if (canHandle(command)) {
+            Actor actor = command.getActor();
             String[] args = command.getArgs();
 
             // Check number of arguments
             if (args.length == 0) {
-                return new ResultText("Read what?", PrinterColor.YELLOW);
+                actor.setResultText(new ResultText("Read what?", PrinterColor.YELLOW));
             }
-            else if (args.length == 1 && command.hasValidArgs()) {
+            else if (hasValidArgs(command)) {
                 command.execute();
-                return command.getResult();
             }
             else {
-                return new ResultText("You can't read that.", PrinterColor.YELLOW);
+                actor.setResultText(new ResultText("You can't read that.", PrinterColor.YELLOW));
             }
         }
         else {
-            return super.performRequest(command);
+            super.performRequest(command);
         }
     }
 }

@@ -5,10 +5,11 @@ import java.util.Scanner;
 import com.labrat.actors.*;
 import com.labrat.audio.AudioManager;
 import com.labrat.commands.*;
-import com.labrat.actors.ActorState;
 import com.labrat.rooms.*;
 import com.labrat.commandhandlers.*;
-import com.labrat.view.*;
+import com.labrat.view.PrinterColor;
+import com.labrat.view.ResultFormatter;
+import com.labrat.view.ResultText;
 
 public class TextAdventure {
     // Declare global variables
@@ -16,7 +17,7 @@ public class TextAdventure {
     Scanner scanner;
     String userInput;
     Command userCommand;
-    ResultText currentRoomResult;
+    Room currentRoom;
     ResultText previousResult;
 
     // Declare character variables
@@ -37,8 +38,6 @@ public class TextAdventure {
         // Initialize scanner
         scanner = new Scanner(System.in);
         userInput = "";
-        currentRoomResult = new ResultText("", PrinterColor.DEFAULT);
-        previousResult = new ResultText("", PrinterColor.DEFAULT);
 
         // Initialize commands
         lexer = new CommandLexer();
@@ -58,22 +57,25 @@ public class TextAdventure {
 
     public void start() {
         /* Main Gameplay Loop */
-        while (true) {
+        while (!mainCharacter.isQuitting()) {
             // Clear console by printing empty lines
             ResultFormatter.getInstance().printLines();
 
-            // Print out current room description
-            currentRoomResult = mainCharacter.getCurrentRoom().getResultText();
-            ResultFormatter.getInstance().print(currentRoomResult);
+            // Print current room description
+            currentRoom = mainCharacter.getCurrentRoom();
+            ResultFormatter.getInstance().print(currentRoom.getRoomText());
 
             // Print current room item descriptions
-            //TODO print currentRoomResult item descriptions
+            for (var entry : currentRoom.getRoomItems().entrySet()) {
+                ResultFormatter.getInstance().print(entry.getValue().getRoomText());
+            }
 
             /*
             // Intuitively it would seem the best way to print results is through the current iteration, however, if we did this
             // the next iteration would immediately clear the output. Thus, we output the previous commands result on the next iteration,
             // so the user can read it DURING the time waiting for input.
              */
+            previousResult = mainCharacter.getResultText();
             if (previousResult != null && !previousResult.text().isEmpty()) {
                 ResultFormatter.getInstance().print(previousResult);
             }
@@ -81,32 +83,28 @@ public class TextAdventure {
             System.out.print("> ");
             try {
                 // Play current room audio
-                AudioManager.getInstance().play(currentRoomResult.soundEffect());
+                AudioManager.getInstance().play(currentRoom.getRoomText().soundEffect());
 
                 // Play previous result's audio
                 AudioManager.getInstance().play(previousResult.soundEffect());
 
                 // Set result to empty so if the next command outputs nothing, the previous command cannot be printed
-                previousResult = new ResultText("");
+                mainCharacter.setResultText(new ResultText(""));
 
                 // Tokenize and parse user input
                 userInput = scanner.nextLine();
                 userCommand = parser.parse(lexer.lex(userInput));
 
-                // If the first word is quit, we simply exit the while loop.
-                // Must handle an exit in its own function call because it requires a boolean return type, not ResultText
-                if (dch.isQuit(userCommand)) { break; }
-
                 // Finds the command type, then execute it through handlers.
                 // If the command type is invalid it will throw IllegalArgumentException, which will get caught, preventing a crash
-                previousResult = dch.performRequest(userCommand);
+                dch.performRequest(userCommand);
             }
             catch (Exception e) {
                 /* Exceptions caught:
                 // IllegalArgumentException, RuntimeException,
                 // UnsupportedAudioFileException, IOException, LineUnavailableException
                  */
-                previousResult = new ResultText(e.getMessage(), PrinterColor.LIGHT_RED);
+                mainCharacter.setResultText(new ResultText(e.getMessage(), PrinterColor.LIGHT_RED));
             }
         }
     }

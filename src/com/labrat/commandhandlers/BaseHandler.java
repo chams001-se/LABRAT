@@ -7,14 +7,31 @@ import com.labrat.view.ResultText;
 public abstract class BaseHandler implements CommandHandler {
     CommandHandler nextCommandHandler;
 
-    @Override
-    public ResultText performRequest(Command command) {
-        if (nextCommandHandler != null) {
-            return nextCommandHandler.performRequest(command);
-        }
+    // canHandle is true if CommandType of command matches CommandHandler
+    protected abstract boolean canHandle(Command command);
 
-        throw new IllegalArgumentException("No Command Handlers Found to handle Command: "
-            + command.getCommandType().toString());
+    protected abstract boolean hasValidArgs(Command command);
+
+    // Converts args String array into a single String
+    protected String argsToString(String[] args) {
+        StringBuilder itemName = new StringBuilder();
+        for (String s : args) {
+            itemName.append(s).append(" ");
+        }
+        itemName.deleteCharAt(itemName.length() - 1);
+
+        return itemName.toString().toLowerCase();
+    }
+
+    @Override
+    public void performRequest(Command command) {
+        if (nextCommandHandler != null) {
+            nextCommandHandler.performRequest(command);
+        }
+        else {
+            throw new IllegalArgumentException("No Command Handlers Found to handle Command: "
+                    + command.getCommandType().toString());
+        }
     }
 
     @Override

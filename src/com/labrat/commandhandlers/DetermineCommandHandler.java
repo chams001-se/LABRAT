@@ -4,7 +4,6 @@ import com.labrat.commands.*;
 import com.labrat.view.ResultText;
 
 public class DetermineCommandHandler {
-    // Array of CommandHandlers
     CommandHandler[] commandHandlers;
 
     public DetermineCommandHandler() {
@@ -16,7 +15,9 @@ public class DetermineCommandHandler {
                 new TakeHandler(),
                 new InventoryHandler(),
                 new UseHandler(),
-                new HelpHandler()
+                new ExamineHandler(),
+                new HelpHandler(),
+                new QuitHandler()
         };
 
         // Sets the next CommandHandler to the next in the commandHandlers array
@@ -26,12 +27,8 @@ public class DetermineCommandHandler {
         }
     }
 
-    public Boolean isQuit(Command userCommand) {
-        return userCommand.getCommandType() == CommandType.QUIT;
-    }
-
     // Starts processing the request in the Chain of Responsibility from the first CommandHandler
-    public ResultText performRequest(Command command) {
-        return commandHandlers[0].performRequest(command);
+    public void performRequest(Command command) {
+        commandHandlers[0].performRequest(command);
     }
 }
