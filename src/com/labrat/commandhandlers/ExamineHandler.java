@@ -17,12 +17,12 @@ public class ExamineHandler extends BaseHandler {
     @Override
     protected boolean hasValidArgs(Command command) {
         // True if there is an item in the current room that can be examined
-        // TODO use decorator pattern to create new examinable
         Actor actor = command.getActor();
         String[] args = command.getArgs();
         String target = argsToString(args);
 
-        //return actor.getCurrentRoom().getItem(target) instanceof ...;
+        // TODO create classes which implement Examinable
+        //return actor.getCurrentRoom().getItem(target) instanceof Examinable;
         return actor.getCurrentRoom().hasItem(target);
     }
 
