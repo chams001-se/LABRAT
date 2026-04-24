@@ -11,7 +11,7 @@ import com.labrat.view.ResultText;
 public class ExamineHandler extends BaseHandler {
     @Override
     protected boolean canHandle(Command command) {
-        return command.getCommandType() == CommandType.READ;
+        return command.getCommandType() == CommandType.EXAMINE;
     }
 
     @Override
