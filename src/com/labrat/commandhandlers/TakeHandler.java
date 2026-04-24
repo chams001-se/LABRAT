@@ -19,6 +19,8 @@ public class TakeHandler extends BaseHandler {
         String[] args = command.getArgs();
         String target = argsToString(args);
 
+        // TODO create classes which implement Takable interface
+        //return actor.getCurrentRoom().getItem(target) instanceof Takeable;
         return actor.getCurrentRoom().hasItem(target);
     }
 
