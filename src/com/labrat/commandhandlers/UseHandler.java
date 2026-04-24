@@ -9,7 +9,7 @@ import com.labrat.view.ResultText;
 public class UseHandler extends BaseHandler {
     @Override
     protected boolean canHandle(Command command) {
-        return command.getCommandType() == CommandType.EXAMINE;
+        return command.getCommandType() == CommandType.USE;
     }
 
     @Override
