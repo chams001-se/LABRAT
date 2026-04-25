@@ -30,6 +30,7 @@ public class MoveHandler extends BaseHandler {
     public void performRequest(Command command) {
         // Check if current handler can perform request
         if (canHandle(command)) {
+
             Actor actor = command.getActor();
             String[] args = command.getArgs();
 
@@ -46,6 +47,7 @@ public class MoveHandler extends BaseHandler {
             }
         }
         else {
+
             super.performRequest(command);
         }
     }

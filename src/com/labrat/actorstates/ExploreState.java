@@ -1,6 +1,7 @@
 package com.labrat.actorstates;
 
 import com.labrat.actors.Actor;
+import com.labrat.audio.SoundEffect;
 import com.labrat.commands.CommandType;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
@@ -24,6 +25,11 @@ public class ExploreState extends BaseState {
         super(actor);
     }
 
+    @Override
+     public CommandType[] getAvailableCommands() {
+        return availableCommands;
+    }
+
     protected final CommandType[] availableCommands =
             {
                     MOVE,
@@ -38,15 +44,11 @@ public class ExploreState extends BaseState {
                     HELP,
                     QUIT
             };
-
     @Override
     public void hide() {
-        //TODO implement hide command
-        //actor.changeState(new HideState(actor));
-    }
-
-    @Override
-    public void unhide() {
-        actor.setResultText(new ResultText("Cannot unhide because you are currently not hiding.", PrinterColor.RED));
+        System.out.println("hey");
+        actor.setResultText(new ResultText("You are hiding!", PrinterColor.BLUE, SoundEffect.MUTE));
+        actor.toggleHiding();
+        actor.changeState(new HideState(actor));
     }
 }

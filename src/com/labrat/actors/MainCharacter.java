@@ -17,15 +17,20 @@ public class MainCharacter implements Actor {
     private ActorState actorState;
     private ResultText previousResult;
     private boolean isQuitting;
+    private boolean hidden;
 
     public MainCharacter() {
         this.actorState = new ExploreState(this);
         this.previousResult = new ResultText("", PrinterColor.DEFAULT);
         this.isQuitting = false;
+        this.hidden = false;
     }
 
     // ActorState
     public void changeState(ActorState newState) { actorState = newState; }
+    public ActorState getActorState(){
+        return actorState;
+    }
 
     // Commands
     public void move(Direction dir) { actorState.move(dir); }
@@ -35,6 +40,7 @@ public class MainCharacter implements Actor {
     public void examine(String itemName) { actorState.examine(itemName); }
     public void inventory() { actorState.inventory(); }
     public void help() { actorState.help(); }
+    public void hide() { actorState.hide();}
     public void quit() {
         isQuitting = true;
     }
@@ -70,10 +76,13 @@ public class MainCharacter implements Actor {
     }
 
     // Hiding Logic
-    public boolean isSneaking() {
+    public void toggleHiding() {
         // TODO implement HideState
-        //return actorState instanceof HideState;
-        return false;
+        hidden = !hidden;
+    }
+
+    public boolean isHidden(){
+        return hidden;
     }
 
     // Quit Flag

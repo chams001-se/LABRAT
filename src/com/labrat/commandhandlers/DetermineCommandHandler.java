@@ -14,6 +14,7 @@ public class DetermineCommandHandler {
                 new ReadHandler(),
                 new TakeHandler(),
                 new InventoryHandler(),
+                new HideHandler(),
                 new UseHandler(),
                 new ExamineHandler(),
                 new HelpHandler(),

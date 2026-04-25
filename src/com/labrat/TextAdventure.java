@@ -101,7 +101,7 @@ public class TextAdventure {
             }
             catch (Exception e) {
                 /* Exceptions caught:
-                // IllegalArgumentException, RuntimeException,
+                // IllegalArgumentEx   ception, RuntimeException,
                 // UnsupportedAudioFileException, IOException, LineUnavailableException
                  */
                 mainCharacter.setResultText(new ResultText(e.getMessage(), PrinterColor.LIGHT_RED));

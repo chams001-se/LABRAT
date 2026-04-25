@@ -21,27 +21,15 @@ public abstract class BaseState implements ActorState {
         this.actor = actor;
     }
 
-    protected CommandType[] availableCommands;
-    /* =
-            {
-                    MOVE,
-                    EXAMINE,
-                    USE,
-                    TAKE,
-                    READ,
-                    HIDE,
-                    UNHIDE,
-                    INVENTORY,
-                    CLOSEINVENTORY,
-                    HELP,
-                    QUIT
-            };
-            */
+    // Since BaseState serves as an abstract class, there are no available commands in this state
+    // This method will be implemented inside of concrete states where their available commands will simply be returned
+    @Override
+    public abstract CommandType[] getAvailableCommands();
 
     @Override
     public void help() {
         StringBuilder cmdlist = new StringBuilder("VALID COMMANDS\n");
-        for (CommandType c : availableCommands) {
+        for (CommandType c : getAvailableCommands()) {
             cmdlist.append(c.getCommandNotation()).append(": ").append(c.getCommandDescription()).append("\n");
         }
 
@@ -102,5 +90,5 @@ public abstract class BaseState implements ActorState {
     }
 
     public abstract void hide();
-    public abstract void unhide();
+    //public abstract void unhide();
 }

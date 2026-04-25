@@ -11,6 +11,7 @@ import java.util.Map;
 public interface Actor {
     // Actor State
     void changeState(ActorState newState);
+    ActorState getActorState();
 
     // Commands
     void move(Direction dir);
@@ -21,6 +22,7 @@ public interface Actor {
     void inventory();
     void help();
     void quit();
+    void hide();
 
     // ResultText Management
     void setResultText(ResultText result);
@@ -37,7 +39,8 @@ public interface Actor {
     boolean hasItem(String name);
 
     // Hide Management
-    boolean isSneaking();
+    void toggleHiding();
+    boolean isHidden();
 
     // Exit Flag
     boolean isQuitting();

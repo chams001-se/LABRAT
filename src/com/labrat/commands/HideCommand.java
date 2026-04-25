@@ -10,6 +10,6 @@ public class HideCommand extends BaseCommand {
     @Override
     public void execute() {
         //TODO implement hide in ExploreState
-        //actor.hide();
+        actor.hide();
     }
 }
