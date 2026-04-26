@@ -15,8 +15,8 @@ public class UseHandler extends BaseHandler {
     @Override
     protected boolean hasValidArgs(Command command) {
         // True if there is an item in the current room that can be used
-        Actor actor = command.getActor();
-        String[] args = command.getArgs();
+        Actor actor = command.actor();
+        String[] args = command.args();
         String target = argsToString(args);
 
         // TODO create classes which implement Usable interface
@@ -27,8 +27,8 @@ public class UseHandler extends BaseHandler {
     @Override
     public void performRequest(Command command) {
         if (canHandle(command)) {
-            Actor actor = command.getActor();
-            String[] args = command.getArgs();
+            Actor actor = command.actor();
+            String[] args = command.args();
 
             if (args.length == 0) {
                 actor.setResultText(new ResultText("Use what?", PrinterColor.YELLOW));

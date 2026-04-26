@@ -26,12 +26,12 @@ public abstract class BaseCommand implements Command {
     }
 
     @Override
-    public Actor getActor() {
+    public Actor actor() {
         return actor;
     }
 
     @Override
-    public String[] getArgs() {
+    public String[] args() {
         return args;
     }
 

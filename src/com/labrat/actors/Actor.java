@@ -23,6 +23,7 @@ public interface Actor {
     void help();
     void quit();
     void hide();
+    void unhide();
 
     // ResultText Management
     void setResultText(ResultText result);

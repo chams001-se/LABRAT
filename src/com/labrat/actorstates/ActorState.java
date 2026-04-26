@@ -14,6 +14,7 @@ public interface ActorState {
     void examine(String itemName);
     void inventory();
     void hide();
+    void unhide();
 
     CommandType[] getAvailableCommands();
 }

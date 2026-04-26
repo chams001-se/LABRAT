@@ -19,8 +19,8 @@ public class MoveHandler extends BaseHandler {
 
     @Override
     protected boolean hasValidArgs(Command command) {
-        Actor actor = command.getActor();
-        String[] args = command.getArgs();
+        Actor actor = command.actor();
+        String[] args = command.args();
         Direction direction = Direction.fromString(args[0]);
 
         return actor.getCurrentRoom().isOpenExit(direction);
@@ -31,8 +31,8 @@ public class MoveHandler extends BaseHandler {
         // Check if current handler can perform request
         if (canHandle(command)) {
 
-            Actor actor = command.getActor();
-            String[] args = command.getArgs();
+            Actor actor = command.actor();
+            String[] args = command.args();
 
             // Check number of arguments
             if (args.length == 0) {

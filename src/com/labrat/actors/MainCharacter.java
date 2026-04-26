@@ -41,6 +41,7 @@ public class MainCharacter implements Actor {
     public void inventory() { actorState.inventory(); }
     public void help() { actorState.help(); }
     public void hide() { actorState.hide();}
+    public void unhide() { actorState.unhide();}
     public void quit() {
         isQuitting = true;
     }
@@ -77,7 +78,8 @@ public class MainCharacter implements Actor {
 
     // Hiding Logic
     public void toggleHiding() {
-        // TODO implement HideState
+        // HideState and ExploreState already handle entering and exiting hiding,
+        // so this is the whole function
         hidden = !hidden;
     }
 

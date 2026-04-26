@@ -90,5 +90,5 @@ public abstract class BaseState implements ActorState {
     }
 
     public abstract void hide();
-    //public abstract void unhide();
+    public abstract void unhide();
 }

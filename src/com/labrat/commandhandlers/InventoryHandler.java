@@ -3,7 +3,6 @@ package com.labrat.commandhandlers;
 import com.labrat.actors.Actor;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
-import com.labrat.view.ResultText;
 
 public class InventoryHandler extends BaseHandler {
     @Override
@@ -19,7 +18,7 @@ public class InventoryHandler extends BaseHandler {
 
     @Override
     public void performRequest(Command command) {
-        Actor actor = command.getActor();
+        Actor actor = command.actor();
 
         if (canHandle(command)) {
             command.execute();

@@ -3,8 +3,6 @@ package com.labrat.commandhandlers;
 import com.labrat.actors.Actor;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
-import com.labrat.view.PrinterColor;
-import com.labrat.view.ResultText;
 
 public class HideHandler extends BaseHandler{
     @Override
@@ -20,7 +18,7 @@ public class HideHandler extends BaseHandler{
 
     @Override
     public void performRequest(Command command) {
-        Actor actor = command.getActor();
+        Actor actor = command.actor();
         // Check if current handler can perform request
         if (canHandle(command)) {
             command.execute();

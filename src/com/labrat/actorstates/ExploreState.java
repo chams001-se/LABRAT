@@ -51,4 +51,12 @@ public class ExploreState extends BaseState {
         actor.toggleHiding();
         actor.changeState(new HideState(actor));
     }
+
+    @Override
+    public void unhide() {
+        actor.setResultText(new ResultText(
+                "You are not hiding.",
+                PrinterColor.RED
+        ));
+    }
 }

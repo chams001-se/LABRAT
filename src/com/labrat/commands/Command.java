@@ -5,10 +5,10 @@ import com.labrat.view.ResultText;
 
 public interface Command {
     // Return the actor used for the command
-    Actor getActor();
+    Actor actor();
 
     // Return the arguments in the command
-    String[] getArgs();
+    String[] args();
 
     // Return the CommandType of the Command
     CommandType getCommandType();

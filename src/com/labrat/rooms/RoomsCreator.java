@@ -1,7 +1,8 @@
 package com.labrat.rooms;
 
 import com.labrat.audio.SoundEffect;
-import com.labrat.items.Item;
+import com.labrat.items.ItemFactory;
+import com.labrat.items.ItemFactoryProvider;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
 
@@ -26,21 +27,33 @@ public class RoomsCreator {
                 .build()
         );
 
+        // Create an ItemFactory instance (used to create all items)
+        ItemFactory factory = ItemFactoryProvider.getFactory();
+
         /* Builder pattern applied to create each individual room */
         rooms.add(new RoomBuilder()
                 .withName("Start Room")
                 .withDescription("Hello World!\nThere is an exit to the south and west.")
                 .withDescriptionColor(PrinterColor.LIGHT_MAGENTA)
-                .withItem(new Item(
+
+                // Hello World note (readable + examinable)
+                .withItem(factory.createItem(
                         "Hello World",
                         new ResultText("There is a note on the ground titled 'Hello World'.", PrinterColor.LIGHT_MAGENTA),
-                        new ResultText("You hold the 'Hello World' note in your hand.\n'The password is FOOBAR.'", PrinterColor.CYAN, SoundEffect.NOTEPAPER)
+                        new ResultText("You hold the 'Hello World' note in your hand.\n'The password is FOOBAR.'", PrinterColor.CYAN, SoundEffect.NOTEPAPER),
+                        true,   // readable
+                        true    // examinable
                 ))
-                .withItem(new Item(
+
+                // Wedge of Cheese (examinable only)
+                .withItem(factory.createItem(
                         "Wedge Of Cheese",
                         new ResultText("There is a wedge of cheese on the ground.", PrinterColor.LIGHT_MAGENTA),
-                        new ResultText("You hold up the cheese to your nose, it smells funny.", PrinterColor.DARK_YELLOW)
+                        new ResultText("You hold up the cheese to your nose, it smells funny.", PrinterColor.DARK_YELLOW),
+                        false,  // readable
+                        true    // examinable
                 ))
+
                 .build()
         );
 

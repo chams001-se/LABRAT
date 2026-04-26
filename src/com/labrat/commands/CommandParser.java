@@ -54,8 +54,7 @@ public class CommandParser {
             case HIDE:
                 return new HideCommand(actor, args);
             case UNHIDE:
-                //TODO
-                //return new UnhideCommand(actor, args);
+                return new UnhideCommand(actor, args);
             case HELP:
                 return new HelpCommand(actor, args);
             case QUIT:

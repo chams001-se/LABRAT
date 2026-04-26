@@ -3,6 +3,7 @@ package com.labrat.commandhandlers;
 import com.labrat.actors.Actor;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
+import com.labrat.items.Item;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
 
@@ -16,22 +17,21 @@ public class ExamineHandler extends BaseHandler {
 
     @Override
     protected boolean hasValidArgs(Command command) {
-        // True if there is an item in the current room that can be examined
-        Actor actor = command.getActor();
-        String[] args = command.getArgs();
-        String target = argsToString(args);
+        Actor actor = command.actor();
+        // convert arg array into single arg string
+        String target = argsToString(command.args());
+        // find item instance in specific room
+        Item item = actor.getCurrentRoom().getItem(target);
 
-        // TODO create classes which implement Examinable
-        //return actor.getCurrentRoom().getItem(target) instanceof Examinable;
-        return actor.getCurrentRoom().hasItem(target);
+        return item != null && item.isExaminable();
     }
 
     @Override
     public void performRequest(Command command) {
         // Check if current handler can perform request
         if (canHandle(command)) {
-            Actor actor = command.getActor();
-            String[] args = command.getArgs();
+            Actor actor = command.actor();
+            String[] args = command.args();
 
             // Check number of arguments
             if (args.length == 0) {
