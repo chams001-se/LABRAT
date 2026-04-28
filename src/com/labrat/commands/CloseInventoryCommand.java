@@ -1,5 +1,6 @@
 package com.labrat.commands;
 
+/*
 import com.labrat.actors.Actor;
 import com.labrat.permissions.FreeRoamPermissions;
 import com.labrat.view.PrinterColor;
@@ -44,3 +45,4 @@ public class CloseInventoryCommand implements Command {
         return rt;
     }
 }
+ */

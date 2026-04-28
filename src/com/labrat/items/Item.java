@@ -2,28 +2,16 @@ package com.labrat.items;
 
 import com.labrat.view.ResultText;
 
-public class Item {
-    protected final String name;
-    protected final ResultText roomText;
-    protected final ResultText examineText;
-    protected boolean readable = false;
-    protected boolean examinable = false;
+public interface Item {
+    // Returns the name of the item
+    String getName();
 
-    public Item(String name, ResultText roomText, ResultText examineText) {
-        this.name = name;
-        this.roomText = roomText;
-        this.examineText = examineText;
-    }
+    // Checks if the input matches one of the aliases
+    boolean checkAlias(String input);
 
-    public String getName() {
-        return name;
-    }
+    // Checks if the type matches one of the possible item types
+    boolean isItemType(ItemType type);
 
-    public ResultText getRoomText() { return roomText; }
-
-    public ResultText getResultText() { return examineText; }
-
-    public boolean isReadable(){ return readable;}
-
-    public boolean isExaminable(){ return examinable;}
+    // Returns the ResultText corresponding to the ItemType
+    ResultText getResultText(ItemType type);
 }

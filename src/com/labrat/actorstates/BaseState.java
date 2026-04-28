@@ -4,6 +4,9 @@ import com.labrat.actors.Actor;
 import com.labrat.audio.SoundEffect;
 import com.labrat.commands.CommandType;
 import com.labrat.items.Item;
+import com.labrat.items.ItemType;
+import com.labrat.items.KeyItem;
+import com.labrat.items.LockItem;
 import com.labrat.rooms.Direction;
 import com.labrat.rooms.Room;
 import com.labrat.view.PrinterColor;
@@ -11,7 +14,8 @@ import com.labrat.view.ResultText;
 
 import java.util.Map;
 
-// BaseState implements commands that are not dependent on state transitions
+// BaseState implements default behaviors for all commands
+// that are not dependent on state transitions
 // i.e. ExploreState -> HideState or HideState -> ExploreState
 
 public abstract class BaseState implements ActorState {
@@ -23,8 +27,25 @@ public abstract class BaseState implements ActorState {
 
     // Since BaseState serves as an abstract class, there are no available commands in this state
     // This method will be implemented inside of concrete states where their available commands will simply be returned
-    @Override
-    public abstract CommandType[] getAvailableCommands();
+    protected abstract CommandType[] getAvailableCommands();
+
+    // Helper method for finding items in either a room or in the player's inventory
+    protected Item getItemInRoomOrInv(String itemName, ItemType itemType) {
+        // True if there is an item in the current room
+        Room currentRoom = actor.getCurrentRoom();
+        Item item = null;
+
+        // Check if item is in current room
+        if (currentRoom.hasItem(itemName)) {
+            item = currentRoom.getItem(itemName);
+        }
+        // Check if item is in inventory
+        else if (actor.hasItem(itemName)) {
+            item = actor.getInventoryItem(itemName);
+        }
+
+        return item;
+    }
 
     @Override
     public void help() {
@@ -39,39 +60,103 @@ public abstract class BaseState implements ActorState {
     @Override
     public void move(Direction direction) {
         actor.setCurrentRoom(actor.getCurrentRoom().getExit(direction));
+        actor.setResultText(new ResultText("You moved " + direction.toString().toLowerCase() + ".", PrinterColor.YELLOW, SoundEffect.HUMANFOOTSTEPS));
     }
 
     @Override
     public void use(String itemName) {
-        Item item = actor.getInventoryItem(itemName);
+        ItemType itemType = ItemType.USABLE;
+        Item item = getItemInRoomOrInv(itemName, itemType);
+        ResultText resultText = new ResultText(
+                "Item is not in this room.",
+                PrinterColor.RED,
+                SoundEffect.COMMANDERROR
+        );                                      // Default resultText
+        Room currentRoom = actor.getCurrentRoom();
 
+        // TODO Refactor so custom behavior is in Item instead of here
         if (item != null) {
-            actor.setResultText(item.getResultText());
-        } else {
-            actor.setResultText(new ResultText(itemName + " not in inventory", PrinterColor.RED));
+            // Override use behavior by checking key
+            if (item.isItemType(ItemType.KEY)) {
+                for (var entry : currentRoom.getRoomItems().entrySet()) {
+                    Item temp = entry.getValue();
+
+                    // Check if item is a LockItem
+                    if (temp instanceof LockItem) {
+                        // Match found, downcast to subclasses
+                        ((LockItem) temp).unlock((KeyItem) item);
+                        if (((KeyItem) item).isOneUse()) {
+                            actor.removeItem(itemName);
+                            currentRoom.removeItem(itemName);
+                        }
+
+                        resultText = item.getResultText(ItemType.KEY);
+                        break;
+                    }
+                }
+            }
+            else if (item.isItemType(itemType)) {
+                resultText = item.getResultText(itemType);
+            }
         }
+
+        actor.setResultText(resultText);
     }
 
     @Override
     public void read(String itemName) {
-        Item item = actor.getCurrentRoom().getItem(itemName);
-        actor.setResultText(item.getResultText());
+        ItemType itemType = ItemType.READABLE;
+        Item item = getItemInRoomOrInv(itemName, itemType);
+
+        if (item != null && item.isItemType(itemType)) {
+            actor.setResultText(item.getResultText(itemType));
+        } else {
+            actor.setResultText(new ResultText(
+                            "Item is not in this room.",
+                            PrinterColor.RED,
+                            SoundEffect.COMMANDERROR
+                    )
+            );
+        }
+    }
+
+    @Override
+    public void examine(String itemName) {
+        ItemType itemType = ItemType.EXAMINABLE;
+        Item item = getItemInRoomOrInv(itemName, itemType);
+
+        if (item != null && item.isItemType(itemType)) {
+            actor.setResultText(item.getResultText(itemType));
+        } else {
+            actor.setResultText(new ResultText(
+                            "Item is not in this room.",
+                            PrinterColor.RED,
+                            SoundEffect.COMMANDERROR
+                    )
+            );
+        }
     }
 
     @Override
     public void take(String itemName) {
+        // Take only supports taking items from the room to the inventory
         Room room = actor.getCurrentRoom();
         Item item = room.getItem(itemName);
 
         actor.addItem(item);
         room.removeItem(itemName);
+        actor.setResultText(item.getResultText(ItemType.TAKABLE));
     }
 
     @Override
-    public void examine(String itemName) {
-        //TODO Change to ExaminableItem
-        Item item = actor.getCurrentRoom().getItem(itemName);
-        actor.setResultText(item.getResultText());
+    public void drop(String itemName) {
+        // Drop only supports dropping items from the inventory to the room
+        Room room = actor.getCurrentRoom();
+        Item item = actor.getInventoryItem(itemName);
+
+        room.addItem(item);
+        actor.removeItem(itemName);
+        actor.setResultText(item.getResultText(ItemType.DROPPABLE));
     }
 
     @Override

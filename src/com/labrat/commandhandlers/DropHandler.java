@@ -10,25 +10,24 @@ import com.labrat.view.ResultText;
 
 // Purpose is to support commands which take Items from Rooms
 
-public class TakeHandler extends BaseItemHandler {
+public class DropHandler extends BaseItemHandler {
 
-    TakeHandler() {
-        super(CommandType.TAKE, ItemType.TAKABLE);
+    DropHandler() {
+        super(CommandType.DROP, ItemType.DROPPABLE);
     }
 
     @Override
     protected boolean hasValidArgs(Command command) {
-        // True if there is an item in the current room that can be taken
+        // True if there is an item in the inventory that can be dropped
         Actor actor = command.actor();
         String[] args = command.args();
         String itemName = super.argsToString(args);
 
         if (itemName.isEmpty()) { return false; }
 
-        // Check if item is in current room
-        if (actor.getCurrentRoom().hasItem(itemName)) {
-            // Get the item and check if it is usable by the handler
-            return actor.getCurrentRoom().getItem(itemName).isItemType(super.itemType);
+        // Check if the item is in inventory
+        if (actor.hasItem(itemName)) {
+            return actor.getInventoryItem(itemName).isItemType(itemType);
         }
         else {
             return false;
@@ -42,7 +41,7 @@ public class TakeHandler extends BaseItemHandler {
             String[] args = command.args();
 
             if (args.length == 0) {
-                actor.setResultText(new ResultText("Take what?", PrinterColor.YELLOW));
+                actor.setResultText(new ResultText("Drop what?", PrinterColor.YELLOW));
             }
             else if (super.hasValidArgs(command)) {
                 command.execute();
@@ -50,7 +49,7 @@ public class TakeHandler extends BaseItemHandler {
             else {
                 actor.setResultText(
                         new ResultText(
-                                "You can't take that.",
+                                "You can't drop that.",
                                 PrinterColor.RED,
                                 SoundEffect.COMMANDERROR
                         )

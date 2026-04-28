@@ -4,9 +4,8 @@ import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
 
 public class QuitHandler extends BaseHandler {
-    @Override
-    protected boolean canHandle(Command command) {
-        return command.getCommandType() == CommandType.QUIT;
+    QuitHandler() {
+        super(CommandType.QUIT);
     }
 
     @Override

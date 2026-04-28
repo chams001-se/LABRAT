@@ -1,13 +1,12 @@
 package com.labrat.rooms;
 
-import com.labrat.audio.SoundEffect;
-import com.labrat.items.ItemFactory;
-import com.labrat.items.ItemFactoryProvider;
+import com.labrat.items.Item;
+import com.labrat.items.ItemsCreator;
+import com.labrat.items.LockItem;
 import com.labrat.view.PrinterColor;
-import com.labrat.view.ResultText;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.labrat.rooms.Direction.*;
 
@@ -15,82 +14,59 @@ import static com.labrat.rooms.Direction.*;
 
 public class RoomsCreator {
     // Declare variables
-    List<Room> rooms;
+    private final Map<Integer, Room> rooms;
+    private final Map<Integer, Item> items;
 
     public RoomsCreator() {
         // Initialize variables
-        rooms = new ArrayList<>();
+        rooms = new HashMap<>();
+        items = new ItemsCreator().getItemList();
 
         // Create NullObject room for index 0
-        rooms.add(new RoomBuilder()
+        assignIdToRoom(0,
+                new RoomBuilder()
                 .withName("Null Room")
                 .build()
         );
 
-        // Create an ItemFactory instance (used to create all items)
-        ItemFactory factory = ItemFactoryProvider.getFactory();
-
         /* Builder pattern applied to create each individual room */
-        rooms.add(new RoomBuilder()
-                .withName("Start Room")
-                .withDescription("Hello World!\nThere is an exit to the south and west.")
-                .withDescriptionColor(PrinterColor.LIGHT_MAGENTA)
-
-                // Hello World note (readable + examinable)
-                .withItem(factory.createItem(
-                        "Hello World",
-                        new ResultText("There is a note on the ground titled 'Hello World'.", PrinterColor.LIGHT_MAGENTA),
-                        new ResultText("You hold the 'Hello World' note in your hand.\n'The password is FOOBAR.'", PrinterColor.CYAN, SoundEffect.NOTEPAPER),
-                        true,   // readable
-                        true    // examinable
-                ))
-
-                // Wedge of Cheese (examinable only)
-                .withItem(factory.createItem(
-                        "Wedge Of Cheese",
-                        new ResultText("There is a wedge of cheese on the ground.", PrinterColor.LIGHT_MAGENTA),
-                        new ResultText("You hold up the cheese to your nose, it smells funny.", PrinterColor.DARK_YELLOW),
-                        false,  // readable
-                        true    // examinable
-                ))
-
-                .build()
+        assignIdToRoom(1,
+                 new RoomBuilder()
+                 .withName("Start Room")
+                 .withDescription("Hello World!\nThere is an exit to the north.")
+                 .withDescriptionColor(PrinterColor.LIGHT_MAGENTA)
+                 .withItem(items.get(1))     // Hello World note (readable, examinable, takable)
+                 .withItem(items.get(2))     // Keycard
+                 .withLock(NORTH, items.get(3))     // Reader
+                 .build()
         );
 
-        rooms.add(new RoomBuilder()
-                .withName("Dark Room")
-                .withDescription("It's dark in here!\nThere is an exit to the north and east.")
-                .withDescriptionColor(PrinterColor.LIGHT_BLUE)
-                .withSoundEffect(SoundEffect.SCARYROOM)
-                .build()
-        );
-
-        rooms.add(new RoomBuilder()
-                .withName("Hall Room")
-                .withDescription("Wow! This is a hallway... Amazing!\nThere is an exit to the southeast and the east.\nThe southeast door is locked.")
-                .withDescriptionColor(PrinterColor.LIGHT_CYAN)
-                .build()
-        );
-
-        rooms.add(new RoomBuilder()
-                .withName("Steam Room")
-                .withDescription("It's very humid in here.\nThere is an exit to the west.")
-                .build()
+        assignIdToRoom(2,
+                new RoomBuilder()
+                        .withName("End Room")
+                        .withDescription("You did it!\nThere is an exit to the south.")
+                        .withDescriptionColor(PrinterColor.LIGHT_MAGENTA)
+                        .build()
         );
 
         // The rooms must be wired together, done through the room itself.
         // Another benefit of splitting the design of room creation and room wiring is that the rooms must be created
         // to actually link them together, or else a room could have an exit to a null room reference.
-        rooms.get(1).setExit(SOUTH, rooms.get(2), true);
-        rooms.get(1).setExit(WEST, rooms.get(3), true);
+        rooms.get(1).setExit(NORTH, rooms.get(2));
 
-        rooms.get(2).setExit(NORTH, rooms.get(1), true);
-        rooms.get(2).setExit(EAST, rooms.get(4), true);
+        rooms.get(2).setExit(SOUTH, rooms.get(1));
+    }
 
-        rooms.get(3).setExit(SOUTHEAST, rooms.get(2), false);
-        rooms.get(3).setExit(EAST, rooms.get(1), true);
-
-        rooms.get(4).setExit(WEST, rooms.get(2), true);
+    // Helper method to check if duplicate room with index exists
+    private void assignIdToRoom(int id, Room room) {
+        if (!rooms.containsKey(id)) {
+            rooms.put(id, room);
+        }
+        else {
+            throw new RuntimeException("ItemsCreator: Attempted to override "
+                    + rooms.get(id).toString() + " at " + id +
+                    " with " + room.toString());
+        }
     }
 
     // Sets the user to start in the assigned room

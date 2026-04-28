@@ -7,16 +7,23 @@ public class DetermineCommandHandler {
     CommandHandler[] commandHandlers;
 
     public DetermineCommandHandler() {
-        // Create the command handlers and their linked handlers for Chain of Responsibility
-        // Chain of Responsibility order begins from top to bottom
+        /*  Create the command handlers and their linked handlers for Chain of Responsibility
+         *  Chain of Responsibility order begins from top to bottom
+         *
+         *  It is preferable if the most-used commands are higher in the chain
+         *  and less-used commands are lower in the chain
+         *  to reduce calls to the next CommandHandler
+         */
         commandHandlers  = new CommandHandler[] {
                 new MoveHandler(),
                 new ReadHandler(),
-                new TakeHandler(),
-                new InventoryHandler(),
-                new HideHandler(),
                 new UseHandler(),
                 new ExamineHandler(),
+                new TakeHandler(),
+                new DropHandler(),
+                new InventoryHandler(),
+                new HideHandler(),
+                new UnhideHandler(),
                 new HelpHandler(),
                 new QuitHandler()
         };

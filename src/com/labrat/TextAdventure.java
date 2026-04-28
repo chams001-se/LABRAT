@@ -2,11 +2,16 @@ package com.labrat;
 
 import java.util.Scanner;
 
-import com.labrat.actors.*;
+import com.labrat.actors.Actor;
+import com.labrat.actors.MainCharacter;
 import com.labrat.audio.AudioManager;
+import com.labrat.commandreaders.CommandAlias;
+import com.labrat.commandreaders.CommandLexer;
+import com.labrat.commandreaders.CommandParser;
 import com.labrat.commands.*;
-import com.labrat.rooms.*;
 import com.labrat.commandhandlers.*;
+import com.labrat.items.ItemType;
+import com.labrat.rooms.*;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultFormatter;
 import com.labrat.view.ResultText;
@@ -24,6 +29,7 @@ public class TextAdventure {
     Actor mainCharacter;
 
     // Declare command variables
+    CommandAlias aliaser;
     CommandLexer lexer;
     CommandParser parser;
     DetermineCommandHandler dch;
@@ -40,7 +46,8 @@ public class TextAdventure {
         userInput = "";
 
         // Initialize commands
-        lexer = new CommandLexer();
+        aliaser = new CommandAlias();
+        lexer = new CommandLexer(aliaser);
         parser = new CommandParser(mainCharacter);
         dch = new DetermineCommandHandler();
 
@@ -54,39 +61,55 @@ public class TextAdventure {
         mainCharacter.setCurrentRoom(rc.getStartRoom());
     }
 
+    private void TextAdventureView() {
+        // Clear console by printing empty lines
+        ResultFormatter.getInstance().printLines();
 
-    public void start() {
+        // Print current room description
+        currentRoom = mainCharacter.getCurrentRoom();
+        ResultFormatter.getInstance().print(currentRoom.getRoomText());
+
+        // Flush aliasing from previous result
+        aliaser.flushItemAlias();
+
+        // Print current room item descriptions
+        // and update aliasing for items in current room
+        for (var entry : currentRoom.getRoomItems().entrySet()) {
+            ResultFormatter.getInstance().print(entry.getValue().getResultText(ItemType.VISIBLE));
+            aliaser.addRoomItemAlias(entry.getValue());
+        }
+
+        // Update aliasing for inventory items
+        for (var entry : mainCharacter.getInventory().entrySet()) {
+            aliaser.addInventoryItemAlias(entry.getValue());
+        }
+
+        // Play current room audio
+        AudioManager.getInstance().play(currentRoom.getRoomText().soundEffect());
+
+        /*
+        // Intuitively it would seem the best way to print results is through the current iteration, however, if we did this
+        // the next iteration would immediately clear the output. Thus, we output the previous commands result on the next iteration,
+        // so the user can read it DURING the time waiting for input.
+         */
+        previousResult = mainCharacter.getResultText();
+        if (previousResult != null && !previousResult.text().isEmpty()) {
+            ResultFormatter.getInstance().print(previousResult);
+        }
+
+        // Play previous result's audio
+        AudioManager.getInstance().play(previousResult.soundEffect());
+
+        // Arrow for user input
+        System.out.print("> ");
+    }
+
+    private void start() {
         /* Main Gameplay Loop */
         while (!mainCharacter.isQuitting()) {
-            // Clear console by printing empty lines
-            ResultFormatter.getInstance().printLines();
-
-            // Print current room description
-            currentRoom = mainCharacter.getCurrentRoom();
-            ResultFormatter.getInstance().print(currentRoom.getRoomText());
-
-            // Print current room item descriptions
-            for (var entry : currentRoom.getRoomItems().entrySet()) {
-                ResultFormatter.getInstance().print(entry.getValue().getRoomText());
-            }
-
-            /*
-            // Intuitively it would seem the best way to print results is through the current iteration, however, if we did this
-            // the next iteration would immediately clear the output. Thus, we output the previous commands result on the next iteration,
-            // so the user can read it DURING the time waiting for input.
-             */
-            previousResult = mainCharacter.getResultText();
-            if (previousResult != null && !previousResult.text().isEmpty()) {
-                ResultFormatter.getInstance().print(previousResult);
-            }
-
-            System.out.print("> ");
             try {
-                // Play current room audio
-                AudioManager.getInstance().play(currentRoom.getRoomText().soundEffect());
-
-                // Play previous result's audio
-                AudioManager.getInstance().play(previousResult.soundEffect());
+                // Output the current view to the player
+                TextAdventureView();
 
                 // Set result to empty so if the next command outputs nothing, the previous command cannot be printed
                 mainCharacter.setResultText(new ResultText(""));
@@ -101,7 +124,7 @@ public class TextAdventure {
             }
             catch (Exception e) {
                 /* Exceptions caught:
-                // IllegalArgumentEx   ception, RuntimeException,
+                // IllegalArgumentException, RuntimeException,
                 // UnsupportedAudioFileException, IOException, LineUnavailableException
                  */
                 mainCharacter.setResultText(new ResultText(e.getMessage(), PrinterColor.LIGHT_RED));
@@ -109,7 +132,7 @@ public class TextAdventure {
         }
     }
 
-    public void end() {
+    private void end() {
         /* Cleanup */
         // Close all audio clips
         AudioManager.getInstance().close();

@@ -1,7 +1,9 @@
 package com.labrat.rooms;
 
 import com.labrat.audio.SoundEffect;
+import com.labrat.items.BaseItem;
 import com.labrat.items.Item;
+import com.labrat.items.LockItem;
 import com.labrat.view.PrinterColor;
 
 import java.util.HashMap;
@@ -14,11 +16,12 @@ import java.util.Map;
 
 public class RoomBuilder {
     // Declare variables
-    String name;
-    String description;
-    PrinterColor descriptionColor;
-    SoundEffect sfx;
+    private String name;
+    private String description;
+    private PrinterColor descriptionColor;
+    private SoundEffect sfx;
     private final Map<String, Item> items;
+    private final Map<Direction, LockItem> locks;
 
     RoomBuilder() {
         // Default values
@@ -27,6 +30,7 @@ public class RoomBuilder {
         descriptionColor = PrinterColor.DEFAULT;
         sfx = SoundEffect.MUTE;
         items = new HashMap<>();
+        locks = new HashMap<>();
     }
 
     public RoomBuilder withName(String name) {
@@ -54,7 +58,14 @@ public class RoomBuilder {
         return this;
     }
 
+    public RoomBuilder withLock(Direction direction, Item item) {
+        LockItem lock = (LockItem) item;
+        this.items.put(lock.getName().toLowerCase(), lock);
+        this.locks.put(direction, lock);
+        return this;
+    }
+
     public Room build() {
-        return new Room(name, description, descriptionColor, sfx, items);
+        return new Room(name, description, descriptionColor, sfx, items, locks);
     }
 }

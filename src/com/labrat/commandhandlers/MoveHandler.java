@@ -11,10 +11,8 @@ import com.labrat.view.PrinterColor;
 // Purpose is to print results from the move command
 
 public class MoveHandler extends BaseHandler {
-
-    @Override
-    protected boolean canHandle(Command command) {
-        return command.getCommandType() == CommandType.MOVE;
+    MoveHandler() {
+        super(CommandType.MOVE);
     }
 
     @Override
@@ -30,7 +28,6 @@ public class MoveHandler extends BaseHandler {
     public void performRequest(Command command) {
         // Check if current handler can perform request
         if (canHandle(command)) {
-
             Actor actor = command.actor();
             String[] args = command.args();
 
@@ -40,10 +37,14 @@ public class MoveHandler extends BaseHandler {
             }
             else if (args.length == 1 && hasValidArgs(command)) {
                 command.execute();
-                actor.setResultText(new ResultText("You moved " + args[0] + ".", PrinterColor.YELLOW, SoundEffect.HUMANFOOTSTEPS));
             }
             else {
-                actor.setResultText(new ResultText("You can't move " + args[0] + ".", PrinterColor.YELLOW, SoundEffect.COMMANDERROR));
+                actor.setResultText(new ResultText(
+                        "You can't move " + args[0] + ".",
+                        PrinterColor.RED,
+                        SoundEffect.COMMANDERROR
+                        )
+                );
             }
         }
         else {

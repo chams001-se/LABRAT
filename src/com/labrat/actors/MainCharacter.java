@@ -5,7 +5,6 @@ import com.labrat.actorstates.ExploreState;
 import com.labrat.items.Item;
 import com.labrat.rooms.Direction;
 import com.labrat.rooms.Room;
-import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
 
 import java.util.HashMap;
@@ -17,13 +16,13 @@ public class MainCharacter implements Actor {
     private ActorState actorState;
     private ResultText previousResult;
     private boolean isQuitting;
-    private boolean hidden;
+    private boolean isHiding;
 
     public MainCharacter() {
         this.actorState = new ExploreState(this);
-        this.previousResult = new ResultText("", PrinterColor.DEFAULT);
+        this.previousResult = new ResultText("");
         this.isQuitting = false;
-        this.hidden = false;
+        this.isHiding = false;
     }
 
     // ActorState
@@ -37,11 +36,12 @@ public class MainCharacter implements Actor {
     public void use(String itemName) { actorState.use(itemName); }
     public void read(String itemName) { actorState.read(itemName); }
     public void take(String itemName) { actorState.take(itemName); }
+    public void drop(String itemName) { actorState.drop(itemName); }
     public void examine(String itemName) { actorState.examine(itemName); }
     public void inventory() { actorState.inventory(); }
     public void help() { actorState.help(); }
-    public void hide() { actorState.hide();}
-    public void unhide() { actorState.unhide();}
+    public void hide() { actorState.hide(); }
+    public void unhide() { actorState.unhide(); }
     public void quit() {
         isQuitting = true;
     }
@@ -66,6 +66,9 @@ public class MainCharacter implements Actor {
     public void addItem(Item item) {
         inventory.put(item.getName().toLowerCase(), item);
     }
+    public void removeItem(String name) {
+        inventory.remove(name);
+    }
     public Item getInventoryItem(String name) {
         return inventory.get(name.toLowerCase());
     }
@@ -80,11 +83,10 @@ public class MainCharacter implements Actor {
     public void toggleHiding() {
         // HideState and ExploreState already handle entering and exiting hiding,
         // so this is the whole function
-        hidden = !hidden;
+        isHiding = !isHiding;
     }
-
     public boolean isHidden(){
-        return hidden;
+        return isHiding;
     }
 
     // Quit Flag

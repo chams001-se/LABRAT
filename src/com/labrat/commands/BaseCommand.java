@@ -16,13 +16,16 @@ public abstract class BaseCommand implements Command {
 
     // Converts args String array into a single String
     protected String argsToString(String[] args) {
-        StringBuilder itemName = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (String s : args) {
-            itemName.append(s).append(" ");
+            sb.append(s).append(" ");
         }
-        itemName.deleteCharAt(itemName.length() - 1);
 
-        return itemName.toString().toLowerCase();
+        if (!sb.isEmpty()) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
+        return sb.toString().toLowerCase();
     }
 
     @Override

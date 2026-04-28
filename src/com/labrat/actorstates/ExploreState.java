@@ -25,29 +25,26 @@ public class ExploreState extends BaseState {
         super(actor);
     }
 
-    @Override
-     public CommandType[] getAvailableCommands() {
+    protected CommandType[] getAvailableCommands() {
         return availableCommands;
     }
+    private final CommandType[] availableCommands = {
+        MOVE,
+        EXAMINE,
+        USE,
+        TAKE,
+        READ,
+        HIDE,
+        //UNHIDE,
+        INVENTORY,
+        //CLOSEINVENTORY,
+        HELP,
+        QUIT
+    };
 
-    protected final CommandType[] availableCommands =
-            {
-                    MOVE,
-                    EXAMINE,
-                    USE,
-                    TAKE,
-                    READ,
-                    HIDE,
-                    //UNHIDE,
-                    INVENTORY,
-                    //CLOSEINVENTORY,
-                    HELP,
-                    QUIT
-            };
     @Override
     public void hide() {
-        System.out.println("hey");
-        actor.setResultText(new ResultText("You are hiding!", PrinterColor.BLUE, SoundEffect.MUTE));
+        actor.setResultText(new ResultText("You are hiding!", PrinterColor.BLUE));
         actor.toggleHiding();
         actor.changeState(new HideState(actor));
     }

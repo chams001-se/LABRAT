@@ -6,6 +6,9 @@ import com.labrat.commands.CommandType;
 // Purpose is to print all user commands and their functionality
 
 public class HelpHandler extends BaseHandler {
+    HelpHandler() {
+        super(CommandType.HELP);
+    }
 
     @Override
     protected boolean canHandle(Command command) {

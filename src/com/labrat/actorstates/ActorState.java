@@ -11,10 +11,9 @@ public interface ActorState {
     void use(String itemName);
     void read(String itemName);
     void take(String itemName);
+    void drop(String itemName);
     void examine(String itemName);
     void inventory();
     void hide();
     void unhide();
-
-    CommandType[] getAvailableCommands();
 }

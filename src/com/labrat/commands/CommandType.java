@@ -4,12 +4,13 @@ import java.util.HashMap;
 
 public enum CommandType {
     MOVE("{m/move} <direction>", "Attempts to move the player into a room towards the specified direction."),
-    EXAMINE("{e/examine} <object>", "Provides a deeper description of a specific object in a room."),
-    USE("{u/use} <object>", "Uses an object in the users inventory or provides a deeper description of it."),
-    TAKE("{t/take} <object>", "Takes an object found in a room and places it in the players inventory."),
-    READ("{r/read} <document>", "Read a document that you have acquired."),
+    EXAMINE("{e/examine} <item>", "Provides a deeper description of a specific item in a room."),
+    USE("{u/use} <item>", "Uses an item in the current room, or in the user's inventory."),
+    READ("{r/read} <document>", "Read a document in the current room."),
+    TAKE("{t/take} <item>", "Takes an item in a room and places it in the player's inventory."),
+    DROP("{d/drop} <item>", "Drops an item from the player's inventory and places it in the current room."),
     HIDE("{h/hide}", "Hides if there is an area to hide in."),
-    UNHIDE("unhide", "Exits out of hiding state."),
+    UNHIDE("{uh/unhide}", "Exits out of hiding state."),
     INVENTORY("{i/inventory}", "Provides a list of the items in the user's inventory."),
     CLOSEINVENTORY("close inventory", "Closes the inventory."),
     HELP("help", "Provides summary of all available commands."),
@@ -37,7 +38,8 @@ public enum CommandType {
             return comMap.get(str);
         }
         else {
-            throw new IllegalArgumentException("Invalid command type: " + str);
+            throw new IllegalArgumentException("Invalid command type: "
+                    + str + "\nType \"help\" for valid commands");
         }
     }
 

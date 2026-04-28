@@ -2,11 +2,9 @@ package com.labrat.commands;
 
 import com.labrat.actors.Actor;
 
-public record UnhideCommand(Actor actor, String[] args) implements Command {
-
-    @Override
-    public CommandType getCommandType() {
-        return CommandType.UNHIDE;
+public class UnhideCommand extends BaseCommand {
+    public UnhideCommand(Actor actor, String[] args) {
+        super(actor, args, CommandType.UNHIDE);
     }
 
     @Override

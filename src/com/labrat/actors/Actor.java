@@ -18,6 +18,7 @@ public interface Actor {
     void use(String itemName);
     void read(String itemName);
     void take(String itemName);
+    void drop(String itemName);
     void examine(String itemName);
     void inventory();
     void help();
@@ -35,6 +36,7 @@ public interface Actor {
 
     // Inventory Management
     void addItem(Item item);
+    void removeItem(String name);
     Item getInventoryItem(String name);
     Map<String, Item> getInventory();
     boolean hasItem(String name);
