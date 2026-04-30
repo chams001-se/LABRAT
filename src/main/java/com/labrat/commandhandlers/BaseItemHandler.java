@@ -12,8 +12,8 @@ public abstract class BaseItemHandler extends BaseHandler {
 
     // Passes child CommandType to BaseHandler
     BaseItemHandler(CommandType commandType, ItemType itemType) {
-        this.itemType = itemType;
         super(commandType);
+        this.itemType = itemType;
     }
 
     @Override

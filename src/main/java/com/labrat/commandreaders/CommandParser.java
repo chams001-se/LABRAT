@@ -23,6 +23,7 @@ public class CommandParser {
             System.arraycopy(input, 1, args, 0, input.length - 1);
         }
         else {
+            // No arguments
             args = new String[0];
         }
 

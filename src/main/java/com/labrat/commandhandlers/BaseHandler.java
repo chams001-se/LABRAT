@@ -13,6 +13,7 @@ public abstract class BaseHandler implements CommandHandler {
 
     // Helper function that converts args String array into a single String
     protected String argsToString(String[] args) {
+        if (args == null || args.length <= 0) return "";
         StringBuilder itemName = new StringBuilder();
         for (String s : args) {
             itemName.append(s).append(" ");

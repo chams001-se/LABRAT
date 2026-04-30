@@ -26,6 +26,7 @@ public enum CommandType {
 
     // Static map index for CommandType enum
     private static final HashMap<String, CommandType> comMap = new HashMap<>();
+    // Runs once class is loaded into memory
     static {
         for (CommandType c : CommandType.values()) {
             comMap.put(c.name().toLowerCase(), c);

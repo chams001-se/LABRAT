@@ -16,9 +16,10 @@ public class InventoryHandler extends BaseHandler {
     @Override
     protected boolean hasValidArgs(Command command) {
         String[] args = command.args();
+
         String arg = super.argsToString(args);
 
-        return arg.equals("open") || arg.equals("close");
+        return (arg.equals("open") || arg.equals("close"));
     }
 
     @Override

@@ -65,6 +65,7 @@ public class CommandAlias {
 
         for (Item item : roomItems) {
             if (item.checkAlias(itemName)) {
+                System.out.println("YES!");
                 return item.getInternalName();
             }
         }
@@ -172,11 +173,13 @@ public class CommandAlias {
         addInventoryItemAlias(actor.getInventory().getItemMap());
     }
 
+    // Does not work properly
     public String[] alias(String[] words) {
         // Check input length
         if (words.length >= 1) { words[0] = aliasCmd(words[0]); }
         if (words.length >= 2) {
-            if (isMoveCmd(words[0])) { words[1] = aliasDir(words[1]); }
+            if (isMoveCmd(words[0])) {
+                words[1] = aliasDir(words[1]); }
             if (isInvCmd(words[0])) { words[1] = aliasInvCmd(words); }
             if (isItemCmd(words[0])) { words[1] = aliasBothItem(words); }
             if (isItemRoomCmd(words[0])) { words[1] = aliasRoomItem(words); }
