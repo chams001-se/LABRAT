@@ -152,7 +152,7 @@ public class CommandAlias {
                 if (cmd == CommandType.TAKE) {
                     words = new String[]{words[0],aliasBothItem(words)};
                 }
-                if (cmd == CommandType.DROP) { words[1] = aliasInvItem(words); }
+                if (cmd == CommandType.DROP) { words = new String[]{words[0],aliasBothItem(words)}; }
             }
         }
 
