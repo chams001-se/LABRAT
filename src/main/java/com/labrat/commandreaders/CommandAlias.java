@@ -1,10 +1,12 @@
 package com.labrat.commandreaders;
 
 import com.labrat.actors.Actor;
+import com.labrat.commands.CommandType;
 import com.labrat.items.Item;
 import com.labrat.items.ItemType;
 import com.labrat.view.ResultFormatter;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -19,7 +21,7 @@ public class CommandAlias {
     }
 
     // Helper function that converts args String array into a single String
-    private String wordsToString(String[] words) {
+    private String argsToString(String[] words) {
         String[] args;
 
         if (words.length >= 2) {
@@ -61,11 +63,10 @@ public class CommandAlias {
 
     // Iterate alias through roomItems to find matching item name
     private String aliasRoomItem(String[] words) {
-        String itemName = wordsToString(words);
+        String itemName = argsToString(words);
 
         for (Item item : roomItems) {
             if (item.checkAlias(itemName)) {
-                System.out.println("YES!");
                 return item.getInternalName();
             }
         }
@@ -74,7 +75,7 @@ public class CommandAlias {
 
     // Iterate alias through inventoryItems to find matching item name
     private String aliasInvItem(String[] words) {
-        String itemName = wordsToString(words);
+        String itemName = argsToString(words);
 
         for (Item item : inventoryItems) {
             if (item.checkAlias(itemName)) {
@@ -85,7 +86,7 @@ public class CommandAlias {
     }
 
     private String aliasBothItem(String[] words) {
-        String itemName = wordsToString(words);
+        String itemName = argsToString(words);
 
         for (Item item : roomItems) {
             if (item.checkAlias(itemName)) {
@@ -101,24 +102,9 @@ public class CommandAlias {
         return words[1];
     }
 
-    // Aliases shorthanded user input to a valid CommandType
-    private String aliasCmd(String cmdType) {
-        return switch (cmdType) {
-            case "m" ->         "move";
-            case "e" ->         "examine";
-            case "t" ->         "take";
-            case "d" ->         "drop";
-            case "r" ->         "read";
-            case "u" ->         "use";
-            case "h" ->         "hide";
-            case "uh" ->        "unhide";
-            case "i" ->         "inventory";
-            case "exit" ->      "quit";
-            default ->          cmdType;
-        };
-    }
-
     // Aliases shorthanded user input to a valid Direction
+    // Although we can implement aliases inside of the direction enum, I thought keeping them here would be better since
+    // they were an argument and arguments are handled here
     private String aliasDir(String dir) {
         return switch (dir) {
             case "n" ->         "north";
@@ -135,36 +121,13 @@ public class CommandAlias {
 
     // Aliases "inventory open" and "inventory close"
     private String aliasInvCmd(String[] words) {
-        String arg = wordsToString(words);
+        String arg = argsToString(words);
 
         return switch (arg) {
             case "o" -> "open";
             case "c" -> "close";
             default -> arg;
         };
-    }
-
-    // Is a command that calls inventory
-    private boolean isInvCmd(String cmd) { return cmd.equals("inventory");}
-
-    // Is a command that is utilizes movement
-    private boolean isMoveCmd(String cmd) {
-        return cmd.equals("move");
-    }
-
-    // Is a command that handles items and is room or inventory agnostic
-    private boolean isItemCmd(String cmd) {
-        return cmd.equals("examine") || cmd.equals("read") || cmd.equals("use");
-    }
-
-    // Is a command that handles inventory items
-    private boolean isItemInvCmd(String cmd) {
-        return cmd.equals("drop");
-    }
-
-    // Is a command that handles room items
-    private boolean isItemRoomCmd(String cmd) {
-        return cmd.equals("take");
     }
 
     public void updateAlias(Actor actor) {
@@ -176,16 +139,25 @@ public class CommandAlias {
     // Does not work properly
     public String[] alias(String[] words) {
         // Check input length
-        if (words.length >= 1) { words[0] = aliasCmd(words[0]); }
-        if (words.length >= 2) {
-            if (isMoveCmd(words[0])) {
-                words[1] = aliasDir(words[1]); }
-            if (isInvCmd(words[0])) { words[1] = aliasInvCmd(words); }
-            if (isItemCmd(words[0])) { words[1] = aliasBothItem(words); }
-            if (isItemRoomCmd(words[0])) { words[1] = aliasRoomItem(words); }
-            if (isItemInvCmd(words[0])) { words[1] = aliasInvItem(words); }
+        if (words.length >= 1) {
+            CommandType cmd = CommandType.fromString(words[0]);
+            if (words.length >= 2) {
+                if (cmd == CommandType.MOVE) {
+                    words[1] = aliasDir(words[1]);
+                }
+                if (cmd == CommandType.INVENTORY) { words[1] = aliasInvCmd(words); }
+                if (cmd == CommandType.USE || cmd == CommandType.READ || cmd == CommandType.EXAMINE) {
+                    words = new String[]{words[0],aliasBothItem(words)};
+                }
+                if (cmd == CommandType.TAKE) {
+                    words = new String[]{words[0],aliasBothItem(words)};
+                }
+                if (cmd == CommandType.DROP) { words[1] = aliasInvItem(words); }
+            }
         }
+
 
         return words;
     }
+
 }

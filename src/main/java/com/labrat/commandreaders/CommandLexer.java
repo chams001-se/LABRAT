@@ -14,6 +14,7 @@ public class CommandLexer {
         // Declare variables
         String[] words = input.toLowerCase().trim().split("\\s+");
 
+
         words = commandAlias.alias(words);
 
         return words;

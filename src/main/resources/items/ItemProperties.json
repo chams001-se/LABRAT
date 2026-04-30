@@ -2,7 +2,7 @@
   "items" : {
     "helloworldnote": {
       "name": "Hello World",
-      "aliases": ["note", "hello"],
+      "aliases": ["note", "hello world"],
       "actions": {
         "visible": {
           "text": "There is a note on the ground titled 'Hello World'.",
