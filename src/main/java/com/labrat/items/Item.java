@@ -1,6 +1,7 @@
 package com.labrat.items;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.labrat.rooms.Exit;
 import com.labrat.view.ResultText;
 import com.labrat.model.ResultTextImport;
 
@@ -73,6 +74,12 @@ public class Item {
             ResultText resultText = entry.getValue().newResultText();
             resultTextMap.put(itemType, resultText);
         }
+    }
+
+    public boolean canUnlock(Exit exit) {
+        return isItemType(ItemType.KEY)
+                && exit.isLocked()
+                && exit.getKeyRequired().equals(internalName);
     }
 
     public Map<ItemType, ResultText> getResultTextMap() {

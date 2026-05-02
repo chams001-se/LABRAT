@@ -50,6 +50,17 @@ public class Room {
         else { return false; }
     }
 
+    // for keys
+    public boolean tryUnlockWith(Item item) {
+        for (Exit exit : exits.values()) {
+            if (item.canUnlock(exit)) {
+                exit.unlock();
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Getters
     public String getInternalName() {
         return internalName;

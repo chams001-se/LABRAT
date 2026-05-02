@@ -4,7 +4,95 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="810566b2-5ced-4a11-97fd-c510395c8ea1" name="Changes" comment="" />
+    <list default="true" id="810566b2-5ced-4a11-97fd-c510395c8ea1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commands/CommandLexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commands/CommandParser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commands/CommandParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/BasicItemFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/Examinable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/ExaminableItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/ItemFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/ItemFactoryProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/Readable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/ReadableExaminableItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/items/ReadableItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/labrat/actorstates/InventoryState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/labrat/actorstates/InventoryState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/labrat/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/labrat/items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/labrat/rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/labrat/rooms/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/audiofiles/beep.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/audiofiles/commanderror.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/audiofiles/humanfootsteps.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/audiofiles/keycard.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/audiofiles/notepaper.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/audiofiles/scaryroom.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/TextAdventure.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorinventory/ActorInventory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorinventory/Inventory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actors/Actor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actors/MainCharacter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorstates/ActorState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorstates/ActorStateType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorstates/BaseState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorstates/ExploreState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorstates/HideState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/actorstates/InventoryState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/audio/AudioManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/audio/AudioManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/audio/SoundEffect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/BaseHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/BaseItemHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/CommandHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/DetermineCommandHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/DropHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/ExamineHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/HelpHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/HideHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/InventoryHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/MoveHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/QuitHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/ReadHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/TakeHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/UnhideHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandhandlers/UseHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandreaders/CommandAlias.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandreaders/CommandLexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandreaders/CommandParser$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commandreaders/CommandParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/BaseCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/CommandType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/DropCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/ExamineCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/HelpCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/HideCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/InventoryCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/MoveCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/QuitCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/ReadCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/TakeCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/UnhideCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/commands/UseCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/items/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/items/ItemType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/items/ItemsCreator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/items/ItemsCreatorMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/model/ResultTextImport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/rooms/Direction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/rooms/Exit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/rooms/Room.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/rooms/RoomsCreator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/rooms/RoomsCreatorMap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/view/PrinterColor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/view/ResultFormatter$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/view/ResultFormatter$VersionType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/view/ResultFormatter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/view/ResultText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/labrat/view/TextAdventureView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/ItemProperties.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/rooms/RoomProperties.json" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +107,31 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;chams001-se&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/chams001-se/LABRAT&quot;,
+    &quot;accountId&quot;: &quot;cf83a8a7-88dd-4086-b993-041e81ec1309&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="openjdk-24" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="openjdk-24" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -29,13 +142,22 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.LABRAT.executor": "Run",
     "Application.TextAdventure.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/molin237/IdeaProjects/labrat/src/main/resources/items",
-    "project.structure.last.edited": "Modules",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -48,22 +170,19 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="LABRAT_" />
+    <configuration name="LABRAT" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.labrat.TextAdventure" />
+      <module name="labrat" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="LABRAT_" />
-      <option name="filePath" />
-      <method v="2" />
     </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
       </set>
     </attachedChunks>
   </component>
@@ -74,8 +193,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1777404792269</updated>
+      <workItem from="1777703327675" duration="237000" />
+      <workItem from="1777703625580" duration="2883000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

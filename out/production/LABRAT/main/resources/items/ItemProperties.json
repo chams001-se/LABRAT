@@ -1,0 +1,63 @@
+{
+  "items" : {
+    "helloworldnote": {
+      "name": "Hello World",
+      "aliases": ["note", "hello world"],
+      "actions": {
+        "visible": {
+          "text": "There is a note on the ground titled 'Hello World'.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "readable": {
+          "text": "You hold the 'Hello World' note in your hand.\n'The password is FOOBAR.'",
+          "color": "cyan",
+          "sound": "notepaper"
+        },
+        "takeable": {
+          "text": "You take the 'Hello World' note in your hand, and put it in your inventory.",
+          "color": "yellow",
+          "sound": "notepaper"
+        },
+        "droppable": {
+          "text": "You drop the 'Hello World' note.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      },
+      "isOneUse": false
+    },
+    "redkeycard": {
+      "name": "Red Keycard",
+      "aliases": ["keycard"],
+      "actions": {
+        "visible": {
+          "text": "There is a keycard on the table.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You can't use that here.",
+          "color": "red",
+          "sound": "mute"
+        },
+        "takeable": {
+          "text": "You take the Red Keycard in your hand, and put it in your inventory.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "droppable": {
+          "text": "You drop the Red Keycard.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "key": {
+          "text": "You put the Red Keycard into the reader. It fits perfectly!",
+          "color": "yellow",
+          "sound": "keycard"
+        }
+      },
+      "isOneUse": true
+    }
+  }
+}

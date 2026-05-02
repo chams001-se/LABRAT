@@ -54,27 +54,18 @@ public class InventoryState extends BaseState {
 
     @Override
     public void use(Item item) {
-        Room currentRoom = actor.getCurrentRoom();
-        String itemInternalName = item.getInternalName();
+        Room room = actor.getCurrentRoom();
 
-        // TODO Fix smelly code
-        if (item.isItemType(ItemType.KEY)) {
-            for (var entry : currentRoom.getExits().entrySet()) {
-                Exit exit = entry.getValue();
+        boolean unlocked = room.tryUnlockWith(item);
 
-                // Check if item is a LockItem
-                if (exit.isLocked() && exit.getKeyRequired().equals(itemInternalName)) {
-                    // Match found
-                    exit.unlock();
-                    if (item.isOneUse()) {
-                        actor.getInventory().removeItem(itemInternalName);
-                    }
-                    break;
-                }
+        if (unlocked) {
+            actor.setResultText(new ResultText("You unlocked something."));
+            if (item.isOneUse()) {
+                actor.getInventory().removeItem(item.getInternalName());
             }
+        } else {
+            actor.setResultText(new ResultText("Nothing happens."));
         }
-
-        actor.setResultText(item.use());
     }
 
     @Override
