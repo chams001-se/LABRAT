@@ -2,9 +2,14 @@
   "rooms" : {
     "startroom": {
       "name": "Start Room",
+      "firstEntryDescription": {
+        "text" : "You jolt upwards.\nYou disconnect the ECG cables attached to your chest as you get a grasp of your surroundings. You find yourself on the operating table of some non-descript lab. Incision tools are scattered about as if the ones operating on you left in a hurry.\nAs you were getting accustomed to your surroundings, you felt as if something was moving underneath your skin. Panic surges inside you as you look around to find a way to escape.\nThe door to the northeast is sealed shut, but the observation window to the north is shattered. The other side seems like a good place to move to if you’re mindful of the glass.",
+        "color": "light_green",
+        "sound": "mute"
+      },
       "description": {
-        "text": "Hello World!\nThere is an exit to the north.",
-        "color": "light_magenta",
+        "text": "Hello World!\nThere is an exit to the north.\n You find yourself on the operating table of some non-descript lab. Incision tools are scattered about as if the ones operating on you left in a hurry.\n As you were getting accustomed to your surroundings, you felt as if something was moving underneath your skin. Panic surges inside you as you look around to find a way to escape.",
+        "color": "light_green",
         "sound": "mute"
       },
       "exits": {
@@ -14,7 +19,7 @@
           "keyRequired": "redkeycard"
         }
       },
-      "items": ["redkeycard", "helloworldnote"]
+      "items": ["redkeycard", "helloworldnote","lever", "table"]
     },
     "endroom": {
       "name": "End Room",
@@ -28,7 +33,8 @@
           "target": "startroom",
           "locked": false
         }
-      }
+      },
+      "items": ["maintenancelog"]
     }
   }
 }

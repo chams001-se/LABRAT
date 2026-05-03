@@ -5,6 +5,7 @@ import com.labrat.actors.Actor;
 import com.labrat.actorstates.ActorStateType;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
+import com.labrat.items.Item;
 import com.labrat.items.ItemType;
 
 public abstract class BaseItemHandler extends BaseHandler {
@@ -20,16 +21,11 @@ public abstract class BaseItemHandler extends BaseHandler {
     protected boolean hasValidArgs(Command command) {
         Actor actor = command.actor();
 
-        if (actor.getActorState().getActorStateType() == ActorStateType.EXPLORE) {
-            return itemInRoom(command);
-        }
-        else {
-            return itemInInventory(command);
-        }
+        return itemInInventory(command) || itemInRoom(command);
     }
 
+    // True if there is an item in the current room that can be used
     protected boolean itemInRoom(Command command) {
-        // True if there is an item in the current room that can be used
         Actor actor = command.actor();
         String[] args = command.args();
         String itemName = super.argsToString(args);
@@ -38,24 +34,22 @@ public abstract class BaseItemHandler extends BaseHandler {
         if (!itemName.isEmpty() && actor.getCurrentRoom().hasItem(itemName)) {
             // Get the item and check if it is usable by the handler
             return actor.getCurrentRoom().getItem(itemName).isItemType(itemType);
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     protected boolean itemInInventory(Command command) {
-        // True if there is an item in the current room that can be used
+        // True if there is an item in the inventory that can be used
         Actor actor = command.actor();
         String[] args = command.args();
         String itemName = super.argsToString(args);
         Inventory inv = actor.getInventory();
 
-        // Check if item is in current room
+        // return
         if (!itemName.isEmpty() && inv.hasItem(itemName)) {
             return inv.getItem(itemName).isItemType(itemType);
-        }
-        else {
+        } else {
             return false;
         }
     }

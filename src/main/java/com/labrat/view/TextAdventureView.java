@@ -3,6 +3,7 @@ package com.labrat.view;
 import com.labrat.actors.Actor;
 import com.labrat.actorstates.ActorStateType;
 import com.labrat.audio.AudioManager;
+import com.labrat.items.Item;
 import com.labrat.items.ItemType;
 import com.labrat.rooms.Room;
 
@@ -24,8 +25,10 @@ public class TextAdventureView {
 
         // Print current room item descriptions
         // and update aliasing for items in current room
-        for (var entry : currentRoom.getRoomItems().entrySet()) {
-            ResultFormatter.getInstance().print(entry.getValue().getResultText(ItemType.VISIBLE));
+        for (Item it : currentRoom.getRoomItems().values()) {
+            ResultText itemVisibilityDescription = it.getResultText(ItemType.VISIBLE);
+            if (itemVisibilityDescription != null) ResultFormatter.getInstance().print(itemVisibilityDescription);
+
         }
 
         // Play current room audio

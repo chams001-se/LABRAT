@@ -5,8 +5,8 @@ import com.labrat.audio.SoundEffect;
 import com.labrat.commands.CommandType;
 import com.labrat.items.Item;
 import com.labrat.items.ItemType;
+import com.labrat.items.KeyItem;
 import com.labrat.rooms.Direction;
-import com.labrat.rooms.Exit;
 import com.labrat.rooms.Room;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
@@ -77,46 +77,34 @@ public class ExploreState extends BaseState {
 
     @Override
     public void examine(Item item) {
-        actor.setResultText(item.getResultText(ItemType.EXAMINABLE));
+        if (actor.getCurrentRoom().hasItem(item.getInternalName())){
+            actor.setResultText(item.getResultText(ItemType.EXAMINABLE));
+        } else {
+            actor.setResultText(new ResultText("Enter inventory to examine specified item."));
+        }
     }
 
     @Override
     public void use(Item item) {
         Room currentRoom = actor.getCurrentRoom();
-        String itemInternalName = item.getInternalName();
 
-        // TODO Fix smelly code
-        if (item.isItemType(ItemType.KEY)) {
-            // Check each exit
-            for (var entry : currentRoom.getExits().entrySet()) {
-                Exit exit = entry.getValue();
-
-                // Check if there are any locked exits with key requiring itemNAme
-                if (exit.isLocked() && exit.getKeyRequired().equals(itemInternalName)) {
-                    // Match found
-                    exit.unlock();
-
-                    // Check if item is consumable
-                    if (item.isOneUse()) {
-                        currentRoom.removeItem(itemInternalName);
-                    }
-
-                    // Set output
-                    actor.setResultText(item.getResultText(ItemType.KEY));
-
-                    // Break from for-loop
-                    break;
-                }
+        if (item instanceof KeyItem key) {
+            boolean keyUsed = currentRoom.tryUnlockWith(key);
+            if (item.isOneUse()) {
+                actor.getInventory().removeItem(item.getInternalName());
             }
+            if (!keyUsed){
+                actor.setResultText(new ResultText("Key already used!"));
+                return;
+            }
+
         }
-        else {
-            actor.setResultText(item.getResultText(ItemType.USABLE));
-        }
+        actor.setResultText(item.getResultText(ItemType.USABLE));
     }
 
     @Override
     public void read(Item item) {
-        actor.setResultText(item.getResultText(ItemType.READABLE));
+        actor.setResultText(new ResultText("Enter your inventory to read this item!"));
     }
 
     @Override

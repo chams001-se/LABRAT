@@ -1,5 +1,56 @@
 {
   "items" : {
+    "table": {
+      "name": "Table",
+      "aliases": ["under table"],
+      "actions": {
+        "hideable": {
+          "text" : ""
+        }
+      }
+    },
+    "lever": {
+      "name" : "Lever",
+      "aliases" : [],
+      "actions" : {
+        "visible": {
+          "text": "There is a lever in the center of the room.",
+          "color": "blue"
+        },
+        "usable":{
+          "text": "You flipped the lever!"
+        },
+        "examinable": {
+          "text": "The lever itself nor the nearby surroundings provide no indication as to what the lever does"
+        }
+      }
+    },
+    "maintenancelog": {
+      "name": "maintenance log",
+      "aliases": ["log", "document"],
+      "actions": {
+        "visible": {
+          "text": "An oddly torn maintenance log is caught underneath a damaged and scorched fuse panel.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "readable": {
+          "text": "Maintenance Log: \nPrimary breaker instability detected. \nEmergency fuse was removed to prevent systems failure. \nReplacement fuse has been relocated to  ̷ȍ̷̸̸̷̷̧͔͉̙͖͎͈̗̖̺̟̘̤̱̓͊ͭͭͣ̉ͪ̓̐̆̔ͩ͒͜͠͞v̷̶̶̢̮̼͙̖̤̀ͮ͑ͪͦͦͮ͘͜ͅ_̸̷̢̠͖͋ͧͬ̆͝͡e̷̵̡̝͕̦͇̲̬̩͉̋́ͩͦ͑ͥ̾̾̎̐̓ͅ_ ̵̧̜͕̖͕̫͇̃̂̓ͤͭ̃ͤ_̵̷̢̦̗̜̠̳̼̪̳͎̅̉̋ͮ̏ͤͅổ̷̸̷̷͓̞͙̱̲̰̭̲̃̈́̎͛ͣͬ̑̃ͅͅf̷̦̙̀̐͛͂̄_̧̥͈̈́_̸̴̴̸̢͍͕̲͍̬̯̙̺̳̞̝̣̬͊̃̀̓͐̄̓̄ͧ̓͑̆̓ͣ̓ͨ̾ͦ͛̚͜͡͠͝͡͡ ̸̸̸̨̧̛̘͇̘̹̣̤͍̎̽̾̀ͫͯ̉͆̉̇͆̀ͨ͟͞.\nThe rest of the document is nowhere to be found",
+          "color": "document",
+          "sound": "notepaper"
+        },
+        "takeable": {
+          "text": "You take the torn document, and place it in your inventory.",
+          "color": "yellow",
+          "sound": "notepaper"
+        },
+        "droppable": {
+          "text": "You drop the log.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
     "helloworldnote": {
       "name": "Hello World",
       "aliases": ["note", "hello world"],
@@ -11,7 +62,7 @@
         },
         "readable": {
           "text": "You hold the 'Hello World' note in your hand.\n'The password is FOOBAR.'",
-          "color": "cyan",
+          "color": "note",
           "sound": "notepaper"
         },
         "takeable": {
@@ -28,8 +79,9 @@
       "isOneUse": false
     },
     "redkeycard": {
+      "type": "key",
       "name": "Red Keycard",
-      "aliases": ["keycard"],
+      "aliases": ["red keycard", "keycard", "redkeycard", "red key card"],
       "actions": {
         "visible": {
           "text": "There is a keycard on the table.",
@@ -37,9 +89,9 @@
           "sound": "mute"
         },
         "usable": {
-          "text": "You can't use that here.",
-          "color": "red",
-          "sound": "mute"
+          "text": "You put the Red Keycard into the reader. It fits perfectly!",
+          "color": "yellow",
+          "sound": "keycard"
         },
         "takeable": {
           "text": "You take the Red Keycard in your hand, and put it in your inventory.",
@@ -51,10 +103,10 @@
           "color": "yellow",
           "sound": "mute"
         },
-        "key": {
-          "text": "You put the Red Keycard into the reader. It fits perfectly!",
+        "examinable": {
+          "text": "It's paint is wearing off",
           "color": "yellow",
-          "sound": "keycard"
+          "sound": "mute"
         }
       },
       "isOneUse": true

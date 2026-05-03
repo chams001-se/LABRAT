@@ -2,7 +2,9 @@ package com.labrat.rooms;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.labrat.actors.Actor;
 import com.labrat.items.Item;
+import com.labrat.items.KeyItem;
 import com.labrat.model.ResultTextImport;
 import com.labrat.view.ResultText;
 
@@ -15,16 +17,22 @@ public class Room {
     private final Map<String, Room> linkedExits;
     private final Map<String, Item> linkedItems;
 
+    private boolean visited;
+
     // Generic Constructor for JSON
     public Room() {
         this.linkedExits = new HashMap<>();
         this.linkedItems = new HashMap<>();
+        visited = false;
     }
 
     private String internalName;
 
     @JsonProperty("name")
     private String name;
+
+    @JsonProperty("firstEntryDescription")
+    private ResultTextImport firstEntryDescription;
 
     @JsonProperty("description")
     private ResultTextImport description;
@@ -51,9 +59,9 @@ public class Room {
     }
 
     // for keys
-    public boolean tryUnlockWith(Item item) {
+    public boolean tryUnlockWith(KeyItem keyObject) {
         for (Exit exit : exits.values()) {
-            if (item.canUnlock(exit)) {
+            if (keyObject.canUnlock(exit)) {
                 exit.unlock();
                 return true;
             }
@@ -79,6 +87,10 @@ public class Room {
     }
 
     public ResultText getRoomText() {
+        if (!visited){
+            visited = true;
+            if (firstEntryDescription != null) return firstEntryDescription.newResultText();
+        }
         return description.newResultText();
     }
 
@@ -133,5 +145,9 @@ public class Room {
     @Override
     public String toString() {
         return name;
+    }
+
+    public Exit getExit(String exitName) {
+        return exits.get(exitName);
     }
 }

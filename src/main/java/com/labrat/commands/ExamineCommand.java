@@ -14,13 +14,11 @@ public class ExamineCommand extends BaseCommand {
         Item item;
         String itemName = argsToString(args);
 
-        if (actor.getActorState().getActorStateType() == ActorStateType.EXPLORE) {
-            item = super.actor.getCurrentRoom().getItem(itemName);
-        }
-        else {
+        item = super.actor.getCurrentRoom().getItem(itemName);
+        if (item == null){
             item = super.actor.getInventory().getItem(itemName);
         }
 
-        super.actor.getActorState().examine(item);
+        actor.getActorState().examine(item);
     }
 }

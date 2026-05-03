@@ -30,6 +30,7 @@ public enum SoundEffect {
 
     // Converts a String into a SoundEffect
     public static SoundEffect fromString(String str) {
+        if (str == null) return MUTE;
         if (sfxMap.containsKey(str)) {
             return sfxMap.get(str);
         }

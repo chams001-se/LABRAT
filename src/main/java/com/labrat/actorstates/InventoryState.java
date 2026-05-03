@@ -4,6 +4,7 @@ import com.labrat.actors.Actor;
 import com.labrat.commands.CommandType;
 import com.labrat.items.Item;
 import com.labrat.items.ItemType;
+import com.labrat.items.KeyItem;
 import com.labrat.rooms.Direction;
 import com.labrat.rooms.Exit;
 import com.labrat.rooms.Room;
@@ -49,23 +50,29 @@ public class InventoryState extends BaseState {
     /* Allowed Commands */
     @Override
     public void examine(Item item) {
-        actor.setResultText(item.getResultText(ItemType.EXAMINABLE));
+        if (actor.getInventory().hasItem(item.getInternalName())){
+            actor.setResultText(item.getResultText(ItemType.EXAMINABLE));
+        } else {
+            actor.setResultText(new ResultText("Exit inventory to examine specified item."));
+        }
     }
 
     @Override
     public void use(Item item) {
-        Room room = actor.getCurrentRoom();
+        Room currentRoom = actor.getCurrentRoom();
 
-        boolean unlocked = room.tryUnlockWith(item);
-
-        if (unlocked) {
-            actor.setResultText(new ResultText("You unlocked something."));
+        if (item instanceof KeyItem key) {
+            boolean keyUsed = currentRoom.tryUnlockWith(key);
             if (item.isOneUse()) {
                 actor.getInventory().removeItem(item.getInternalName());
             }
-        } else {
-            actor.setResultText(new ResultText("Nothing happens."));
+            if (!keyUsed){
+                actor.setResultText(new ResultText("Key already used!"));
+                return;
+            }
+
         }
+        actor.setResultText(item.getResultText(ItemType.USABLE));
     }
 
     @Override

@@ -47,6 +47,8 @@ public enum PrinterColor {
     ITALIC,
     UNDERLINE,
     BLINK,
+    DOCUMENT,
+    NOTE,
 
     DEFAULT;
 
@@ -60,6 +62,7 @@ public enum PrinterColor {
 
     // Converts a String into a PrinterColor
     public static PrinterColor fromString(String str) {
+        if (str == null) return DEFAULT;
         if (colMap.containsKey(str)) {
             return colMap.get(str);
         }

@@ -12,8 +12,8 @@ public enum ItemType {
     READABLE,           // Player is able to read the item
 
     // Categories
-    KEY,
-    LOCK;
+    HIDEABLE;
+
 
     // Static map index for ItemType enum
     private static final HashMap<String, ItemType> stringToItemTypeMap = new HashMap<>();

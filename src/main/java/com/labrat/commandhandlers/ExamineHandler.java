@@ -17,6 +17,11 @@ public class ExamineHandler extends BaseItemHandler {
     }
 
     @Override
+    protected boolean hasValidArgs(Command command) {
+        return itemInInventory(command) || itemInRoom(command);
+    }
+
+    @Override
     public void performRequest(Command command) {
         // Check if current handler can perform request
         if (super.canHandle(command)) {
@@ -27,7 +32,7 @@ public class ExamineHandler extends BaseItemHandler {
             if (args.length == 0) {
                 actor.setResultText(new ResultText("Examine what?", PrinterColor.YELLOW));
             }
-            else if (super.hasValidArgs(command)) {
+            else if (hasValidArgs(command)) {
                 command.execute();
             }
             else {

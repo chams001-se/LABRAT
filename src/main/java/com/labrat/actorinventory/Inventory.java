@@ -41,6 +41,10 @@ public class Inventory implements ActorInventory {
     public String toString() {
         StringBuilder sb = new StringBuilder("INVENTORY\n");
 
+        if (inventory.isEmpty()){
+            sb.append("N/A").append("\nUse the take command to put items in your inventory!");
+            return sb.toString();
+        }
         // Iterate over inventory, create tabs
         int i = 0;
         for (String item : inventory.keySet()) {

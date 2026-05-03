@@ -32,9 +32,6 @@ public class ItemsCreator {
                 entry.getValue().setResultTextMap();
             }
 
-            //Item helloworldnote = data.items.get("helloworldnote");
-            //System.out.println(helloworldnote.toString());
-
             return data.items;
         }
         catch (Exception e) {

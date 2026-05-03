@@ -60,6 +60,8 @@ public class ResultFormatter {
             case DIM ->           "\033[2m";
             case ITALIC ->        "\033[3m";
             case UNDERLINE ->     "\033[4m";
+            case DOCUMENT ->      "\033[3;30;107m";
+            case NOTE ->          "\033[3;30;103m";
 
             default ->            "\033[0m";
         };
