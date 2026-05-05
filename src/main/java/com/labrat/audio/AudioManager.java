@@ -24,13 +24,27 @@ public class AudioManager {
     // Audio files are listed in 16-bit 44100 Hz .wav format
     private String getFilename(SoundEffect s) {
         return switch (s) {
-            case MUTE ->            null;
-            case BEEP ->            "beep.wav";
-            case COMMANDERROR ->    "commanderror.wav";
-            case HUMANFOOTSTEPS ->  "humanfootsteps.wav";
-            case KEYCARD ->         "keycard.wav";
-            case NOTEPAPER ->       "notepaper.wav";
-            case SCARYROOM ->       "scaryroom.wav";
+            case MUTE ->                    null;
+            case BEEP ->                    "beep.wav";
+            case COMMANDERROR ->            "commanderror.wav";
+            case CRACKLE ->                 "crackle.wav";
+            case CLAPPING ->                "clapping.wav";
+            case ELECTRICITY ->             "electricity.wav";
+            case FUSEHISS ->                "fusehiss.wav";
+            case GAMEOVER ->                "gameover.wav";
+            case GENERATORINSTALL ->        "generatorinstall.wav";
+            case HUMANFOOTSTEPSLAB ->       "humanfootstepslab.wav";
+            case HUMANFOOTSTEPSFOREST ->    "humanfootstepsforest.wav";
+            case HUMANFOOTSTEPSGRAVEL ->    "humanfootstepsgravel.wav";
+            case KEYCARD ->                 "keycard.wav";
+            case MAINTENANCELOCKER ->       "maintenancelocker.wav";
+            case METALSAWUNSHEATHE ->       "metalsawunsheathe.wav";
+            case MONSTERBREATH ->           "monsterbreath.wav";
+            case MONSTERSTEP ->             "monsterstep.wav";
+            case NOTEPAPER ->               "notepaper.wav";
+            case SCARYROOM ->               "scaryroom.wav";
+            case STORAGECRATE ->            "storagecrate.wav";
+            case TAKEKEY ->                 "takekey.wav";
         };
     }
 

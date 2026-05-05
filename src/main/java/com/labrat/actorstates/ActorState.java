@@ -15,6 +15,6 @@ public interface ActorState {
     void drop(Item item);
     void examine(Item item);
     void inventory(String arg);
-    void hide();
+    void hide(Item item);
     void unhide();
 }

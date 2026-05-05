@@ -61,30 +61,6 @@ public class CommandAlias {
         }
     }
 
-    // Iterate alias through roomItems to find matching item name
-    private String aliasRoomItem(String[] words) {
-        String itemName = argsToString(words);
-
-        for (Item item : roomItems) {
-            if (item.checkAlias(itemName)) {
-                return item.getInternalName();
-            }
-        }
-        return words[1];
-    }
-
-    // Iterate alias through inventoryItems to find matching item name
-    private String aliasInvItem(String[] words) {
-        String itemName = argsToString(words);
-
-        for (Item item : inventoryItems) {
-            if (item.checkAlias(itemName)) {
-                return item.getInternalName();
-            }
-        }
-        return words[1];
-    }
-
     private String aliasBothItem(String[] words) {
         String itemName = argsToString(words);
 
@@ -146,13 +122,14 @@ public class CommandAlias {
                     words[1] = aliasDir(words[1]);
                 }
                 if (cmd == CommandType.INVENTORY) { words[1] = aliasInvCmd(words); }
-                if (cmd == CommandType.USE || cmd == CommandType.READ || cmd == CommandType.EXAMINE) {
+                if (cmd == CommandType.USE ||
+                    cmd == CommandType.READ ||
+                    cmd == CommandType.EXAMINE ||
+                    cmd == CommandType.TAKE ||
+                    cmd == CommandType.DROP ||
+                    cmd == CommandType.HIDE) {
                     words = new String[]{words[0],aliasBothItem(words)};
                 }
-                if (cmd == CommandType.TAKE) {
-                    words = new String[]{words[0],aliasBothItem(words)};
-                }
-                if (cmd == CommandType.DROP) { words = new String[]{words[0],aliasBothItem(words)}; }
             }
         }
 

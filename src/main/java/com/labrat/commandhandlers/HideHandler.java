@@ -1,6 +1,7 @@
 package com.labrat.commandhandlers;
 
 import com.labrat.actors.Actor;
+import com.labrat.audio.SoundEffect;
 import com.labrat.commands.Command;
 import com.labrat.commands.CommandType;
 import com.labrat.items.Item;
@@ -8,19 +9,15 @@ import com.labrat.items.ItemType;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
 
-public class HideHandler extends BaseHandler {
+public class HideHandler extends BaseItemHandler {
     HideHandler() {
-        super(CommandType.HIDE);
+        super(CommandType.HIDE, ItemType.HIDEABLE);
     }
 
     @Override
     protected boolean hasValidArgs(Command command) {
-        String itemName = argsToString(command.args());
-        Actor actor = command.actor();
-
-        Item item = actor.getCurrentRoom().getItem(itemName);
-
-        return item != null && item.isItemType(ItemType.HIDEABLE);
+        // Item in Room that is Hideable
+        return itemInRoom(command);
     }
 
     @Override
@@ -35,7 +32,10 @@ public class HideHandler extends BaseHandler {
             } else if (hasValidArgs(command)) {
                 command.execute();
             } else {
-                actor.setResultText(new ResultText("You can't hide there."));
+                actor.setResultText(new ResultText(
+                        "You can't hide there.",
+                        PrinterColor.RED,
+                        SoundEffect.COMMANDERROR));
             }
 
         } else {

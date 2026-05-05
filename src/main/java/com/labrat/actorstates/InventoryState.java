@@ -6,18 +6,14 @@ import com.labrat.items.Item;
 import com.labrat.items.ItemType;
 import com.labrat.items.KeyItem;
 import com.labrat.rooms.Direction;
-import com.labrat.rooms.Exit;
 import com.labrat.rooms.Room;
 import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultText;
 
 import static com.labrat.commands.CommandType.*;
 import static com.labrat.commands.CommandType.HELP;
-import static com.labrat.commands.CommandType.HIDE;
-import static com.labrat.commands.CommandType.INVENTORY;
 import static com.labrat.commands.CommandType.QUIT;
 import static com.labrat.commands.CommandType.READ;
-import static com.labrat.commands.CommandType.TAKE;
 
 public class InventoryState extends BaseState {
     public InventoryState(Actor actor) {
@@ -118,7 +114,7 @@ public class InventoryState extends BaseState {
     }
 
     @Override
-    public void hide() {
+    public void hide(Item item) {
         actor.setResultText(new ResultText(
                 "You cannot hide while in the inventory.\nType \"inventory close\" to close the inventory.",
                 PrinterColor.RED

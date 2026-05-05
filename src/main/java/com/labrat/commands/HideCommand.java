@@ -1,6 +1,8 @@
 package com.labrat.commands;
 
 import com.labrat.actors.Actor;
+import com.labrat.items.Item;
+import com.labrat.rooms.Room;
 
 public class HideCommand extends BaseCommand {
     public HideCommand(Actor actor, String[] args) {
@@ -9,6 +11,10 @@ public class HideCommand extends BaseCommand {
 
     @Override
     public void execute() {
-        super.actor.getActorState().hide();
+        // Get item from current room
+        Room room = super.actor.getCurrentRoom();
+        Item item = room.getItem(super.argsToString(super.args));
+
+        super.actor.getActorState().hide(item);
     }
 }

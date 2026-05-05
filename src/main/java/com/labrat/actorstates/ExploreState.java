@@ -8,7 +8,9 @@ import com.labrat.items.ItemType;
 import com.labrat.items.KeyItem;
 import com.labrat.rooms.Direction;
 import com.labrat.rooms.Room;
+import com.labrat.rooms.RoomTheme;
 import com.labrat.view.PrinterColor;
+import com.labrat.view.ResultFormatter;
 import com.labrat.view.ResultText;
 
 import static com.labrat.commands.CommandType.MOVE;
@@ -58,13 +60,71 @@ public class ExploreState extends BaseState {
 
     @Override
     public void move(Direction direction) {
-        if (actor.getCurrentRoom().isOpenExit(direction)) {
-            actor.setCurrentRoom(actor.getCurrentRoom().getRoomInDir(direction));
+        // Get shared variables
+        Room currentRoom = actor.getCurrentRoom();
+        SoundEffect sfx = SoundEffect.MUTE;
+
+        // Auto save when leaving room
+        if (currentRoom.isSaveRoom()) {
+            System.out.println("Set current room as save spot.");
+            actor.setSaveRoom(currentRoom);
+        }
+
+        // Get sound effect
+        switch (currentRoom.getTheme()) {
+            case LAB ->             sfx = SoundEffect.HUMANFOOTSTEPSLAB;
+            case GREENHOUSE ->      sfx = SoundEffect.HUMANFOOTSTEPSFOREST;
+            case SEWER ->           sfx = SoundEffect.HUMANFOOTSTEPSGRAVEL;
+        }
+
+        // Check if direction has an open exit
+        if (currentRoom.isOpenExit(direction)) {
+            actor.setCurrentRoom(currentRoom.getRoomInDir(direction));
             actor.setResultText(
                     new ResultText("You moved " + direction.toString().toLowerCase() + ".",
                     PrinterColor.YELLOW,
-                    SoundEffect.HUMANFOOTSTEPS)
+                    sfx)
             );
+
+            // Check if actor is in greenhouse
+            if (actor.getCurrentRoom().getTheme() == RoomTheme.GREENHOUSE) {
+                actor.decrementMonsterTimer();
+                int monsterTimer = actor.getMonsterTimer();
+
+                if (monsterTimer == 1) {
+                    actor.setMonsterProgressResult(new ResultText(
+                            "You can hear the heavy breathing of something nearby!",
+                            PrinterColor.RED,
+                            SoundEffect.MONSTERBREATH)
+                    );
+                }
+                else if (monsterTimer > 1 && monsterTimer <= 3) {
+                    actor.setMonsterProgressResult(new ResultText(
+                            "The footsteps grow louder...",
+                            PrinterColor.RED,
+                            SoundEffect.MONSTERSTEP)
+                    );
+                }
+                else if (monsterTimer > 3 && monsterTimer <= 5) {
+                    actor.setMonsterProgressResult(new ResultText(
+                            "You hear distant footfalls of a large beast.",
+                            PrinterColor.RED,
+                            SoundEffect.MONSTERSTEP)
+                    );
+                }
+
+                // Check if lowered monster timer to 0
+                if (actor.getMonsterTimer() <= 0) {
+                    // GAME OVER
+                    actor.setResultText(new ResultText(
+                            "The monster is upon you! You try your best to defend yourself against the mass of flesh and bone, but it overwhelms you!\nThe monster uses its boney appendage to impale you in the chest!\nYour consciousness fades to black.\nHowever, instead of passing on, you wake up in a familiar place...",
+                            PrinterColor.RED,
+                            SoundEffect.GAMEOVER
+                    ));
+                    actor.setCurrentRoom(actor.getSaveRoom());
+                    actor.resetMonsterTimer();
+                }
+            }
         }
         else {
             actor.setResultText(
@@ -90,11 +150,16 @@ public class ExploreState extends BaseState {
 
         if (item instanceof KeyItem key) {
             boolean keyUsed = currentRoom.tryUnlockWith(key);
-            if (item.isOneUse()) {
-                actor.getInventory().removeItem(item.getInternalName());
-            }
-            if (!keyUsed){
-                actor.setResultText(new ResultText("Key already used!"));
+            if (keyUsed) {
+                if (item.isOneUse()) {
+                    actor.getInventory().removeItem(item.getInternalName());
+                }
+            } else { // key not used
+                actor.setResultText(new ResultText(
+                        "Can't use that here.",
+                        PrinterColor.RED,
+                        SoundEffect.COMMANDERROR)
+                );
                 return;
             }
 
@@ -104,7 +169,7 @@ public class ExploreState extends BaseState {
 
     @Override
     public void read(Item item) {
-        actor.setResultText(new ResultText("Enter your inventory to read this item!"));
+        actor.setResultText(item.getResultText(ItemType.READABLE));
     }
 
     @Override
@@ -128,8 +193,14 @@ public class ExploreState extends BaseState {
     }
 
     @Override
-    public void hide() {
-        actor.setResultText(new ResultText("You are hiding!", PrinterColor.BLUE));
+    public void hide(Item item) {
+        actor.setResultText(item.getResultText(ItemType.HIDEABLE));
+
+        // Reset monster timer if within warning range
+        if (actor.getMonsterTimer() <= 5) {
+            actor.resetMonsterTimer();
+        }
+
         actor.changeState(new HideState(actor));
     }
 

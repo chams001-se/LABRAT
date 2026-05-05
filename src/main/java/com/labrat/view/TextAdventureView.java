@@ -6,6 +6,7 @@ import com.labrat.audio.AudioManager;
 import com.labrat.items.Item;
 import com.labrat.items.ItemType;
 import com.labrat.rooms.Room;
+import com.labrat.rooms.RoomTheme;
 
 public class TextAdventureView {
     private static Room currentRoom;
@@ -50,6 +51,12 @@ public class TextAdventureView {
         // Print inventory if the inventory is open
         if (mainCharacter.getActorStateType() == ActorStateType.INVENTORY) {
             ResultFormatter.getInstance().print(new ResultText(mainCharacter.getInventory().toString(), PrinterColor.GREEN));
+        }
+
+        // Print monster warning while in greenhouse
+        if (currentRoom.getTheme() == RoomTheme.GREENHOUSE && mainCharacter.getMonsterProgressResult() != null) {
+            ResultFormatter.getInstance().print(mainCharacter.getMonsterProgressResult());
+            AudioManager.getInstance().play(mainCharacter.getMonsterProgressResult().soundEffect());
         }
 
         // Arrow for user input

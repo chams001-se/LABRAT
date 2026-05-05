@@ -31,6 +31,15 @@ public class Room {
     @JsonProperty("name")
     private String name;
 
+    @JsonProperty("saveRoom")
+    private boolean saveRoom;
+
+    @JsonProperty("theme")
+    private String theme;
+
+    @JsonProperty("items")
+    private List<String> items;
+
     @JsonProperty("firstEntryDescription")
     private ResultTextImport firstEntryDescription;
 
@@ -39,9 +48,6 @@ public class Room {
 
     @JsonProperty("exits")
     private Map<String, Exit> exits;
-
-    @JsonProperty("items")
-    private List<String> items;
 
     // Directional Methods
     private boolean isValidDirection(String direction) {
@@ -52,7 +58,6 @@ public class Room {
         String dir = direction.toString();
         if (isValidDirection(dir)) {
             Exit exit = exits.get(dir);
-            System.out.println("isOpenExit: " + !exit.isLocked());
             return !exit.isLocked();
         }
         else { return false; }
@@ -87,11 +92,19 @@ public class Room {
     }
 
     public ResultText getRoomText() {
-        if (!visited){
+        if (!visited) {
             visited = true;
             if (firstEntryDescription != null) return firstEntryDescription.newResultText();
         }
         return description.newResultText();
+    }
+
+    public RoomTheme getTheme() {
+        return RoomTheme.fromString(theme);
+    }
+
+    public boolean isSaveRoom() {
+        return saveRoom;
     }
 
     // Item Methods

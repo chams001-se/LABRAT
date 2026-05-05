@@ -23,12 +23,12 @@ public class UseHandler extends BaseItemHandler {
         String itemName = argsToString(command.args());
 
         // Check inventory first
-        Item item = actor.getInventory().getItem(itemName);
-        if (item != null && item.isItemType(ItemType.USABLE)) return true;
+        if (super.itemInInventory(command) &&
+                (actor.getActorState().getActorStateType() == ActorStateType.INVENTORY))
+        { return true; }
 
         // Fall back to room - fixed items are usable in place
-        item = actor.getCurrentRoom().getItem(itemName);
-        return item != null && item.isItemType(ItemType.USABLE) && !item.isItemType(ItemType.TAKEABLE);
+        return super.itemInRoom(command) && !actor.getCurrentRoom().getItem(itemName).isItemType(ItemType.TAKEABLE);
     }
 
     @Override

@@ -46,7 +46,7 @@ public class HideState extends BaseState {
     @Override
     public void unhide() {
         actor.setResultText(new ResultText(
-                "You step out from hiding.",
+                "You stop hiding.",
                 PrinterColor.BLUE
         ));
         actor.changeState(new ExploreState(actor));
@@ -110,7 +110,7 @@ public class HideState extends BaseState {
     }
 
     @Override
-    public void hide() {
+    public void hide(Item item) {
         actor.setResultText(new ResultText(
                 "You are already hiding.\nType \"unhide\" to leave hiding.",
                 PrinterColor.RED

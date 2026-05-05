@@ -8,16 +8,32 @@ public enum SoundEffect {
     // Null Sound Object
     MUTE,
 
+    // Game State
+    GAMEOVER,
+    MONSTERSTEP,
+    MONSTERBREATH,
+
     // Command Feedback
     BEEP,
     COMMANDERROR,
-    HUMANFOOTSTEPS,
+    HUMANFOOTSTEPSLAB,
+    HUMANFOOTSTEPSFOREST,
+    HUMANFOOTSTEPSGRAVEL,
 
     // Item Feedback
+    FUSEHISS,
+    GENERATORINSTALL,
     KEYCARD,
+    MAINTENANCELOCKER,
+    METALSAWUNSHEATHE,
     NOTEPAPER,
+    STORAGECRATE,
+    TAKEKEY,
 
     // Room Feedback
+    CLAPPING,
+    CRACKLE,
+    ELECTRICITY,
     SCARYROOM;
 
     // Static map index for SoundEffect enum

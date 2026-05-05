@@ -1,17 +1,37 @@
 package com.labrat.rooms;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Exit {
     // Read input from RoomProperties.json
+    @JsonProperty("target")
     private String target;
+
+    @JsonProperty("locked")
     private boolean locked;
-    private String keyRequired;
+
+    @JsonProperty("keyRequired")
+    private List<String> keyRequired;
+
+    @JsonProperty("numLocks")
+    private int numLocks;
+
+    private int currentLocks = 0;
 
     public void unlock() {
-        locked = false;
-        System.out.println(this);
+        // Increment current amount of locks opened
+        currentLocks++;
+        System.out.println("currentLocks " + currentLocks);
+        System.out.println("numLocks " + numLocks);
+
+        // Check if number of keys used exceeds number of locks
+        if (currentLocks >= numLocks) {
+            locked = false;
+        }
     }
 
     public String getTarget() {
@@ -22,8 +42,12 @@ public class Exit {
         return locked;
     }
 
-    public String getKeyRequired() {
+    public List<String> getKeyRequired() {
         return keyRequired;
+    }
+
+    public boolean needsKey(String str) {
+        return keyRequired.contains(str);
     }
 
     @Override

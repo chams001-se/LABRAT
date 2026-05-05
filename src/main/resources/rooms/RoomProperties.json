@@ -2,13 +2,16 @@
   "rooms": {
     "startroom": {
       "name": "Start Room",
+      "saveRoom": true,
+      "theme": "lab",
+      "items": ["researchnote"],
       "firstEntryDescription": {
-        "text": "You jolt upwards.\nYou disconnect the ECG cables attached to your chest as you get a grasp of your surroundings. You find yourself on the operating table of some non-descript lab. \nIncision tools are scattered about as if the ones operating on you left in a hurry.\nAs you were getting accustomed to your surroundings, you felt as if something was moving underneath your skin. Panic surges inside you as you look around to find a way to escape.\nThe sealed door across the room refuses to open, leaving the shattered observation window to the north as the only usable way forward.",
+        "text": "You jolt upwards.\nYou disconnect the ECG cables attached to your chest as you get a grasp of your surroundings.\nYou find yourself on the operating table of some non-descript lab.\nIncision tools are scattered about as if the ones operating on you left in a hurry.\nAs you were getting accustomed to your surroundings, you felt as if something was moving underneath your skin.\nPanic surges inside you as you look around to find a way to escape.\nThe sealed door across the room refuses to open, leaving the shattered observation window to the north as the only way forward.",
         "color": "light_green",
         "sound": "mute"
       },
       "description": {
-        "text": "You stand inside the operating room.\n Medical supplies and tools remain scattered throughout the room, the table you awoke from sits beneath the flickering fluorescent lights \nThe broken observation window is to the north.",
+        "text": "You stand inside the operating room.\nMedical supplies and tools remain scattered throughout the room, the table you awoke from sits beneath the flickering fluorescent lights.\nThe broken observation window is to the north.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -17,18 +20,19 @@
           "target": "observationhallway",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "observationhallway": {
       "name": "Observation Hallway",
+      "theme": "lab",
+      "items": ["bloodscribblenote"],
       "firstEntryDescription": {
-        "text": "Shattered glass crunches beneath your feet as you walk into a dim observation hallway. \nFlickering lights cast brief flashes across reinforced windows along the walls, nearly all of them damaged or smeared with what appears to be dried blood. \nMedical carts and documents are scattered everywhere, suggesting that whoever was here left in absolute panic. \nA doorway is to the east, while the operating room remains to the south. The research office is to the north",
+        "text": "Shattered glass crunches beneath your feet as you walk into a dim observation hallway. \nFlickering lights cast brief flashes across reinforced windows along the walls, nearly all of them damaged or smeared with what appears to be dried blood. \nMedical carts and documents are scattered everywhere, suggesting that whoever was here left in absolute panic. \nA doorway is to the east, while the operating room remains to the south. The hallway continues north.",
         "color": "light_green",
         "sound": "mute"
       },
       "description": {
-        "text": "You stand in the middle of the dimly lit observation hallway. Shattered glass litters the floor, and damaged reinforced windows line the walls. \nThe operating room is to the south, a doorway leads east. To the north lies the research office ",
+        "text": "You stand in the middle of the dimly lit observation hallway. Shattered glass litters the floor, and damaged reinforced windows line the walls. \nThe operating room is to the south, and a doorway leads east. The hallway continues further north.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -45,11 +49,12 @@
           "target": "researchoffice",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "medicalsupplycloset": {
       "name": "Medical Supply Closet",
+      "theme": "lab",
+      "items": ["redkeycard"],
       "firstEntryDescription": {
         "text": "You enter a very cramped supply closet. It’s filled with shelves that have been knocked over and medical containers that are broken across the floor. \nShattered vials and empty syringe cases lie on the floor, while cabinet doors hang open as though any remaining supplies were scavenged quickly. \nA distinctly foul smell of chemicals lingers in the area. \nThe hallway is to the west.",
         "color": "light_green",
@@ -65,13 +70,14 @@
           "target": "observationhallway",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "researchoffice": {
       "name": "Research Office",
+      "theme": "lab",
+      "items": ["personalletter"],
       "firstEntryDescription": {
-        "text": "This room also seems to have been abandoned. \nNone of the computer monitors appear to have power going to them, and documents looks as if they have flown around the room at some point. \nThere are dozens strewn around the desks and the floor, even some chairs and tables have been knocked over, \nA faint trail of blood leads toward a figure slumped in the corner. \nThe observation hallway is to the south and a security hall extends to the east.",
+        "text": "This room also seems to have been abandoned. \nNone of the computer monitors appear to have power going to them, and documents are scattered about in disarray. \nThe observation hallway is to the south and a security hall extends to the east.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -89,11 +95,12 @@
           "target": "securityhall",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "securityhall": {
       "name": "Security Hall",
+      "theme": "lab",
+      "items": ["securitylockdownmemo"],
       "firstEntryDescription": {
         "text": "Red pulsing lights faintly emanate from the ceiling through this narrow corridor. \nLarge heavy reinforced doors line the walls, most are barricaded or sealed shut. \nThere is a security terminal nearby that is sparking occasionally. \nThe research office is to the west, the maintenance corridor continues south, and an emergency maintenance room lies north.",
         "color": "light_green",
@@ -117,20 +124,21 @@
           "target": "emergencymaintenanceroom",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "maintenancecorridor": {
       "name": "Maintenance Corridor",
+      "theme": "lab",
+      "items": [],
       "firstEntryDescription": {
         "text": "There are electrical wires exposed behind damaged panels and along the ceiling. Sparks from some of the wires shower onto the cold tile flooring.\nEquipment locker doors hang partially open, and scorch marks stain the walls, especially near damaged fuse panels.\nFaint humming sounds pollute the air.\nThe security hall is north, while the breaker room lies east.",
         "color": "light_green",
-        "sound": "mute"
+        "sound": "electricity"
       },
       "description": {
         "text": "You are in the maintenance corridor. Exposed wires spark overhead, and damaged panels line the walls.\nThe security hall is north, and the breaker room lies east.",
         "color": "light_green",
-        "sound": "mute"
+        "sound": "electricity"
       },
       "exits": {
         "north": {
@@ -141,15 +149,16 @@
           "target": "powercontrolroom",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "emergencymaintenanceroom": {
       "name": "Emergency Maintenance Room",
+      "theme": "lab",
+      "items": ["fuse", "warningnote"],
       "firstEntryDescription": {
-        "text": "You step into a maintenance room. It is filled with tools, cut up wires, and electrical panels that have been ruptured. \nA single identifiable corpse is here. \nA deceased scientist is huddled in the corner of the room with their back against the wall. His lifeless hand still clutching tightly onto an electrical fuse. \nBy the looks of the severely damaged door leading to this room, it seems he was attempting to desperately contain something… \nThe security hall is to the south.",
+        "text": "You step into a maintenance room. It is filled with tools, cut up wires, and electrical panels that have been ruptured.\nA deceased researcher is huddled in the corner of the room with his back against the wall.\nBy the looks of the severely damaged door leading to this room, it seems he was attempting to desperately contain something… \nThe security hall is to the south.",
         "color": "light_green",
-        "sound": "mute"
+        "sound": "scaryroom"
       },
       "description": {
         "text": "You are in the emergency maintenance room. Ruptured electrical panels, cut wires, and scattered tools surround the corpse in the corner.\nThe security hall is south.",
@@ -161,18 +170,19 @@
           "target": "securityhall",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "powercontrolroom": {
       "name": "Power Control Room",
+      "theme": "lab",
+      "items": ["maintenancelog"],
       "firstEntryDescription": {
-        "text": "There is a large breaker control system that takes up most of the room.\nIt looks like a fuse is missing from the center panel. Emergency lights flicker sporadically above, and warning labels cover the surrounding switches and buttons.\nWithout power, the security systems remain disabled, as they have likely been for some time.\nThe maintenance corridor is to the west, and the sealed security checkpoint is to the north.",
+        "text": "There is a large breaker control system that takes up most of the room.\nEmergency lights flicker sporadically above, and warning labels cover the surrounding switches and buttons.\nIt looks like a fuse is missing from the center panel.\nWithout power, the security checkpoint is sealed shut.\nThe maintenance corridor is to the west, and the sealed security checkpoint is to the north.",
         "color": "light_green",
         "sound": "mute"
       },
       "description": {
-        "text": "You are in the power control room. A large breaker control system dominates the room, with one fuse missing from the center panel.\nThe maintenance corridor is west, and the sealed security checkpoint is north.",
+        "text": "You are in the power control room. A large breaker control system dominates the room.\nThe maintenance corridor is west, and the sealed security checkpoint is north.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -184,20 +194,22 @@
         "north": {
           "target": "securitycheckpoint",
           "locked": true,
-          "keyRequired": "fuse"
+          "keyRequired": ["fuse"],
+          "numLocks": 1
         }
-      },
-      "items": []
+      }
     },
     "securitycheckpoint": {
       "name": "Security Clearance Checkpoint",
+      "theme": "lab",
+      "items": [],
       "firstEntryDescription": {
-        "text": "The hum of the restored power system can be heard faintly as you enter the security checkpoint.\nA large reinforced door blocks the path forward. It appears to be a powered door that requires some sort of authorization as well.\nOvergrown vegetation is visible beyond the large glass window dominating the next sector.\nThe power control room is to the south, and the greenhouse access door is to the north.",
+        "text": "The hum of the restored power system can be heard faintly as you enter the security checkpoint.\nA large, red reinforced door blocks the path forward. To the right of the massive door, there is a keycard reader.\nOvergrown vegetation is visible beyond the large glass window dominating the next sector.\nThe power control room is to the south, and the greenhouse access door is to the north.",
         "color": "light_green",
         "sound": "mute"
       },
       "description": {
-        "text": "You are in the security clearance checkpoint. The restored power system hums through the walls, and a reinforced door blocks the way forward.\nThe power control room is south, and the greenhouse access door is north.",
+        "text": "You are in the security clearance checkpoint. The restored power system hums through the walls.\nThere is a red, reinforced door with a keycard reader to the north.\nThe power control room is south, and the greenhouse access door is north.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -209,13 +221,16 @@
         "north": {
           "target": "greenhouseentrance",
           "locked": true,
-          "keyRequired": "redkeycard"
+          "keyRequired": ["redkeycard"],
+          "numLocks": 1
         }
-      },
-      "items": []
+      }
     },
     "greenhouseentrance": {
       "name": "Greenhouse Entrance",
+      "saveRoom": true,
+      "theme": "lab",
+      "items": [],
       "firstEntryDescription": {
         "text": "You move carefully through the security door into a previously tame botanical research sector.\nDistinctly warm and humid air immediately clings to your skin.\nShattered glass walls reflect the dim emergency lighting onto the twisted overgrowth that dominates the room.\nAlthough this place looks disturbing, it feels safe.\nFor now.\nA reinforced door to the south leads back to the laboratory sector, and an overgrown corridor continues north.",
         "color": "light_green",
@@ -235,11 +250,12 @@
           "target": "greenhouseaccesshall",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "greenhouseaccesshall": {
       "name": "Greenhouse Access Hall",
+      "theme": "lab",
+      "items": [],
       "firstEntryDescription": {
         "text": "You traverse cautiously through a maintenance corridor. Vegetation and roots have infiltrated through the cracked floor panels.\nBroken irrigation pipes slowly leak murky water from the ceiling.\nDamaged and moldy posters and pegboards barely hang from the walls, surviving what looks like years of neglect and decay.\nThe greenhouse entrance is to the south, and the deeper expanse of the sector lies to the east.",
         "color": "light_green",
@@ -259,11 +275,12 @@
           "target": "overgrownresearchwing",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "overgrownresearchwing": {
       "name": "Overgrown Research Wing",
+      "theme": "greenhouse",
+      "items": ["maintenancelocker"],
       "firstEntryDescription": {
         "text": "This area seems like it was previously a testing site.\nA large mass of vegetation has overtaken the area entirely.\nThe fungal growth emits a faint green mist.\nTwo paths are present: one to the west and one to the north.",
         "color": "light_green",
@@ -283,11 +300,12 @@
           "target": "irrigationfoyer",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "irrigationfoyer": {
       "name": "Irrigation Foyer",
+      "theme": "greenhouse",
+      "items": ["hydraulicvalve", "storagecrate"],
       "firstEntryDescription": {
         "text": "This room has been destroyed by flooding.\nPuddles of still water fester along with the overgrowth that plagues the facility.\nThe smells emitted from the surroundings are palpable.\nNumerous storage crates are scattered around, and maintenance lockers line parts of the walls, potentially useful for hiding.\nThe research wing is to the south, and the hedge network lies east.",
         "color": "light_green",
@@ -307,11 +325,12 @@
           "target": "hedgemazeentrance",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "hedgemazeentrance": {
       "name": "Hedge Maze Entrance",
+      "theme": "greenhouse",
+      "items": [],
       "firstEntryDescription": {
         "text": "Imposing walls of mutated hedges engulf the path ahead.\nThe overgrowth is dense to the point that it is difficult to see more than a few feet ahead.\nAn odd rustling sound can be heard in the distance.\nThe irrigation foyer is to the west, a narrow bend continues north, and a decaying greenhouse shed lies to the east.",
         "color": "light_green",
@@ -335,18 +354,19 @@
           "target": "greenhouseshed",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "greenhouseshed": {
       "name": "Greenhouse Shed",
+      "theme": "greenhouse",
+      "items": ["powercoupler", "gardeningshed"],
       "firstEntryDescription": {
-        "text": "Among the overgrowth sits a decaying maintenance shed.\nIt looks capable of concealing you for a short while despite the damage and age it has endured.\nThe atmosphere within is dense with the smell of rust and dampness.\nFor the time being, this could be safe to hide in.\nThe hedge maze entrance is to the west.",
+        "text": "Among the overgrowth sits a decaying gardening shed.\nIt looks capable of concealing you for a short while despite the damage and age it has endured.\nThe atmosphere within is dense with the smell of rust and dampness.\nThe hedge maze entrance is to the west.",
         "color": "light_green",
         "sound": "mute"
       },
       "description": {
-        "text": "You are inside the decaying greenhouse shed. Rusted gardening tools and damp wooden shelves crowd the cramped space.\nThe hedge maze entrance is west.",
+        "text": "You are by the decaying gardening shed. Rusted gardening tools and damp wooden shelves crowd the cramped space.\nThe hedge maze entrance is west.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -355,11 +375,12 @@
           "target": "hedgemazeentrance",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "hedgemazebend": {
       "name": "Hedge Maze Bend",
+      "theme": "greenhouse",
+      "items": [],
       "firstEntryDescription": {
         "text": "The hedge walls narrow a lot here, forcing you deeper into the botanical sector.\nLeaves stick and press against your shoulders.\nSomewhere close, something scrapes against the floor before falling completely silent.\nThe maze entrance is south, and the path continues east.",
         "color": "light_green",
@@ -379,11 +400,12 @@
           "target": "hedgemazedepths",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "hedgemazedepths": {
       "name": "Hedge Maze Depths",
+      "theme": "greenhouse",
+      "items": ["circuitregulator"],
       "firstEntryDescription": {
         "text": "The maze expands into a pocket of overgrowth where the emergency lights barely reach at all.\nVines coil around cracked support beams, and the air feels warmer.\nA rustling sound circles behind the vegetation.\nThe path leads west, while a damaged generator station lies to the north.",
         "color": "light_green",
@@ -403,11 +425,12 @@
           "target": "generatorrepairstation",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "generatorrepairstation": {
       "name": "Generator Repair Station",
+      "theme": "greenhouse",
+      "items": ["generator"],
       "firstEntryDescription": {
         "text": "You find a damaged generator snared with roots. Thick vines twist through the exposed machinery.\nMany of the components are completely decayed by rust or missing entirely.\nThe control dashboard and emergency fallback systems are void of power, leaving the security exits out of commission.\nAlthough the generator has seen better days, it appears barely salvageable.\nIt looks like attempting a repair is the best option to get past this sector's exit.\nThe hedge maze lies south, and an access hatch leads north.",
         "color": "light_green",
@@ -426,15 +449,18 @@
         "north": {
           "target": "sewerentrance",
           "locked": true,
-          "keyRequired": "generator"
+          "keyRequired": ["circuitregulator","hydraulicvalve","powercoupler"],
+          "numLocks": 3
         }
-      },
-      "items": []
+      }
     },
     "sewerentrance": {
       "name": "Sewer Entrance",
+      "theme": "sewer",
+      "saveRoom": true,
+      "items": [],
       "firstEntryDescription": {
-        "text": "You descend into a chamber that lies beneath the entire facility.\nThe atmosphere gradually shifts from humid to cold and damp. Concrete, metal pipes, and the stench of sewage replace the overgrown greenhouse behind you.\nThis area seems to be safe.\nFor now.\nA trapdoor is to the south and leads back to the greenhouse sector. What lies north is a dark sewer passage.",
+        "text": "You descend into a chamber that lies beneath the entire facility.\nThe atmosphere gradually shifts from humid to cold and damp. Concrete, metal pipes, and the stench of sewage replace the overgrown greenhouse behind you.\nThis area seems to be safe.\nA trapdoor is to the south and leads back to the greenhouse sector. What lies north is a dark sewer passage.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -452,11 +478,12 @@
           "target": "drainagepassageway",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "drainagepassageway": {
       "name": "Drainage Passageway",
+      "theme": "sewer",
+      "items": [],
       "firstEntryDescription": {
         "text": "You traverse the narrow drainage passageway as gloomy water gently flows along the ground.\nLarge pipes run across the surrounding walls and ceiling, occasionally releasing sudden hisses of steam.\nThe sound of moving water echoes into the endless darkness ahead.\nThe sewer entrance is south, while tunnels continue north and east.",
         "color": "light_green",
@@ -480,18 +507,19 @@
           "target": "collapsedcorridor",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "maintenancecrossing": {
       "name": "Maintenance Crossing",
+      "theme": "sewer",
+      "items": [],
       "firstEntryDescription": {
-        "text": "This junction is especially cramped.\nThe concrete walls are cracked and crowded with open valves and pipes leaking rust-colored liquid.\nA lower section is submerged in muddy water, with abandoned tools and replacement pipes barely visible beneath the surface.\nA locked utility gate blocks one path. Additional tunnels expand west and south.",
+        "text": "This junction is especially cramped.\nThe concrete walls are cracked and crowded with open valves and pipes leaking rust-colored liquid.\nA lower section is submerged in muddy water, with abandoned tools and replacement pipes barely visible beneath the surface.\nA locked utility gate blocks the east. Additional tunnels expand west and south.",
         "color": "light_green",
         "sound": "mute"
       },
       "description": {
-        "text": "You are in the maintenance crossing. Cracked concrete, and muddy water make the junction difficult to navigate.\nThe drainage passageway is south, a flooded pipeway lies west, and a locked utility gate blocks the east path.",
+        "text": "You are in the maintenance crossing. Cracked concrete, and muddy water make the junction difficult to navigate.\nThe drainage passageway is south, a flooded pipeway lies west, and a utility gate with a lock is to the east path.",
         "color": "light_green",
         "sound": "mute"
       },
@@ -507,13 +535,15 @@
         "east": {
           "target": "toolstorageroom",
           "locked": true,
-          "keyRequired": "utilitykey"
+          "keyRequired": ["utilitykey"],
+          "numLocks": 1
         }
-      },
-      "items": []
+      }
     },
     "floodedpipeway": {
       "name": "Flooded Pipeway",
+      "theme": "sewer",
+      "items": [],
       "firstEntryDescription": {
         "text": "You step into ankle-deep contaminated water that fills this decayed tunnel.\nThe ceiling creaks under the weight of the facility above, and concrete beams groan somewhere in the darkness.\nLarge iron bars completely block one potential exit path.\nYou may need a special tool to progress.\nThe maintenance crossing is east.",
         "color": "light_green",
@@ -532,13 +562,15 @@
         "north": {
           "target": "endroom",
           "locked": true,
-          "keyRequired": "metalsaw"
+          "keyRequired": ["metalsaw"],
+          "numLocks": 1
         }
-      },
-      "items": []
+      }
     },
     "collapsedcorridor": {
       "name": "Collapsed Corridor",
+      "theme": "sewer",
+      "items": ["utilitykey"],
       "firstEntryDescription": {
         "text": "Large chunks of eroded concrete and deformed metal fencing block access to portions of this corridor.\nA single emergency light weakly illuminates what little remains accessible.\nThe path ahead looks difficult to traverse, but something useful may have been left behind.\nThe drainage passageway is west.",
         "color": "light_green",
@@ -554,11 +586,12 @@
           "target": "drainagepassageway",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "toolstorageroom": {
       "name": "Tool Storage Room",
+      "theme": "sewer",
+      "items": ["metalsaw"],
       "firstEntryDescription": {
         "text": "This storage room is partially flooded but still mostly accessible.\nOld maintenance equipment, dented lockers, and rotting wooden shelves line the walls.\nMost of the tools are ruined, but something here may still be useful.\nThe maintenance crossing is west.",
         "color": "light_green",
@@ -574,23 +607,23 @@
           "target": "maintenancecrossing",
           "locked": false
         }
-      },
-      "items": []
+      }
     },
     "endroom": {
       "name": "Surface Exit",
+      "theme": "sewer",
+      "items": [],
       "firstEntryDescription": {
-        "text": "The iron bars finally give way.\nYou quickly force yourself through the narrow opening and climb toward the light above.\nFor the first time since waking up, the air is fresh.\nYou escaped.",
+        "text": "The iron bars finally give way.\nYou quickly force yourself through the narrow opening and climb toward the light above.\nFor the first time since waking up, the air is fresh.\nYou escaped!",
         "color": "light_magenta",
-        "sound": "mute"
+        "sound": "clapping"
       },
       "description": {
         "text": "You made it out of the facility.\nWhy on Earth would you ever want to go back?",
         "color": "light_magenta",
         "sound": "mute"
       },
-      "exits": {},
-      "items": []
+      "exits": {}
     }
   }
 }

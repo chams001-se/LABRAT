@@ -73,7 +73,7 @@ public class Item {
     // Link items at runtime
     public void setResultTextMap() {
         for (var entry : actions.entrySet()) {
-            System.out.println(entry.getKey());
+            //System.out.println(entry.getKey());
             ItemType itemType = ItemType.fromString(entry.getKey());
             ResultText resultText = entry.getValue().newResultText();
             resultTextMap.put(itemType, resultText);

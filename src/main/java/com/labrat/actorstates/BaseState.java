@@ -38,6 +38,6 @@ public abstract class BaseState implements ActorState {
             cmdlist.append(c.getCommandNotation()).append(": ").append(c.getCommandDescription()).append("\n");
         }
 
-        actor.setResultText(new ResultText(cmdlist.toString(), PrinterColor.DIM, SoundEffect.BEEP));
+        actor.setResultText(new ResultText(cmdlist.toString(), PrinterColor.DIM));
     }
 }

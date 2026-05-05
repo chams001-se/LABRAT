@@ -19,16 +19,23 @@ public interface Actor {
     // ResultText Management
     void setResultText(ResultText result);
     ResultText getResultText();
+    void setMonsterProgressResult(ResultText result);
+    ResultText getMonsterProgressResult();
 
     // Room Management
     void setCurrentRoom(Room selectedRoom);
     Room getCurrentRoom();
+    void setSaveRoom(Room selectedRoom);
+    Room getSaveRoom();
 
     // Inventory Management
     Inventory getInventory();
 
     // Hide Management
     boolean isHidden();
+    void resetMonsterTimer();
+    void decrementMonsterTimer();
+    int getMonsterTimer();
 
     // Exit Flag
     void quit();

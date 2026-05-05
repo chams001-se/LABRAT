@@ -1,32 +1,69 @@
 {
   "items" : {
-    "table": {
-      "name": "Table",
-      "aliases": ["under table"],
+    "researchnote": {
+      "name": "Research Note",
+      "aliases": ["note"],
       "actions": {
-        "hideable": {
-          "text" : ""
+        "visible": {
+          "text": "A neatly typed research note lays on a nearby surgical tray.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "readable": {
+          "text": "Subject: Operation on Test Subject NT-589-0006 \nMessage: Today marks the scheduled implantation of Subject NT-589-0006. Our previous attempts have proven as costly failures.\nUpper management however, insists our continued experimentation is vitally necessary. \nDr. K remains optimistic that this strain will finally be the one to provide us the unfathomable\nregenerative potential we have been searching for all these years. \nSubject currently remains stable under sedation. \nImportant Reminder: Increase immunosuppressant dosage IMMEDIATELY after implantation.",
+          "color": "document",
+          "sound": "notepaper"
+        },
+        "takeable": {
+          "text": "You take the research note in your hand, and put it in your inventory.",
+          "color": "yellow",
+          "sound": "notepaper"
+        },
+        "droppable": {
+          "text": "You drop the research note.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "The paper appears spotless and professionally formatted. \nThe laboratory’s insignia is displayed on the top left corner of the page.\nA handwritten note on the back reads: \"If this fails, I’m next.\"",
+          "color": "yellow",
+          "sound": "mute"
         }
       }
     },
-    "lever": {
-      "name" : "Lever",
-      "aliases" : [],
-      "actions" : {
+    "personalletter": {
+      "name": "Personal Letter",
+      "aliases": ["letter"],
+      "actions": {
         "visible": {
-          "text": "There is a lever in the center of the room.",
-          "color": "blue"
+          "text": "An envelope containing a folded handwritten letter sits inside an open desk drawer.",
+          "color": "light_magenta",
+          "sound": "mute"
         },
-        "usable":{
-          "text": "You flipped the lever!"
+        "readable": {
+          "text": "To my beloved David,\nI know your work keeps you away from us more often than either of us can stand, but I hope that you know how proud I am of you. \nAlice graduated elementary school today. She looked so beautiful walking across that little stage. \nEven though she tried to hide it, I just know how much she misses you. \nShe told me she understands that “Daddy is helping save people,” and I couldn’t help but cry. \nI know how important your research is. Not just to your company, but the entire world. \nYou’ve always wanted to make a difference, and your effort reminds me every day how lucky I am to have you. \nPlease come home safe when this project is finally over. \nAll my love, \nSophia",
+          "color": "document",
+          "sound": "notepaper"
+        },
+        "takeable": {
+          "text": "You take the personal letter in your hand, and put it in your inventory.",
+          "color": "yellow",
+          "sound": "notepaper"
+        },
+        "droppable": {
+          "text": "You drop the personal letter.",
+          "color": "yellow",
+          "sound": "mute"
         },
         "examinable": {
-          "text": "The lever itself nor the nearby surroundings provide no indication as to what the lever does"
+          "text": "The paper is neatly folded and delicately written in elaborate handwriting. \nThere are faint water stains on it. Tucked inside the envelope is a small sticky note \nIt reads only: \"I’m so sorry.\"",
+          "color": "yellow",
+          "sound": "mute"
         }
       }
     },
     "maintenancelog": {
-      "name": "maintenance log",
+      "name": "Maintenance Log",
       "aliases": ["log", "document"],
       "actions": {
         "visible": {
@@ -35,7 +72,7 @@
           "sound": "mute"
         },
         "readable": {
-          "text": "Maintenance Log: \nPrimary breaker instability detected. \nEmergency fuse was removed to prevent systems failure. \nReplacement fuse has been relocated to  ̷ȍ̷̸̸̷̷̧͔͉̙͖͎͈̗̖̺̟̘̤̱̓͊ͭͭͣ̉ͪ̓̐̆̔ͩ͒͜͠͞v̷̶̶̢̮̼͙̖̤̀ͮ͑ͪͦͦͮ͘͜ͅ_̸̷̢̠͖͋ͧͬ̆͝͡e̷̵̡̝͕̦͇̲̬̩͉̋́ͩͦ͑ͥ̾̾̎̐̓ͅ_ ̵̧̜͕̖͕̫͇̃̂̓ͤͭ̃ͤ_̵̷̢̦̗̜̠̳̼̪̳͎̅̉̋ͮ̏ͤͅổ̷̸̷̷͓̞͙̱̲̰̭̲̃̈́̎͛ͣͬ̑̃ͅͅf̷̦̙̀̐͛͂̄_̧̥͈̈́_̸̴̴̸̢͍͕̲͍̬̯̙̺̳̞̝̣̬͊̃̀̓͐̄̓̄ͧ̓͑̆̓ͣ̓ͨ̾ͦ͛̚͜͡͠͝͡͡ ̸̸̸̨̧̛̘͇̘̹̣̤͍̎̽̾̀ͫͯ̉͆̉̇͆̀ͨ͟͞.\nThe rest of the document is nowhere to be found",
+          "text": "Maintenance Log: \nPrimary breaker instability detected. \nEmergency fuse was removed to prevent systems failure. \nReplacement fuse has been relocated to  ̷ȍ̷̸̸̷̷̧͔͉̙͖͎͈̗̖̺̟̘̤̱̓͊ͭͭͣ̉ͪ̓̐̆̔ͩ͒͜͠͞v̷̶̢̮̼͙̖̤̀ͮ͑ͪͦͦͮ͘͜ͅ",
           "color": "document",
           "sound": "notepaper"
         },
@@ -45,71 +82,393 @@
           "sound": "notepaper"
         },
         "droppable": {
-          "text": "You drop the log.",
+          "text": "You drop the maintenance log.",
           "color": "yellow",
           "sound": "mute"
         }
       }
     },
-    "helloworldnote": {
-      "name": "Hello World",
-      "aliases": ["note", "hello world"],
+    "bloodscribblenote": {
+      "name": "Blood-Scribbled Message",
+      "aliases": ["message", "window", "windows"],
       "actions": {
         "visible": {
-          "text": "There is a note on the ground titled 'Hello World'.",
-          "color": "light_magenta",
+          "text": "There is a message smeared on one of the observation windows.",
+          "color": "dark_magenta",
           "sound": "mute"
         },
         "readable": {
-          "text": "You hold the 'Hello World' note in your hand.\n'The password is FOOBAR.'",
+          "text": "THECUREISALIEKEYCARDINOFFICEPOWERFIRSTDONTGETNEAR",
+          "color": "red",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "This message appears to have been smeared in an extreme panic. \nSome of the barely legible characters trail off, as though whoever wrote this was interrupted.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
+    "securitylockdownmemo": {
+      "name": "Security Lockdown Memo",
+      "aliases": ["memo", "terminal"],
+      "actions": {
+        "visible": {
+          "text": "An official memo is pinned onto a nearby terminal.",
+          "color": "dark_magenta",
+          "sound": "mute"
+        },
+        "readable": {
+          "text": "EMERGENCY NOTICE: \nFollowing containment failure in Sector V, all personnel are ordered to\ninitiate full lockdown procedures according to Code 776 of the official laboratory protocol.\nPower to security doors may still require manual rerouting. \n Under NO circumstances should unauthorized personnel access Greenhouse Sector Q. \nFailure to comply will result immediate termination.",
           "color": "note",
-          "sound": "notepaper"
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "The document is printed on officially stylized card stock.\nA large red “URGENT” stamp has been sloppily applied to the paper’s top cover.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
+    "redkeycard": {
+      "type": "key",
+      "name": "Red Keycard",
+      "aliases": ["red keycard", "keycard", "red key card"],
+      "actions": {
+        "visible": {
+          "text": "There is a red keycard amidst the clutter.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You put the red keycard into the reader. It fits perfectly!",
+          "color": "yellow",
+          "sound": "keycard"
         },
         "takeable": {
-          "text": "You take the 'Hello World' note in your hand, and put it in your inventory.",
+          "text": "You take the keycard.\nThis might be able to grant access to higher level restricted sectors.",
           "color": "yellow",
-          "sound": "notepaper"
+          "sound": "mute"
         },
         "droppable": {
-          "text": "You drop the 'Hello World' note.",
+          "text": "You drop the red keycard.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "This card appears to have seen better days.\nMost text has faded along with the emblem belonging to the laboratory.\nThe only legible text reads \"Sector V Senior Research Authorization\"",
           "color": "yellow",
           "sound": "mute"
         }
       },
       "isOneUse": false
     },
-    "redkeycard": {
-      "type": "key",
-      "name": "Red Keycard",
-      "aliases": ["red keycard", "keycard", "redkeycard", "red key card"],
+    "warningnote": {
+      "name": "Crumpled Paper Warning",
+      "aliases": ["paper", "warning", "crumpled"],
       "actions": {
         "visible": {
-          "text": "There is a keycard on the table.",
+          "text": "A severely crumpled piece of scrap paper lies next to the body.",
           "color": "light_magenta",
           "sound": "mute"
         },
-        "usable": {
-          "text": "You put the Red Keycard into the reader. It fits perfectly!",
-          "color": "yellow",
-          "sound": "keycard"
+        "readable": {
+          "text": "I’ve ran out of time. \nThey said the infection was controllable, how naive we all were to believe them yet again. \nIt’s spreading faster than any of us could have projected, despite countless simulations. \nIf you are reading this, thenfhhs̸̶̷̶t̴̴̵̴̸̴c̴h̶̶a̸̸̸n̴̵g̷̴̸̵e̴̴̵̶̴̴d̷.̷",
+          "color": "document",
+          "sound": "notepaper"
         },
         "takeable": {
-          "text": "You take the Red Keycard in your hand, and put it in your inventory.",
+          "text": "You take the crumpled paper in your hand, and put it in your inventory.",
           "color": "yellow",
-          "sound": "mute"
+          "sound": "notepaper"
         },
         "droppable": {
-          "text": "You drop the Red Keycard.",
+          "text": "You drop the crumpled paper.",
           "color": "yellow",
           "sound": "mute"
         },
         "examinable": {
-          "text": "It's paint is wearing off",
+          "text": "The paper is stained a distinct red color, probably handled by severely bloodied hands. \nThe handwriting becomes severely more frantic near towards the end.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
+    "fuse": {
+      "type": "key",
+      "name": "Fuse",
+      "actions": {
+        "visible": {
+          "text": "The deceased scientist grips an electrical fuse in his bloodied hand.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You insert the fuse into the breaker box.\nThe facility slowly comes back to life as the emergency power flows throughout the sector.\nSomewhere nearby, you hear ths metallic hiss of a heavy door unlocking.",
+          "color": "yellow",
+          "sound": "fusehiss"
+        },
+        "takeable": {
+          "text": "You carefully pry the fuse out of the corpse's stiff fingers.",
+          "color": "yellow",
+          "sound": "crackle"
+        },
+        "droppable": {
+          "text": "You drop the fuse.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "The fuse is scorched along its edges but still appears to be functional\nStreaks of dried blood cover large portions of its glass casing.",
           "color": "yellow",
           "sound": "mute"
         }
       },
       "isOneUse": true
+    },
+    "storagecrate": {
+      "name": "Storage Crate",
+      "aliases": ["crate", "storage"],
+      "actions": {
+        "visible": {
+          "text": "A storage crate is snug against the wall.",
+          "color": "blue",
+          "sound": "mute"
+        },
+        "hideable": {
+          "text": "You pry open the lid and squeeze inside the crate, doing your best to hold your breath.",
+          "color": "blue",
+          "sound": "storagecrate"
+        },
+        "examinable": {
+          "text": "It looks cramped, and dark. Just large enough to fit you inside.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
+    "maintenancelocker": {
+      "name": "Maintenance Locker",
+      "aliases": ["locker", "maintenance"],
+      "actions": {
+        "visible": {
+          "text": "A rusted maintenance locker stands with its door cracked open.",
+          "color": "blue",
+          "sound": "mute"
+        },
+        "hideable": {
+          "text": "You push yourself into the locker and hold the door shut. Doing your best to remain still.",
+          "color": "blue",
+          "sound": "maintenancelocker"
+        },
+        "examinable": {
+          "text": "The thin metal walls are cold to the touch, and the air is unbearably dusty and stale.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
+    "gardeningshed": {
+      "name": "Gardening Shed",
+      "aliases": ["shed", "gardening"],
+      "actions": {
+        "visible": {
+          "text": "An overgrown shed holding gardening equipment is positioned nearby.",
+          "color": "blue",
+          "sound": "mute"
+        },
+        "hideable": {
+          "text": "You take shelter quickly inside the shed.",
+          "color": "blue",
+          "sound": "maintenancelocker"
+        },
+        "examinable": {
+          "text": "The interior is crammed with gardening tools that have severely corroded.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
+    "generator": {
+      "name": "Generator",
+      "aliases": ["gen"],
+      "actions": {
+        "visible": {
+          "text": "A very damaged generator is almost entirely consumed by roots and foliage.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "The generator looks like it will need some special components to repair.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      }
+    },
+    "circuitregulator": {
+      "type": "key",
+      "name": "Circuit Regulator",
+      "aliases": ["circuit", "regulator", "reg"],
+      "actions": {
+        "visible": {
+          "text": "A slightly damaged circuit regulator is partly visible from beneath the damp foliage.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You repair the generator with the circuit regulator.",
+          "color": "yellow",
+          "sound": "generatorinstall"
+        },
+        "takeable": {
+          "text": "You reach for the regulator and wrestle it from the ground. \nIt appears vital for repairing a generator.",
+          "color": "yellow",
+          "sound": "crackle"
+        },
+        "droppable": {
+          "text": "You drop the circuit regulator.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "Erosion covers nearly its entire surface.\nThankfully the electrical contacts aren’t damaged too much.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      },
+      "isOneUse": true
+    },
+    "hydraulicvalve": {
+      "type": "key",
+      "name": "Hydraulic Valve",
+      "aliases": ["hydraulic", "valve"],
+      "actions": {
+        "visible": {
+          "text": "A rusted hydraulic valve lies near a damaged irrigation pipe.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You repair the generator with the hydraulic valve.",
+          "color": "yellow",
+          "sound": "generatorinstall"
+        },
+        "takeable": {
+          "text": "You grab the hydraulic valve.\nIt appears vital for repairing a generator.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "droppable": {
+          "text": "You drop the hydraulic valve.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "Its dense steel frame has been through a lot, but it can be used as a replacement valve for a generator.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      },
+      "isOneUse": true
+    },
+    "powercoupler": {
+      "type": "key",
+      "name": "Power Coupler",
+      "aliases": ["power", "coupler"],
+      "actions": {
+        "visible": {
+          "text": "A power coupler lays on the ground beside a destroyed maintenance panel.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You repair the generator with the power coupler.",
+          "color": "yellow",
+          "sound": "generatorinstall"
+        },
+        "takeable": {
+          "text": "You pick up the power coupler. \nThough its is worn and unstable, it looks necessary for restoring electrical currents.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "droppable": {
+          "text": "You drop the power coupler.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "Multiple wires dangle oddly from it.\nIt's still usable to replace a blown out coupler on a generator.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      },
+      "isOneUse": true
+    },
+    "utilitykey": {
+      "type": "key",
+      "name": "Utility Key",
+      "aliases": ["key", "utility"],
+      "actions": {
+        "visible": {
+          "text": "A utility key on the ground glimmers in the faint lighting.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You insert the utility key into the lock.\nThe metal grating door swings open.",
+          "color": "yellow",
+          "sound": "maintenancelocker"
+        },
+        "takeable": {
+          "text": "You pick up the maintenance key.",
+          "color": "yellow",
+          "sound": "takekey"
+        },
+        "droppable": {
+          "text": "You drop the maintenance key.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "The strap holding the maintenance key appears to be snapped, but the key itself appears functional.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      },
+      "isOneUse": false
+    },
+    "metalsaw": {
+      "type": "key",
+      "name": "Metal Saw",
+      "aliases": ["saw"],
+      "actions": {
+        "visible": {
+          "text": "A metal saw hangs on a tool rack.",
+          "color": "light_magenta",
+          "sound": "mute"
+        },
+        "usable": {
+          "text": "You saw through the metal bars. Your freedom is only a step away.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "takeable": {
+          "text": "You take the metal saw.",
+          "color": "yellow",
+          "sound": "metalsawunsheathe"
+        },
+        "droppable": {
+          "text": "You drop the metal saw.",
+          "color": "yellow",
+          "sound": "mute"
+        },
+        "examinable": {
+          "text": "The metal saw is durable enough to cut through steel.",
+          "color": "yellow",
+          "sound": "mute"
+        }
+      },
+      "isOneUse": false
     }
   }
 }
