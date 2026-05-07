@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="810566b2-5ced-4a11-97fd-c510395c8ea1" name="Changes" comment="implemented ascii images for items, certain parts of an area, and the end game event">
+    <list default="true" id="810566b2-5ced-4a11-97fd-c510395c8ea1" name="Changes" comment="prompts user to check inventory when they try to use an item while not in inventory and updated locker image">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commandhandlers/UseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/commandhandlers/UseHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/items/ItemProperties.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LABRAT/items/ItemProperties.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/main/resources/items/ItemProperties.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LABRAT/main/resources/items/ItemProperties.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/labrat/commandhandlers/UseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/labrat/commandhandlers/UseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/labrat/commands/ExamineCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/labrat/commands/ExamineCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/items/ItemProperties.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/items/ItemProperties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/actorstates/ExploreState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LABRAT/com/labrat/actorstates/ExploreState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/labrat/actorstates/ExploreState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/labrat/actorstates/ExploreState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +33,12 @@
     &quot;assignee&quot;: &quot;chams001-se&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/chams001-se/LABRAT.git&quot;,
-    &quot;accountId&quot;: &quot;3f0188ac-6400-4a0c-825c-7ef34624f5bd&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/chams001-se/LABRAT",
+    "accountId": "cf83a8a7-88dd-4086-b993-041e81ec1309"
   }
-}</component>
+}]]></component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="uGDT6Usv" />
   </component>
@@ -63,28 +60,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LABRAT.executor": "Run",
-    "Application.TextAdventure.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/molin237/IdeaProjects/labrat/src/main/resources/items",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LABRAT.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TextAdventure.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/molin237/IdeaProjects/labrat/src/main/resources/items&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\molin237\IdeaProjects\labrat\src\main\resources\items" />
@@ -123,6 +120,7 @@
       <workItem from="1777703327675" duration="237000" />
       <workItem from="1777703625580" duration="2883000" />
       <workItem from="1777751914119" duration="39782000" />
+      <workItem from="1778177005662" duration="706000" />
     </task>
     <task id="LOCAL-00001" summary="implemented singleton for the game instance, inventory has separators, hide command includes the mention of a location in help menu, main character holds command methods">
       <option name="closed" value="true" />
@@ -140,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778143127862</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="prompts user to check inventory when they try to use an item while not in inventory and updated locker image">
+      <option name="closed" value="true" />
+      <created>1778146518702</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1778146518702</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +166,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="implemented singleton for the game instance, inventory has separators, hide command includes the mention of a location in help menu, main character holds command methods" />
     <MESSAGE value="implemented ascii images for items, certain parts of an area, and the end game event" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented ascii images for items, certain parts of an area, and the end game event" />
+    <MESSAGE value="prompts user to check inventory when they try to use an item while not in inventory and updated locker image" />
+    <option name="LAST_COMMIT_MESSAGE" value="prompts user to check inventory when they try to use an item while not in inventory and updated locker image" />
   </component>
 </project>
