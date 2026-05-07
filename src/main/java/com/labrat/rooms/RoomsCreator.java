@@ -15,7 +15,7 @@ import java.util.Map;
 public class RoomsCreator {
     // Declare variables
     private final String filename = "/rooms/RoomProperties.json";
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     private RoomsCreatorMap data;
 
     private static RoomsCreator rc;

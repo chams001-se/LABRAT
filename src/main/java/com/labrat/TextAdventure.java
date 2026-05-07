@@ -109,7 +109,7 @@ public class TextAdventure {
         AudioManager.getInstance().close();
     }
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         TextAdventure labrat = new TextAdventure();
         labrat.start();
         labrat.end();

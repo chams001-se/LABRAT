@@ -95,7 +95,7 @@ public class ResultFormatter {
         sb.append(ANSI_RESET);
 
         // Print StringBuilder
-        System.out.println(sb.toString());
+        System.out.println(sb);
 
         // Reset StringBuilder
         sb.delete(0, sb.length());
