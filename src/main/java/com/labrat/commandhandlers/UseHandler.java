@@ -45,7 +45,7 @@ public class UseHandler extends BaseItemHandler {
             }
             else {
                 actor.setResultText(new ResultText(
-                        "Item cannot be used or does not exist.",
+                        "Item cannot be used or does not exist. You may want to check your inventory.",
                         PrinterColor.RED,
                         SoundEffect.COMMANDERROR
                         )

@@ -15,7 +15,7 @@ public class ExamineCommand extends BaseCommand {
         String itemName = argsToString(args);
 
         item = super.actor.getCurrentRoom().getItem(itemName);
-        if (item == null){
+        if (item == null) {
             item = super.actor.getInventory().getItem(itemName);
         }
 
