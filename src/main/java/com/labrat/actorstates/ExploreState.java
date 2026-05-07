@@ -58,7 +58,6 @@ public class ExploreState extends BaseState {
 
         // Auto save when leaving room
         if (currentRoom.isSaveRoom()) {
-            System.out.println("Set current room as save spot.");
             actor.setSaveRoom(currentRoom);
         }
 
