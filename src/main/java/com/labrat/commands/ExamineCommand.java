@@ -19,6 +19,6 @@ public class ExamineCommand extends BaseCommand {
             item = super.actor.getInventory().getItem(itemName);
         }
 
-        actor.getActorState().examine(item);
+        actor.examine(item);
     }
 }

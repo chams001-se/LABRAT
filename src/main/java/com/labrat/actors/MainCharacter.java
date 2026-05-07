@@ -4,6 +4,8 @@ import com.labrat.actorinventory.Inventory;
 import com.labrat.actorstates.ActorState;
 import com.labrat.actorstates.ActorStateType;
 import com.labrat.actorstates.ExploreState;
+import com.labrat.items.Item;
+import com.labrat.rooms.Direction;
 import com.labrat.rooms.Room;
 import com.labrat.view.ResultText;
 
@@ -76,4 +78,16 @@ public class MainCharacter implements Actor {
     public boolean isQuitting() {
         return isQuitting;
     }
+
+
+    public void move(Direction dir) { actorState.move(dir); }
+    public void use(Item item) { actorState.use(item); }
+    public void read(Item item) { actorState.read(item); }
+    public void take(Item item) { actorState.take(item); }
+    public void drop(Item item) { actorState.drop(item); }
+    public void examine(Item item) { actorState.examine(item); }
+    public void help() { actorState.help();}
+    public void inventory(String arg) { actorState.inventory(arg); }
+    public void hide(Item item) { actorState.hide(item); }
+    public void unhide() { actorState.unhide(); }
 }

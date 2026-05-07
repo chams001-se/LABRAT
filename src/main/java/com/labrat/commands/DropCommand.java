@@ -14,6 +14,6 @@ public class DropCommand extends BaseCommand {
         // Drop only supports dropping items from the inventory to the room
         Item item = super.actor.getInventory().getItem(super.argsToString(super.args));
 
-        super.actor.getActorState().drop(item);
+        actor.drop(item);
     }
 }

@@ -41,7 +41,13 @@ public class TextAdventure {
     // Declare view
     TextAdventureView textAdventureView;
 
-    public TextAdventure() {
+    private static final TextAdventure instance = new TextAdventure();
+
+    public static TextAdventure getInstance() {
+        return instance;
+    }
+
+    private TextAdventure() {
         // Initialize main character
         mainCharacter = new MainCharacter();
 
@@ -107,5 +113,6 @@ public class TextAdventure {
         TextAdventure labrat = new TextAdventure();
         labrat.start();
         labrat.end();
+        System.exit(0);
     }
 }

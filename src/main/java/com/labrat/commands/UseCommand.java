@@ -24,7 +24,7 @@ public class UseCommand extends BaseCommand {
         item = actor.getCurrentRoom().getItem(itemName);
 
         if (item != null && item.isItemType(ItemType.USABLE)) {
-            actor.getActorState().use(item);
+            actor.use(item);
         }
     }
 }

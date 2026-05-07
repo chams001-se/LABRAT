@@ -37,6 +37,18 @@ public interface Actor {
     void decrementMonsterTimer();
     int getMonsterTimer();
 
+    // command delegation
+    void help();
+    void move(Direction dir);
+    void use(Item item);
+    void read(Item item);
+    void take(Item item);
+    void drop(Item item);
+    void examine(Item item);
+    void inventory(String arg);
+    void hide(Item item);
+    void unhide();
+
     // Exit Flag
     void quit();
     boolean isQuitting();

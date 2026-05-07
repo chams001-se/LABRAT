@@ -15,6 +15,6 @@ public class TakeCommand extends BaseCommand {
         Room room = super.actor.getCurrentRoom();
         Item item = room.getItem(super.argsToString(super.args));
 
-        super.actor.getActorState().take(item);
+        actor.take(item);
     }
 }

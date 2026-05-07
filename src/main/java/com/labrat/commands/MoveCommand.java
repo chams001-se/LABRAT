@@ -10,6 +10,6 @@ public class MoveCommand extends BaseCommand {
 
     @Override
     public void execute() {
-        super.actor.getActorState().move(Direction.fromString(args[0]));
+        actor.move(Direction.fromString(args[0]));
     }
    }

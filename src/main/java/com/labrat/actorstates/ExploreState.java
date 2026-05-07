@@ -13,15 +13,7 @@ import com.labrat.view.PrinterColor;
 import com.labrat.view.ResultFormatter;
 import com.labrat.view.ResultText;
 
-import static com.labrat.commands.CommandType.MOVE;
-import static com.labrat.commands.CommandType.EXAMINE;
-import static com.labrat.commands.CommandType.USE;
-import static com.labrat.commands.CommandType.HELP;
-import static com.labrat.commands.CommandType.HIDE;
-import static com.labrat.commands.CommandType.INVENTORY;
-import static com.labrat.commands.CommandType.QUIT;
-import static com.labrat.commands.CommandType.READ;
-import static com.labrat.commands.CommandType.TAKE;
+import static com.labrat.commands.CommandType.*;
 
 // Concrete states override parent methods with error messages for unused commands
 
@@ -49,7 +41,7 @@ public class ExploreState extends BaseState {
         HIDE,
         //UNHIDE,
         INVENTORY,
-        //CLOSEINVENTORY,
+        CLOSEINVENTORY,
         HELP,
         QUIT
     };

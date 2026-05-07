@@ -9,7 +9,7 @@ public enum CommandType {
     READ("{r/read} <document>", "Read a document in the current room.", new String[]{"r"}),
     TAKE("{t/take} <item>", "Takes an item in a room and places it in the player's inventory.", new String[]{"t"}),
     DROP("{d/drop} <item>", "Drops an item from the player's inventory and places it in the current room.", new String[]{"d"}),
-    HIDE("{h/hide}", "Hides if there is an area to hide in.", new String[]{"h"}),
+    HIDE("{h/hide} <location>", "Hides if there is an area to hide in.", new String[]{"h"}),
     UNHIDE("{uh/unhide}", "Exits out of hiding state.", new String[]{"uh"}),
     INVENTORY("{i o/inventory open}", "Opens the inventory menu to focus on items in the player's inventory.", new String[]{"i"}),
     CLOSEINVENTORY("{i c/inventory close}", "Closes the inventory.", new String[]{"i c"}),

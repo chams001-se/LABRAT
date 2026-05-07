@@ -10,6 +10,6 @@ public class QuitCommand extends BaseCommand {
 
     @Override
     public void execute() {
-        super.actor.quit();
+        actor.quit();
     }
 }

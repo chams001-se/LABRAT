@@ -45,12 +45,23 @@ public class Inventory implements ActorInventory {
             sb.append("N/A");
             return sb.toString();
         }
-        // Iterate over inventory, create tabs
-        int i = 0;
-        for (String item : inventory.keySet()) {
-            i += 1 % 3;
-            sb.append(inventory.get(item).getName()).append("\t");
-            if (i == 3) sb.append("\n");
+        int count = 0;
+        int size = inventory.size();
+
+        for (Item item : inventory.values()) {
+            count++;
+
+            sb.append(item.getName());
+
+            // Add comma+tab unless this is the LAST item overall
+            if (count < size) {
+                sb.append(",\t");
+            }
+
+            // Newline every 3 items
+            if (count % 3 == 0) {
+                sb.append("\n");
+            }
         }
 
         return sb.toString();

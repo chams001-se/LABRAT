@@ -9,6 +9,6 @@ public class InventoryCommand extends BaseCommand {
 
     // Executing the command calls some form of receiver that contains the functionality that the command delivers.
     public void execute() {
-        super.actor.getActorState().inventory(super.argsToString(super.args));
+        actor.inventory(argsToString(args));
     }
 }

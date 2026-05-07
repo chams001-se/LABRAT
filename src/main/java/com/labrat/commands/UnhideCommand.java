@@ -10,6 +10,6 @@ public class UnhideCommand extends BaseCommand {
     @Override
     public void execute() {
         // Delegate to ActorState
-        super.actor.getActorState().unhide();
+        actor.unhide();
     }
 }

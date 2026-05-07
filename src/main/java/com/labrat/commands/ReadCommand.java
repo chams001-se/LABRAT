@@ -21,6 +21,6 @@ public class ReadCommand extends BaseCommand {
             item = super.actor.getInventory().getItem(itemName);
         }
 
-        super.actor.getActorState().read(item);
+        actor.read(item);
     }
 }

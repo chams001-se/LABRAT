@@ -10,6 +10,6 @@ public class HelpCommand extends BaseCommand {
 
     @Override
     public void execute() {
-        super.actor.getActorState().help();
+        actor.help();
     }
 }

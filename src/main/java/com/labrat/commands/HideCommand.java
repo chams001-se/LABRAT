@@ -15,6 +15,6 @@ public class HideCommand extends BaseCommand {
         Room room = super.actor.getCurrentRoom();
         Item item = room.getItem(super.argsToString(super.args));
 
-        super.actor.getActorState().hide(item);
+        actor.hide(item);
     }
 }
