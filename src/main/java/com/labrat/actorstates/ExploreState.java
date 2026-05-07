@@ -107,9 +107,53 @@ public class ExploreState extends BaseState {
 
                 // Check if lowered monster timer to 0
                 if (actor.getMonsterTimer() <= 0) {
+                    String kennyJumpscare = " \n" +
+                            "                                   ++=+=========------------==+                                     \n" +
+                            "                                +==++=++++++++++++===-------------                                  \n" +
+                            "                             +=-=++++++*****####*++===========---::---                              \n" +
+                            "                           *=---=+*++*############**+====+++**+=-------                             \n" +
+                            "                         ==========*#%%%%%%%%%%%%%###%##*********++===--=                           \n" +
+                            "                        ======+++++*###############%%%%###***#%%%#*++==---+                         \n" +
+                            "                       ======+********++++++++++++**###**##***###%#**+++===%                        \n" +
+                            "                      ====++*#****+++====-----======+++++++*****##%%##***+=+                        \n" +
+                            "                     #==++*##***+++==-------::::---===========+++*#%%##*++==                        \n" +
+                            "                    @+++*####*+++===-------:::::::::-----------==++*#%##+=--=                       \n" +
+                            "                    +++#####*++====--------:::::::::::-----:-----===*#%##*===+                      \n" +
+                            "                   +***####***+==---------::::::::::::::::-::::-----=+*###*+=+                      \n" +
+                            "                   #**####****+=--------::::::::::::::::::::::::::---=+**#*+++                      \n" +
+                            "                   #*####*****+=------:::::-----::::::::::::::::::::---++*#*++                      \n" +
+                            "                   **####**##*==------------------------::--::::::::::-=+***++                      \n" +
+                            "                   ###%#####*+==-----=====++++++++===---========--::::-=****++                      \n" +
+                            "                   ##%%%%#%#+==-====+++++++*******+==--=++****+++==--::=*#**++                      \n" +
+                            "                    **%%%%#*==-===++**##%@%######*+=-::-+*######**+==-::+#****                      \n" +
+                            "                   +*##%%%#+==-==++********++*****=-::::=***####****+=-:=*****                      \n" +
+                            "                   +****##*+==---======++++=+====----:::-==++=========-:-+*+*                       \n" +
+                            "                   +**+*###*===---:::::------:::-----:::::--------::::::-+*+*                       \n" +
+                            "                   ++++*###++===-----::::::::::------::.::::::::::::..::-++++                       \n" +
+                            "                   ==+**#**++====-------::::--===-----::::---:::::::::::====+                       \n" +
+                            "                    ==++**++======----------==+++=+++====--===--::::::::-=-=+                       \n" +
+                            "                    *===++++====================**##******+=====-----:::--==                        \n" +
+                            "                      ===++++================--=+*******++=--=======--:::-=                         \n" +
+                            "                       ===+++++==================++++++++=---==+=====-----=                         \n" +
+                            "                         +++++++++++++=====++++++*****++++==+++++========+                          \n" +
+                            "                            ++**++++++=====+******+****+++****++========                            \n" +
+                            "                            ++##****+++==========+++++++====-=========++                            \n" +
+                            "                            ++*##*****+++====--===++++++===--===+++++++                             \n" +
+                            "                            ==+*###****++++===---------------==++*++++                              \n" +
+                            "                            *==+*#%###***++++====------------==+**#**                               \n" +
+                            "                            +==++*#%%%##*********++==========++**##                                 \n" +
+                            "                            #==++++*%@%%%#########*************###                                  \n" +
+                            "                            +==+++++*#%%%%%%%%%%%%%%%####%#####*+                                   \n" +
+                            "                     :--=+++++=+++++++*##%%%%%%%%%%%%%%%%%%##*+==                                   \n" +
+                            "                    ----=****+++++++++****##%%@@%%%%%%%%%%#*+=--=                                   \n" +
+                            "                   :::----+*+++++++++++*******#######%###*+==----                                   \n" +
+                            "                  :::::-----=+++++++++++****************+++==---::                                  \n" +
+                            "               @:::--:::------=++++++++++**************++++=====-:::                                \n" +
+                            "           :::::::::--::::------=++++++++++++*********+++++====+=-:::                               \n" +
+                            "       ---::::::::::::-:::::---::-=++++++++++++++++++++++++====*+-:::-    \n";
                     // GAME OVER
-                    actor.setResultText(new ResultText(
-                            "The monster is upon you! You try your best to defend yourself against the mass of flesh and bone, but it overwhelms you!\nThe monster uses its boney appendage to impale you in the chest!\nYour consciousness fades to black.\nHowever, instead of passing on, you wake up in a familiar place...",
+                    actor.setResultText(new ResultText(kennyJumpscare +
+                            "moveThe monster is upon you! You try your best to defend yourself against the mass of flesh and bone, but it overwhelms you!\nThe monster uses its boney appendage to impale you in the chest!\nYour consciousness fades to black.\nHowever, instead of passing on, you wake up in a familiar place...",
                             PrinterColor.RED,
                             SoundEffect.GAMEOVER
                     ));
@@ -130,7 +174,20 @@ public class ExploreState extends BaseState {
     @Override
     public void examine(Item item) {
         if (actor.getCurrentRoom().hasItem(item.getInternalName())){
-            actor.setResultText(item.getResultText(ItemType.EXAMINABLE));
+
+            ResultText base = item.getResultText(ItemType.EXAMINABLE);
+
+            String art = item.getAsciiArt();
+            if (art != null && !art.isEmpty()) {
+                actor.setResultText(
+                        new ResultText(
+                                art + "\n\n" + base.text()
+                        )
+                );
+            } else {
+                actor.setResultText(base);
+            }
+
         } else {
             actor.setResultText(new ResultText("Enter inventory to examine specified item."));
         }

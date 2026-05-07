@@ -90,11 +90,12 @@ public class ResultFormatter {
     public void print(ResultText ct) {
         // Get StringBuilder text
         sb.append(getColor(ct.color()));
+        sb.append("\n");
         sb.append(ct.text());
         sb.append(ANSI_RESET);
 
         // Print StringBuilder
-        System.out.println(sb);
+        System.out.println(sb.toString());
 
         // Reset StringBuilder
         sb.delete(0, sb.length());

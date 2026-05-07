@@ -44,6 +44,9 @@ public class Item {
     private boolean isOneUse;
     // Disappears from the game once the player uses a Use command on it
 
+@JsonProperty("asciiArt")
+    private String asciiArt;
+
     // Getters
     public String getInternalName() {
         return internalName;
@@ -53,6 +56,12 @@ public class Item {
         return name;
     }
 
+    public String getAsciiArt() {
+        if (asciiArt == null) {
+            return null;
+        }
+        return asciiArt.replace("\r\n", "\n").replace("\r", "\n");
+    }
     public boolean checkAlias(String input) {
         return aliases.contains(input);
     }
