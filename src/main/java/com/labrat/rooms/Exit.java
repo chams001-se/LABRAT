@@ -25,8 +25,6 @@ public class Exit {
     public void unlock() {
         // Increment current amount of locks opened
         currentLocks++;
-        System.out.println("currentLocks " + currentLocks);
-        System.out.println("numLocks " + numLocks);
 
         // Check if number of keys used exceeds number of locks
         if (currentLocks >= numLocks) {
